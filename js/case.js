@@ -1,190 +1,153 @@
-// Разметка страницы кейса из данных CASES (js/cases.js). Страницы case-<id>.html собирает
-// tools/build.mjs с уже готовой разметкой; в браузере файл только подхватывает лайтбокс.
+// Разметку кейсов генерирует tools/build.mjs. В браузере этот файл включает просмотр изображений.
+const attr = (value) => String(value).replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
 
-const icon = (name, cls = 'h-5 w-5') => `<span data-icon="${name}" class="inline-block shrink-0 ${cls}"></span>`;
-
-// теги — плашками разного цвета
-const PILL = { B2E: 'pill-blue', B2C: 'pill-marker', 'Social Media': 'pill-purple' };
-const pills = (list) => list.map((t, i) => `<span class="pill ${PILL[t] || 'pill-white'}${i === 0 ? ' !ml-0' : ''}">${t}</span>`).join('');
-
-// небольшой разброс углов, чтобы отпечатки лежали «живо», но стабильно
-
-function picture(key, { alt = '', cls = '', zoom = true, eager = false } = {}) {
-  const [w, h] = DIMS[key] || [1600, 1000];
-  return `<img src="assets/${key}.webp" width="${w}" height="${h}" alt="${alt}" ${eager ? '' : 'loading="lazy"'} decoding="async"
-    class="${zoom ? 'zoomable cursor-zoom-in ' : ''}block h-auto w-full ${cls}" />`;
+function picture(key, { alt = '', cls = '', eager = false } = {}) {
+  const [width, height] = DIMS[key] || [1600, 1000];
+  return `<img src="assets/${key}.webp" width="${width}" height="${height}" alt="${attr(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" class="${cls}" />`;
 }
 
-// скриншоты — ровные отпечатки на скотче, чтобы их было удобно читать
+function zoomPicture(key, alt, eager = false) {
+  const label = alt ? `Увеличить: ${alt}` : 'Увеличить изображение';
+  return `<a href="assets/${key}.webp" data-zoom aria-label="${attr(label)}">${picture(key, { alt, eager })}</a>`;
+}
+
 function figure(key, caption = '', { narrow = false } = {}) {
   return `<figure class="reveal ${narrow ? 'mx-auto max-w-xl' : ''}">
-    <div class="print mt-6" data-label="${caption || 'Скриншот'}" data-size="${(DIMS[key] || []).join(' × ')}">${picture(key, { alt: caption })}</div>
+    <div class="case-figure">${zoomPicture(key, caption)}</div>
+    ${caption ? `<figcaption class="case-caption">${caption}</figcaption>` : ''}
   </figure>`;
 }
 
-function renderBlock(b) {
-  if (b.h) return `<h3 class="reveal mx-auto max-w-2xl pt-8 text-[1.75rem] font-extrabold leading-tight tracking-tight sm:text-[2rem]">${b.h}</h3>`;
-  if (b.p) return `<p class="reveal prose-case mx-auto max-w-2xl text-[18px] leading-[1.65] text-ink/85">${b.p}</p>`;
-  if (b.label) return `<div class="reveal mx-auto max-w-2xl pt-2"><span class="pill ${b.label === 'Было' ? 'pill-white' : 'pill-marker'} !ml-0 !text-[13px]">${b.label}</span></div>`;
-  if (b.ul) return `<ul class="reveal prose-case mx-auto max-w-2xl space-y-2.5 text-[18px] leading-[1.6] text-ink/85">${b.ul.map((li) => `<li class="flex gap-3"><span class="mt-[.55em] h-2 w-2 shrink-0 rounded-full bg-blue"></span><span>${li}</span></li>`).join('')}</ul>`;
-  if (b.img) return `<div class="py-4">${figure(b.img, b.caption, { narrow: b.narrow })}</div>`;
-  if (b.pair) return `<div class="grid gap-8 py-4 sm:grid-cols-2">${b.pair.map((k, i) => figure(k, b.captions?.[i] || '')).join('')}</div>`;
+function renderBlock(block) {
+  if (block.h) return `<h3 class="case-subtitle reveal mx-auto max-w-2xl">${block.h}</h3>`;
+  if (block.p) return `<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">${block.p}</p>`;
+  if (block.label) return `<div class="reveal mx-auto max-w-2xl"><span class="pill">${block.label}</span></div>`;
+  if (block.ul) return `<ul class="reveal prose-case mx-auto max-w-2xl list-disc space-y-2.5 pl-5 text-base leading-relaxed sm:text-lg">${block.ul.map((item) => `<li>${item}</li>`).join('')}</ul>`;
+  if (block.img) return figure(block.img, block.caption, { narrow: block.narrow });
+  if (block.pair) return `<div class="grid gap-6 sm:grid-cols-2">${block.pair.map((key, index) => figure(key, block.captions?.[index] || '')).join('')}</div>`;
   return '';
 }
 
 function stagesBlock(stages) {
-  return `<div class="reveal stages mx-auto max-w-2xl">
-    <p class="mono text-[12px] text-ink/70">Этапы</p>
-    <ol class="mt-3 flex flex-wrap gap-2">${stages.map((s, i) =>
-      `<li class="flex items-center gap-2 rounded-full border-[1.5px] border-ink bg-white py-1 pl-1 pr-3.5 text-[15px]"><span class="stage-dot mono grid h-6 w-6 place-items-center rounded-full border-[1.5px] border-ink !text-[10px] !tracking-normal">${i + 1}</span>${s}</li>`).join('')}
+  return `<div class="reveal mx-auto max-w-2xl">
+    <p class="text-sm">Этапы</p>
+    <ol class="mt-3 flex flex-wrap gap-2">${stages.map((stage, index) =>
+      `<li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">${index + 1}</span>${stage}</li>`).join('')}
     </ol>
   </div>`;
 }
 
-// «Задача и итог»: проблема — записка на листке в линейку, задача — жёлтый стикер
 function problemGoal(problem, goal) {
   if (!problem || !goal) return '';
-  return `
-  <div class="grid gap-10 md:grid-cols-2 md:gap-12">
-    <div class="reveal note note-lined">
-      <p class="hand text-[2.1rem]">${problem.label}</p>
-      <p class="prose-case mt-3 text-[17px] leading-[1.6]">${problem.html}</p>
-    </div>
-    <div class="reveal note note-marker" style="--stagger:120ms">
-      <p class="hand text-[2.1rem] leading-none">${goal.label}</p>
-      <p class="prose-case mt-4 text-[1.2rem] font-medium leading-[1.45]">${goal.html}</p>
-    </div>
+  return `<div class="grid gap-4 md:grid-cols-2">
+    ${[problem, goal].map(({ label, html }) => `<div class="reveal case-note">
+      <p class="case-note-title">${label}</p>
+      <p class="prose-case mt-3 leading-relaxed">${html}</p>
+    </div>`).join('')}
   </div>`;
 }
 
-function detailRow(s) {
-  const list = s.list
-    ? `<ul class="mt-5 flex flex-wrap gap-2">${s.list.map((li) => `<li class="rounded-lg border-[1.5px] border-ink bg-white px-3 py-2 text-[15px] leading-snug">${li}</li>`).join('')}</ul>`
+function detailRow(detail) {
+  const list = detail.list
+    ? `<ul class="mt-4 flex flex-wrap gap-2">${detail.list.map((item) => `<li class="pill">${item}</li>`).join('')}</ul>`
     : '';
-  return `
-  <div class="reveal grid gap-4 border-t-[1.5px] border-ink py-8 md:grid-cols-[13rem_1fr] md:gap-10">
-    <p class="mono pt-1 text-[13px]">${s.label}</p>
-    <div><p class="prose-case max-w-[62ch] text-[18px] leading-[1.6] text-ink/85">${s.html}</p>${list}</div>
+  return `<div class="case-rule reveal grid gap-3 border-t py-6 md:grid-cols-[11rem_1fr] md:gap-10">
+    <p class="case-marker pt-1 text-sm font-semibold">${detail.label}</p>
+    <div><p class="prose-case max-w-[62ch] text-base leading-relaxed sm:text-lg">${detail.html}</p>${list}</div>
   </div>`;
 }
 
-// Результаты — крупным текстом, главное выделено маркером
-function resultsBlock(c) {
-  if (!c.results) return '';
-  const items = c.results.map((r) =>
-    `<li class="reveal border-t-[1.5px] border-ink pt-5 text-[1.3rem] leading-[1.45] sm:text-[1.55rem] [&_b]:bg-[rgba(13,153,255,.2)] [&_b]:font-semibold">${r}</li>`).join('');
-  const note = c.resultsNote ? `<p class="mono mt-8 text-[12px] leading-relaxed text-ink/70">* ${c.resultsNote}</p>` : '';
-  return `
-  <div class="mt-16">
-    <h3 class="reveal display text-[2.6rem] sm:text-[4rem]">Результаты</h3>
-    <ul class="mt-8 space-y-6">${items}</ul>
+function resultsBlock(project) {
+  if (!project.results) return '';
+  const items = project.results.map((result) =>
+    `<li class="case-rule reveal border-t pt-4 text-base leading-relaxed sm:text-xl">${result}</li>`).join('');
+  const note = project.resultsNote ? `<p class="case-caption mt-6">* ${project.resultsNote}</p>` : '';
+  return `<div class="case-results mt-12">
+    <h3 class="reveal display case-section-title">Результаты</h3>
+    <ul class="mt-6 space-y-4">${items}</ul>
     ${note}
   </div>`;
 }
 
-function caseCard(id, i) {
-  const c = CASES[id];
-  return `<a href="case-${id}.html" class="reveal group block">
-    <div class="print" data-label="${c.kicker || 'Кейс'}" data-size="${(DIMS[c.cover] || []).join(' × ')}">
-      <div class="overflow-hidden" style="background:${c.coverBg}; view-transition-name: cover-${id}">${picture(c.cover, { alt: c.title, zoom: false, cls: 'aspect-[5/4] object-cover' })}</div>
+function caseCard(id) {
+  const project = CASES[id];
+  return `<a href="case-${id}.html" class="project reveal">
+    <div class="project-media" style="--cover: ${project.coverBg}">
+      ${picture(project.cover, { alt: project.title })}
     </div>
-    <p class="mono mt-6 text-[12px]">${c.kicker || 'Проект'}</p>
-    <h4 class="mt-2 text-[1.4rem] font-bold leading-snug tracking-tight"><span class="link-u">${c.title}</span></h4>
+    <div class="project-copy">
+      <p class="project-meta">${project.kicker || 'Кейс'}</p>
+      <h3 class="project-title">${project.title}</h3>
+    </div>
   </a>`;
 }
 
-const h2 = (html) => `<h2 class="display text-[2.1rem] sm:text-[4.5rem]">${html}</h2>`;
-
 function phonesBlock(phones) {
-  return `<div class="grid items-start justify-center gap-x-10 gap-y-16 md:grid-cols-2">${phones.map((p) => `
+  return `<div class="grid items-start gap-x-10 gap-y-12 md:grid-cols-2">${phones.map((phone) => `
     <figure class="proto-wrap">
-      <div class="print" data-label="${p.label}" data-size="393 × 852">
-        <div class="proto"><iframe src="${p.src}" title="${p.title}" loading="${p.eager ? 'eager' : 'lazy'}" allow="autoplay; fullscreen"></iframe></div>
-      </div>
-      <figcaption class="mt-8 text-center text-[15px]"><a class="link-u" href="${p.src}" target="_blank" rel="noopener">${p.caption}</a></figcaption>
+      <div class="case-cover proto"><iframe src="${phone.src}" title="${attr(phone.title)}" loading="${phone.eager ? 'eager' : 'lazy'}" allow="autoplay; fullscreen"></iframe></div>
+      <figcaption class="case-caption text-center"><a class="link-u" href="${phone.src}" target="_blank" rel="noopener">${phone.caption}</a></figcaption>
     </figure>`).join('')}</div>`;
 }
 
 function caseHTML(id) {
-  const c = CASES[id];
-  const parent = c.parent && CASES[c.parent];
-
-  const backLink = (href, text) =>
-    `<a href="${href}" class="mono group inline-flex items-center gap-2 text-[12px]"><span class="nudge-left inline-block">${icon('arrow-l', 'h-4 w-4')}</span><span class="link-u">${text}</span></a>`;
-  const back = parent ? backLink(`case-${c.parent}.html`, parent.title) : backLink('index.html#work', 'Все проекты');
-  const sticker = c.kicker || c.period;
-
+  const project = CASES[id];
+  const parent = project.parent && CASES[project.parent];
+  const kicker = project.kicker || project.period;
+  const backHref = parent ? `case-${project.parent}.html` : 'index.html#work';
   const hero = `
-  <section class="pb-14 pt-32 sm:pb-20 sm:pt-40">
-    <div class="reveal">${back}</div>
-    <div class="relative mt-14 max-w-5xl">
-      ${sticker ? `<p class="drop hand absolute -top-10 left-0 text-[1.6rem] leading-none text-purple" style="--d:250ms">${sticker}</p>` : ''}
-      <h1 data-split class="display text-[1.95rem] sm:text-[4.5rem] lg:text-[6rem]">${c.title}</h1>
-    </div>
-    ${c.lead ? `<p style="--stagger:450ms" class="reveal prose-case mt-8 max-w-3xl text-[1.2rem] leading-[1.5] sm:text-[1.45rem]">${c.lead}</p>` : ''}
-    <p style="--stagger:550ms" class="reveal mt-6 text-[22px] leading-[1.9]">${pills(c.tags)}</p>
+  <section class="case-hero">
+    <a class="back-link link-u" href="${backHref}">${parent ? parent.title : 'Все проекты'}</a>
+    ${kicker ? `<p class="case-kicker reveal">${kicker}</p>` : ''}
+    <h1 data-split class="display case-title">${project.title}</h1>
+    ${project.lead ? `<p class="case-lead reveal" style="--stagger: 160ms">${project.lead}</p>` : ''}
+    <p class="case-tags reveal" style="--stagger: 230ms">${project.tags.map((tag) => `<span class="pill">${tag}</span>`).join('')}</p>
   </section>
-  ${c.phones ? `<div class="pb-16 sm:pb-24">${phonesBlock(c.phones)}</div>` : `<div class="pb-20 sm:pb-28">
-    <div class="print" data-label="Обложка" data-size="${(DIMS[c.cover] || []).join(' × ')}">
-      <div class="overflow-hidden" style="background:${c.coverBg}; view-transition-name: cover-${id}">${picture(c.cover, { alt: c.title, eager: true })}</div>
-    </div>
-  </div>`}`;
+  <div class="pb-12 sm:pb-20">
+    ${project.phones ? phonesBlock(project.phones) : `<div class="case-figure" style="background: ${project.coverBg}">${zoomPicture(project.cover, project.title, true)}</div>`}
+  </div>`;
 
-  const problem = c.summary.find((x) => x.label === 'Проблема');
-  const goal = c.summary.find((x) => x.label === 'Задача' || x.label === 'Цель');
-  const details = c.summary.filter((x) => x !== problem && x !== goal);
-
+  const problem = project.summary.find((item) => item.label === 'Проблема');
+  const goal = project.summary.find((item) => item.label === 'Задача' || item.label === 'Цель');
+  const details = problem && goal ? project.summary.filter((item) => item !== problem && item !== goal) : project.summary;
   const summary = `
-  <section class="py-16 sm:py-24">
-    <div class="reveal">${h2('Задача и итог')}</div>
-    <div class="mt-12">
+  <section class="case-section">
+    <h2 class="reveal display case-section-title">Задача и итог</h2>
+    <div class="mt-8">
       ${problemGoal(problem, goal)}
-      ${details.length ? `<div class="mt-14">${details.map(detailRow).join('')}</div>` : ''}
-      ${resultsBlock(c)}
+      ${details.length ? `<div class="mt-8">${details.map(detailRow).join('')}</div>` : ''}
+      ${resultsBlock(project)}
     </div>
   </section>`;
 
-  const multi = c.sections.filter((s) => s.title).length > 1;
-  let fn = 0;
-  const sections = c.sections.map((s) => {
-    if (s.title) fn++;
-    // номер нужен только когда частей несколько — порядок здесь несёт смысл
-    const num = multi ? `<span class="text-ink/35">${fn}.</span> ` : '';
-    const head = s.title
-      ? `<div class="reveal mb-12">${h2(num + s.title)}</div>`
-      : (s.stages ? `<div class="reveal mb-12">${h2('Как шла работа')}</div>` : '');
-    const note = s.note
-      ? `<div class="reveal note note-red mx-auto max-w-md"><p class="hand text-[1.6rem] leading-[1.1]">${s.note}</p></div>`
-      : '';
-    return `
-    <section class="border-t-[1.5px] border-ink py-16 sm:py-24">
-      ${head}
+  const sections = project.sections.map((section) => {
+    const title = section.title || (section.stages ? 'Как шла работа' : '');
+    return `<section class="case-section">
+      ${title ? `<h2 class="reveal display case-section-title mb-8">${title}</h2>` : ''}
       <div class="space-y-7">
-        ${note}
-        ${s.stages ? stagesBlock(s.stages) : ''}
-        ${s.blocks.map(renderBlock).join('\n')}
+        ${section.note ? `<p class="case-note reveal mx-auto max-w-2xl">${section.note}</p>` : ''}
+        ${section.stages ? stagesBlock(section.stages) : ''}
+        ${section.blocks.map(renderBlock).join('\n')}
       </div>
     </section>`;
   }).join('');
 
-  const subcases = c.subcases ? `
-    <section class="pb-20 sm:pb-28">
-      <div data-stagger class="grid gap-x-12 gap-y-14 sm:grid-cols-2">${c.subcases.map((k, i) => caseCard(k, i)).join('')}</div>
-    </section>` : '';
+  const subcases = project.subcases ? `<section class="case-section">
+    <h2 class="reveal display case-section-title mb-8">Кейсы проекта</h2>
+    <div class="grid gap-8 sm:grid-cols-2" data-stagger>${project.subcases.map(caseCard).join('')}</div>
+  </section>` : '';
 
   const next = CASE_ORDER[(CASE_ORDER.indexOf(id) + 1) % CASE_ORDER.length];
-  const nc = CASES[next];
-  // одно имя перехода на странице может быть только у одного элемента
-  const nextVT = c.subcases?.includes(next) ? '' : `view-transition-name: cover-${next}`;
+  const nextProject = CASES[next];
   const nextBlock = `
-  <section class="border-t-[1.5px] border-ink py-16 sm:py-24">
-    <a href="case-${next}.html" class="reveal group grid items-center gap-10 md:grid-cols-2">
-      <div class="print" data-label="Следующий проект" data-size="${(DIMS[nc.cover] || []).join(' × ')}">
-        <div class="overflow-hidden" style="background:${nc.coverBg};${nextVT}">${picture(nc.cover, { alt: nc.title, zoom: false, cls: 'aspect-[5/3] object-cover' })}</div>
+  <section class="case-section">
+    <a href="case-${next}.html" class="project project-featured reveal">
+      <div class="project-media" style="--cover: ${nextProject.coverBg}">
+        ${picture(nextProject.cover, { alt: nextProject.title })}
       </div>
-      <div>
-        <span class="pill pill-marker !ml-0 !text-[12px]">${nc.parent ? 'Следующий кейс' : 'Следующий проект'}</span>
-        <h2 class="display mt-5 text-[1.7rem] sm:text-[3.6rem]"><span class="link-u">${nc.title}</span></h2>
+      <div class="project-copy">
+        <p class="project-meta">${nextProject.parent ? 'Следующий кейс' : 'Следующий проект'}</p>
+        <h2 class="project-title">${nextProject.title}</h2>
       </div>
     </a>
   </section>`;
@@ -193,43 +156,27 @@ function caseHTML(id) {
 }
 
 if (typeof document !== 'undefined') {
-  // Увеличение картинок: картинка вырастает из миниатюры и возвращается в неё
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.createElement('img');
-  lbImg.className = 'max-h-full max-w-full rounded-xl object-contain shadow-2xl';
-  lb.prepend(lbImg);
-  const lbReduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let lbThumb = null;
+  const lightbox = document.getElementById('lightbox');
+  const image = document.createElement('img');
+  lightbox.append(image);
 
-  function flipFrom(thumb) {
-    const a = thumb.getBoundingClientRect();
-    const b = lbImg.getBoundingClientRect();
-    return `translate(${a.left + a.width / 2 - (b.left + b.width / 2)}px, ${a.top + a.height / 2 - (b.top + b.height / 2)}px) scale(${a.width / b.width})`;
-  }
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('[data-zoom]');
+    if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || lightbox.open) return;
+    event.preventDefault();
+    const thumbnail = link.querySelector('img');
+    image.src = thumbnail.currentSrc || thumbnail.src;
+    image.alt = thumbnail.alt;
+    lightbox.showModal();
 
-  async function openLb(thumb) {
-    lbThumb = thumb;
-    lbImg.src = thumb.currentSrc || thumb.src;
-    lbImg.alt = thumb.alt;
-    lb.classList.remove('hidden-lb');
-    if (lbReduce) return;
-    await lbImg.decode().catch(() => {});
-    lbImg.animate([{ transform: flipFrom(thumb), opacity: 0.6 }, { transform: 'none', opacity: 1 }],
-      { duration: 420, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
-  }
-
-  function closeLb() {
-    if (lb.classList.contains('hidden-lb')) return;
-    lb.classList.add('hidden-lb');
-    if (lbReduce || !lbThumb) return;
-    lbImg.animate([{ transform: 'none' }, { transform: flipFrom(lbThumb) }],
-      { duration: 260, easing: 'cubic-bezier(0.4, 0, 1, 1)' });
-  }
-
-  document.addEventListener('click', (e) => {
-    const img = e.target.closest('img.zoomable');
-    if (img) openLb(img);
+    if (matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      image.animate([{ opacity: .3, transform: 'scale(.97)' }, { opacity: 1, transform: 'none' }], {
+        duration: 280,
+        easing: 'cubic-bezier(.22, 1, .36, 1)'
+      });
+    }
   });
-  lb.addEventListener('click', closeLb);
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) lightbox.close();
+  });
 }

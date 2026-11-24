@@ -1,148 +1,100 @@
-// Общее поведение для всех страниц: появление, заголовки, навбар, цифры, прогресс чтения.
-// Подключается последним — после того, как case.js отрисовал страницу кейса.
-
-const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-// Заголовок по словам: каждое слово в маске, задержка нарастает по порядку
-function splitWords(root, startDelay = 120, step = 55) {
-  let i = 0;
-  const walk = (node) => {
-    [...node.childNodes].forEach((child) => {
-      if (child.nodeType === Node.TEXT_NODE) {
-        const parts = child.textContent.split(/(\s+)/);
-        const frag = document.createDocumentFragment();
-        parts.forEach((part) => {
-          if (!part) return;
-          if (/^\s+$/.test(part)) { frag.append(' '); return; }
-          const w = document.createElement('span');
-          w.className = 'w';
-          const wi = document.createElement('span');
-          wi.className = 'wi';
-          wi.textContent = part;
-          wi.style.setProperty('--d', `${startDelay + i++ * step}ms`);
-          w.append(wi);
-          frag.append(w);
-        });
-        child.replaceWith(frag);
-      } else if (child.classList?.contains('avatar-pop')) {
-        child.style.setProperty('--d', `${startDelay + i++ * step}ms`);
-      } else if (child.nodeType === Node.ELEMENT_NODE && child.tagName !== 'BR') {
-        walk(child);
-      }
-    });
-  };
-  walk(root);
-  root.classList.add('split-done');
-}
-document.querySelectorAll('[data-split]').forEach((el) => splitWords(el));
-
-// Задержка по очереди — только внутри списков [data-stagger]
-document.querySelectorAll('[data-stagger]').forEach((group) => {
-  group.querySelectorAll(':scope > .reveal').forEach((el, i) => {
-    el.style.setProperty('--stagger', `${Math.min(i, 5) * 80}ms`);
-  });
-});
-document.querySelectorAll('.stages li').forEach((li, i) => li.style.setProperty('--i', i));
-
-// Цифры досчитывают до своего значения
-function countUp(el) {
-  const target = Number(el.dataset.count);
-  const prefix = el.dataset.prefix || '';
-  const suffix = el.dataset.suffix || '';
-  if (reduceMotion) return;
-  const dur = 1100;
-  const t0 = performance.now();
-  const tick = (t) => {
-    const p = Math.min((t - t0) / dur, 1);
-    const eased = 1 - Math.pow(2, -10 * p);
-    el.textContent = `${prefix}${Math.round(target * (p === 1 ? 1 : eased))}${suffix}`;
-    if (p < 1) requestAnimationFrame(tick);
-  };
-  el.textContent = `${prefix}0${suffix}`;
-  requestAnimationFrame(tick);
-}
-
-// Появление при скролле
-const io = new IntersectionObserver((entries) => {
-  entries.forEach((e) => {
-    if (!e.isIntersecting) return;
-    e.target.classList.add('in');
-    e.target.querySelectorAll('[data-count]').forEach(countUp);
-    io.unobserve(e.target);
-  });
-}, { threshold: 0, rootMargin: '0px 0px 15% 0px' });
-document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-
-// Переход по якорю: всё, что выше цели и в ней, показываем сразу, не дожидаясь наблюдателя
-function revealUpTo(hash) {
-  const target = hash.length > 1 && document.getElementById(hash.slice(1));
-  if (!target) return;
-  const bottom = target.getBoundingClientRect().bottom + innerHeight;
-  document.querySelectorAll('.reveal:not(.in)').forEach((el) => {
-    if (el.getBoundingClientRect().top < bottom) { el.classList.add('in'); io.unobserve(el); }
-  });
-}
-addEventListener('hashchange', () => revealUpTo(location.hash));
-revealUpTo(location.hash);
-
-document.documentElement.classList.add('motion-ready');
-
-// Навбар: плотнее после начала прокрутки
+const header = document.querySelector('.site-header');
 const nav = document.getElementById('nav');
-const onScroll = () => nav.classList.toggle('nav-scrolled', scrollY > 24);
-addEventListener('scroll', onScroll, { passive: true });
-onScroll();
-
-// Меню в pill-навбаре
-const btn = document.getElementById('menuBtn');
+const menuButton = document.getElementById('menuBtn');
 const menu = document.getElementById('menu');
-const [l1, l2] = btn.querySelectorAll('span');
-menu.querySelectorAll('li').forEach((li, i) => li.style.setProperty('--i', i));
-function toggleMenu(open) {
-  btn.setAttribute('aria-expanded', open);
-  menu.style.gridTemplateRows = open ? '1fr' : '0fr';
-  nav.classList.toggle('open', open);
-  l1.style.transform = open ? 'translateY(3.75px) rotate(45deg)' : '';
-  l2.style.transform = open ? 'translateY(-3.75px) rotate(-45deg)' : '';
-}
-btn.addEventListener('click', () => toggleMenu(btn.getAttribute('aria-expanded') !== 'true'));
-menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => toggleMenu(false)));
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggleMenu(false); });
+const progress = document.querySelector('.read-progress');
 
-// Прогресс чтения (страницы кейсов)
-const bar = document.querySelector('.read-progress');
-if (bar) {
-  let ticking = false;
-  const update = () => {
-    const max = document.documentElement.scrollHeight - innerHeight;
-    bar.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
-    ticking = false;
-  };
-  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-  update();
+function setMenu(open) {
+  menuButton.setAttribute('aria-expanded', String(open));
 }
 
-// Кнопка «наверх»: появляется, когда прокрутили больше экрана
-const toTop = document.createElement('a');
-toTop.href = '#top';
-toTop.className = 'to-top';
-toTop.setAttribute('aria-label', 'Наверх');
-toTop.innerHTML = `<svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16 V 4"/><path d="M4.5 9.5 L10 4 L15.5 9.5"/></svg>`;
-document.body.append(toTop);
-const onScrollTop = () => toTop.classList.toggle('show', scrollY > innerHeight * 0.9);
-addEventListener('scroll', onScrollTop, { passive: true });
-onScrollTop();
-toTop.addEventListener('click', (e) => {
-  e.preventDefault();
-  scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
-  history.replaceState(null, '', location.pathname + location.search);
+nav.classList.add('enhanced');
+menuButton.hidden = false;
+menuButton.addEventListener('click', () => {
+  setMenu(menuButton.getAttribute('aria-expanded') === 'false');
+});
+menu.addEventListener('click', (event) => {
+  if (event.target.closest('a')) setMenu(false);
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+    setMenu(false);
+    menuButton.focus();
+  }
 });
 
-// Плашка размера под фреймом — появляется при наведении, как в редакторе
-document.querySelectorAll('.print[data-size]').forEach((frame) => {
-  if (!frame.dataset.size.trim()) return;
-  const badge = document.createElement('span');
-  badge.className = 'size-badge';
-  badge.textContent = frame.dataset.size;
-  frame.append(badge);
-});
+function updateScroll() {
+  header.classList.toggle('scrolled', scrollY > 24);
+  if (progress) {
+    const distance = document.documentElement.scrollHeight - innerHeight;
+    progress.style.transform = 'scaleX(' + (distance > 0 ? scrollY / distance : 0) + ')';
+  }
+}
+addEventListener('scroll', updateScroll, { passive: true });
+addEventListener('resize', updateScroll);
+updateScroll();
+
+const motion = matchMedia('(prefers-reduced-motion: no-preference)');
+if (motion.matches && 'IntersectionObserver' in window) {
+  const items = Array.from(document.querySelectorAll('.reveal'));
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
+    }
+  }, { rootMargin: '0px 0px 8% 0px' });
+
+  function revealAnchor() {
+    const target = document.getElementById(location.hash.slice(1));
+    if (!target) return;
+    const fold = target.getBoundingClientRect().top + innerHeight;
+    for (const item of items) {
+      if (item.getBoundingClientRect().top >= fold || item.classList.contains('in')) continue;
+      item.classList.add('in', 'preceding-anchor');
+      observer.unobserve(item);
+    }
+  }
+
+  for (const group of document.querySelectorAll('[data-stagger]')) {
+    group.querySelectorAll(':scope > .reveal').forEach((item, index) => {
+      item.style.setProperty('--stagger', Math.min(index, 3) * 65 + 'ms');
+    });
+  }
+
+  if (!location.hash || location.hash === '#top') {
+    document.querySelectorAll('[data-split]').forEach(animateHeading);
+  }
+  revealAnchor();
+  items.filter((item) => !item.classList.contains('in')).forEach((item) => observer.observe(item));
+  document.documentElement.classList.add('motion-ready');
+  addEventListener('hashchange', revealAnchor);
+}
+
+function animateHeading(heading) {
+  const nodes = [];
+  const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  let index = 0;
+
+  for (const node of nodes) {
+    const words = document.createDocumentFragment();
+    for (const part of node.textContent.split(/(\s+)/)) {
+      if (!part) continue;
+      if (/^\s+$/.test(part)) {
+        words.append(part);
+        continue;
+      }
+      const mask = document.createElement('span');
+      const word = document.createElement('span');
+      mask.className = 'word-mask';
+      word.textContent = part;
+      word.style.setProperty('--word-delay', (80 + index * 58) + 'ms');
+      word.addEventListener('animationend', () => mask.classList.add('entered'), { once: true });
+      mask.append(word);
+      words.append(mask);
+      index += 1;
+    }
+    node.replaceWith(words);
+  }
+}

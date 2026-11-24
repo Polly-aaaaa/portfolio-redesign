@@ -5,7 +5,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import vm from 'node:vm';
 
-const SITE = 'https://polly-aaaaa.github.io/portfolio/';
+const SITE = 'https://polly-aaaaa.github.io/portfolio-redesign/';
 const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
 
 // cases.js и case.js — обычные браузерные скрипты, исполняем их в одном контексте
@@ -25,12 +25,13 @@ const template = read('tools/case-template.html');
 for (const id of CASE_ORDER) {
   const c = CASES[id];
   const page = template
-    .replace(/<!-- Шаблон[^>]*-->/, '<!-- Собрано tools/build.mjs: правьте tools/case-template.html и js/cases.js -->')
+    .replace('<!-- Собирается tools/build.mjs из этого шаблона и js/cases.js. -->', '<!-- Собрано tools/build.mjs. Правьте tools/case-template.html и js/cases.js. -->')
     .replaceAll('{{title}}', attr(c.title))
     .replaceAll('{{description}}', attr(describe(c)))
     .replaceAll('{{url}}', `${SITE}case-${id}.html`)
     .replaceAll('{{image}}', `${SITE}assets/og/${id}.jpg`)
-    .replace('{{content}}', () => caseHTML(id));
+    .replace('{{content}}', () => caseHTML(id))
+    .replace(/[ \t]+$/gm, '');
   writeFileSync(new URL(`../case-${id}.html`, import.meta.url), page);
   console.log(`case-${id}.html`);
 }

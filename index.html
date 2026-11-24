@@ -3,254 +3,180 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Полина Артамонова — UI/UX дизайнер</title>
-  <meta name="description" content="Полина Артамонова — UI/UX дизайнер из Санкт-Петербурга. Интерфейсы для B2E и B2C продуктов." />
-  <link rel="canonical" href="https://polly-aaaaa.github.io/portfolio/" />
+  <title>Полина Артамонова — UI/UX-дизайнер</title>
+  <meta name="description" content="Полина Артамонова — UI/UX-дизайнер из Санкт-Петербурга. Интерфейсы для B2E и B2C продуктов." />
+  <link rel="canonical" href="https://polly-aaaaa.github.io/portfolio-redesign/" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Полина Артамонова — UI/UX дизайнер" />
-  <meta property="og:description" content="UI/UX дизайнер из Санкт-Петербурга, 3+ года в B2E и B2C. Кейсы: HR-сервис, техподдержка, документы." />
-  <meta property="og:url" content="https://polly-aaaaa.github.io/portfolio/" />
-  <meta property="og:image" content="https://polly-aaaaa.github.io/portfolio/assets/og/index.jpg" />
+  <meta property="og:title" content="Полина Артамонова — UI/UX-дизайнер" />
+  <meta property="og:description" content="UI/UX-дизайнер из Санкт-Петербурга. Кейсы: HR-сервис, техподдержка, документы." />
+  <meta property="og:url" content="https://polly-aaaaa.github.io/portfolio-redesign/" />
+  <meta property="og:image" content="https://polly-aaaaa.github.io/portfolio-redesign/assets/og/index.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400..900&family=Caveat:wght@500..700&display=swap" rel="stylesheet" />
-  <script>document.documentElement.classList.add('js')</script>
-  <link rel="stylesheet" href="css/site.css?v=20261105220703" />
-  <link rel="stylesheet" href="css/tw.css?v=20261105220703" />
+  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/tw.css" />
+  <link rel="stylesheet" href="css/site.css" />
+  <script src="js/site.js" defer></script>
 </head>
-<body class="font-sans text-ink">
-
-  <!-- ===== Nav ===== -->
-  <header class="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
-    <nav id="nav" class="w-full max-w-[22rem] rounded-xl border border-black/10 bg-white shadow-[0_2px_8px_rgba(0,0,0,.08)]">
-      <div class="flex items-center justify-between py-2.5 pl-3 pr-2">
-        <a href="#top" class="pill pill-blue !m-0 !text-[11px]">П. Артамонова</a>
-        <button id="menuBtn" aria-label="Меню" aria-expanded="false" class="flex h-8 w-8 flex-col items-center justify-center gap-[5px]">
-          <span class="block h-[2.5px] w-5 rounded bg-ink transition-transform duration-300"></span>
-          <span class="block h-[2.5px] w-5 rounded bg-ink transition-transform duration-300"></span>
-        </button>
-      </div>
-      <div id="menu" class="grid grid-rows-[0fr] transition-all duration-300">
-        <div class="overflow-hidden">
-          <ul class="mono flex flex-col gap-1 px-3 pb-3 text-[13px]">
-            <li><a href="#work" class="block rounded-md px-2 py-2 transition-colors hover:bg-[#e5f4ff]">Проекты</a></li>
-            <li><a href="#process" class="block rounded-md px-2 py-2 transition-colors hover:bg-[#e5f4ff]">Как я работаю</a></li>
-            <li><a href="#results" class="block rounded-md px-2 py-2 transition-colors hover:bg-[#e5f4ff]">Что изменилось</a></li>
-            <li><a href="#contact" class="block rounded-md px-2 py-2 transition-colors hover:bg-[#e5f4ff]">Контакты</a></li>
-          </ul>
-        </div>
-      </div>
+<body id="top">
+  <a class="skip-link" href="#main">К содержанию</a>
+  <header class="site-header">
+    <nav id="nav" class="shell nav" aria-label="Основная навигация">
+      <a class="wordmark" href="#top">Полина Артамонова</a>
+      <button id="menuBtn" class="menu-toggle" type="button" aria-label="Меню" aria-controls="menu" aria-expanded="false" hidden><span></span><span></span></button>
+      <ul id="menu" class="nav-links">
+        <li><a href="#work">Проекты</a></li>
+        <li><a href="#process">Как я работаю</a></li>
+        <li><a href="#results">Результаты</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+      <a class="button button-dark nav-contact" href="https://t.me/p_p_polly" target="_blank" rel="noopener">Написать</a>
     </nav>
   </header>
 
-  <main id="top" class="mx-auto max-w-[1200px] px-4 sm:px-8">
-
-    <!-- ===== Hero: коллаж ===== -->
-    <section class="relative pb-20 pt-32 sm:pb-28 sm:pt-40">
-      <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
-        <div class="mp" style="--c:#0b72d6;left:58%;top:30%;--dx:60px;--dy:40px;--dur:15s"><svg viewBox="0 0 18 18"><path d="M2 1.5 L2 15 L5.8 11.4 L8.4 16.6 L10.8 15.5 L8.3 10.4 L13.6 10.2 Z"/></svg><span>Полина</span></div>
-        <div class="mp hidden sm:flex" style="--c:#7b3fe4;left:8%;top:76%;--dx:90px;--dy:-30px;--dur:18s;--delay:-4s"><svg viewBox="0 0 18 18"><path d="M2 1.5 L2 15 L5.8 11.4 L8.4 16.6 L10.8 15.5 L8.3 10.4 L13.6 10.2 Z"/></svg><span>Проджект</span></div>
-      </div>
-      <!-- фото-отпечаток на скотче -->
-      <figure class="drop print absolute right-0 top-32 hidden w-44 lg:block xl:w-52" data-label="Полина.jpg" data-size="900 × 1125" style="--d:500ms">
-        <img src="assets/avatar.jpg" width="900" height="1350" alt="Полина Артамонова" class="aspect-[4/5] w-full object-cover object-[50%_30%]" />
-      </figure>
-      <!-- стикер -->
-      <div class="drop note note-marker absolute bottom-6 right-28 hidden w-48 lg:block" style="--d:750ms">
-        <p class="hand text-[1.7rem] leading-[1.05]">3+ года в UI/UX,<br />B2E и B2C</p>
-      </div>
-
-      <div class="relative max-w-4xl lg:max-w-[44rem] xl:max-w-4xl">
-        <h1 data-split class="display text-[2.6rem] sm:text-[4.5rem] lg:text-[5.25rem] xl:text-[6.25rem]">Привет!<br /><span class="underline-pen">Я Полина</span></h1>
-      </div>
-      <p class="display reveal mt-8 text-[1.6rem] text-ink/45 sm:mt-10 sm:text-[2.6rem] lg:max-w-[44rem] lg:text-[3rem] xl:max-w-none" style="--stagger:350ms">Дизайнер интерфейсов</p>
-
-      <!-- фото на телефоне — в потоке -->
-      <figure class="reveal print mx-auto mt-14 w-48 lg:hidden" data-label="Полина.jpg" data-size="900 × 1125" aria-hidden="true">
-        <img src="assets/avatar.jpg" width="900" height="1350" alt="" class="aspect-[4/5] w-full object-cover object-[50%_30%]" />
-      </figure>
-
-      <p class="reveal mt-10 max-w-3xl text-[1.3rem] leading-[1.45] sm:text-[1.65rem]" style="--stagger:500ms">
-        UI/UX-дизайнер с опытом <span class="mk-circle">3+ года</span>. Проектирую интерфейсы для <span class="mk-wave">B2E</span> и <span class="mk-hl">B2C</span> продуктов, участвую во всём цикле разработки — от интервью до ревью вёрстки — и защищаю решения перед командой. Живу и работаю в Санкт-Петербурге.
-      </p>
-
-      <div class="reveal mt-10 flex flex-wrap items-center gap-3" style="--stagger:620ms">
-        <a href="https://t.me/p_p_polly" target="_blank" rel="noopener" class="btn bg-blue text-white">Написать в Телеграм</a>
-        <a href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener" class="btn bg-marker">Резюме</a>
-      </div>
-
-      <a href="#work" class="reveal group mt-16 inline-flex items-end gap-2 text-blue" style="--stagger:750ms">
-        <svg class="pen h-16 w-10 transition-transform duration-500 group-hover:translate-y-1" viewBox="0 0 40 64" aria-hidden="true">
-          <path d="M8 4 C 24 12, 28 32, 20 56"/><path d="M10 45 C 14 49, 17 53, 20 57 C 24 52, 28 49, 33 46"/>
-        </svg>
-        <span class="hand pb-2 text-[1.7rem] leading-none">листайте к проектам</span>
-      </a>
-    </section>
-
-    <!-- ===== Projects ===== -->
-    <section id="work" class="py-20 sm:py-28">
-      <div class="reveal flex flex-wrap items-end justify-between gap-4">
-        <h2 class="display text-[3rem] sm:text-[5.5rem]">Проекты</h2>
-        <p class="mono pb-2 text-[12px] text-ink/70">Некоторые детали — под NDA</p>
-      </div>
-
-      <div data-stagger class="mt-14 grid gap-x-12 gap-y-16 md:grid-cols-2">
-        <a href="case-gift.html" class="reveal group block">
-          <div class="print" data-label="Обложка / Живой подарок" data-size="1800 × 1080">
-            <div style="view-transition-name: cover-gift" class="overflow-hidden bg-[#0a1210]"><img src="assets/gift.webp" width="1800" height="1080" alt="Живой подарок — цветок с сертификатом внутри" loading="lazy" class="aspect-[5/3] w-full object-cover" /></div>
-          </div>
-          <h3 class="mt-6 text-2xl font-bold tracking-tight"><span class="link-u">Живой подарок</span></h3>
-          <p class="mt-2 max-w-md text-[16px] leading-relaxed text-ink/75">Сертификат, который сначала становится цветком. Внутри два живых прототипа: даритель собирает подарок, получатель открывает его касанием купола.</p>
-          <p class="mt-3 text-[20px] leading-[1.9]"><span class="pill pill-marker !ml-0">B2C</span><span class="pill pill-white">Web</span><span class="pill pill-white">Прототип</span><span class="pill pill-white">2026</span></p>
-        </a>
-
-        <a href="case-corp.html" class="reveal group block md:mt-24">
-          <div class="print" data-label="Обложка / HR-сервис" data-size="2880 × 1728">
-            <div style="view-transition-name: cover-corp" class="overflow-hidden bg-[#eef3ff]"><img src="assets/corp.webp" width="2880" height="1728" alt="Корпоративный HR-сервис — главная страница" loading="lazy" class="aspect-[5/3] w-full object-cover" /></div>
-          </div>
-          <h3 class="mt-6 text-2xl font-bold tracking-tight"><span class="link-u">Корпоративный сервис</span></h3>
-          <p class="mt-2 max-w-md text-[16px] leading-relaxed text-ink/75">Внутренний сервис для HR и сотрудников: ревью 360°, опросы, адаптация, учёт отпусков и удалёнок.</p>
-          <p class="mt-3 text-[20px] leading-[1.9]"><span class="pill pill-blue !ml-0">B2E</span><span class="pill pill-white">Web</span><span class="pill pill-purple">2 кейса внутри</span><span class="pill pill-white">2024–2025</span></p>
-        </a>
-
-        <a href="case-support.html" class="reveal group block">
-          <div class="print" data-label="Обложка / Техподдержка" data-size="2000 × 1200">
-            <div style="view-transition-name: cover-support" class="overflow-hidden bg-[#ffb800]"><img src="assets/support.webp" width="2000" height="1200" alt="Сервис технической поддержки — панель сотрудника и мобильный клиент" loading="lazy" class="aspect-[5/3] w-full object-cover" /></div>
-          </div>
-          <h3 class="mt-6 text-2xl font-bold tracking-tight"><span class="link-u">Сервис технической поддержки</span></h3>
-          <p class="mt-2 max-w-md text-[16px] leading-relaxed text-ink/75">Управление клиентскими запросами: панель сотрудника поддержки с готовыми ответами и клиентская часть.</p>
-          <p class="mt-3 text-[20px] leading-[1.9]"><span class="pill pill-marker !ml-0">B2C</span><span class="pill pill-white">Web</span><span class="pill pill-white">PWA</span><span class="pill pill-white">2025</span></p>
-        </a>
-
-        <a href="case-docs.html" class="reveal group block md:mt-24">
-          <div class="print" data-label="Обложка / Документы" data-size="2000 × 1200">
-            <div style="view-transition-name: cover-docs" class="overflow-hidden bg-[#f3efff]"><img src="assets/docs.webp" width="2000" height="1200" alt="Сервис для работы с документами — кабинет администратора" loading="lazy" class="aspect-[5/3] w-full object-cover" /></div>
-          </div>
-          <h3 class="mt-6 text-2xl font-bold tracking-tight"><span class="link-u">Сервис для работы с документами</span></h3>
-          <p class="mt-2 max-w-md text-[16px] leading-relaxed text-ink/75">Интегрированный сервис для создания типовых документов с минимумом ошибок: панель администратора и клиентская часть.</p>
-          <p class="mt-3 text-[20px] leading-[1.9]"><span class="pill pill-marker !ml-0">B2C</span><span class="pill pill-white">Web</span><span class="pill pill-white">2024–2025</span></p>
-        </a>
-
-        <a href="case-biz.html" class="reveal group block">
-          <div class="print" data-label="Обложка / Предприниматели" data-size="2000 × 1200">
-            <div style="view-transition-name: cover-biz" class="overflow-hidden bg-[#0b3d86]"><img src="assets/biz.webp" width="2000" height="1200" alt="Сервис для предпринимателей — обложка проекта" loading="lazy" class="aspect-[5/3] w-full object-cover" /></div>
-          </div>
-          <h3 class="mt-6 text-2xl font-bold tracking-tight"><span class="link-u">Сервис для предпринимателей</span></h3>
-          <p class="mt-2 max-w-md text-[16px] leading-relaxed text-ink/75">Сообщество предпринимателей для общения, обучения и поддержки. Проектировала раздел «Профиль».</p>
-          <p class="mt-3 text-[20px] leading-[1.9]"><span class="pill pill-purple !ml-0">Social Media</span><span class="pill pill-marker">B2C</span><span class="pill pill-white">Web</span><span class="pill pill-white">PWA</span><span class="pill pill-white">2025</span><span class="pill pill-purple">Исследование, макеты под NDA</span></p>
-        </a>
-      </div>
-    </section>
-
-    <!-- ===== Process ===== -->
-    <section id="process" class="relative py-20 sm:py-28">
-      <h2 class="reveal display text-[3rem] sm:text-[5.5rem]">Как я работаю</h2>
-
-      <div class="mt-12 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-        <p class="reveal text-[1.3rem] leading-[1.45] sm:text-[1.65rem]">
-          Отвечаю за весь дизайн-цикл — от первых исследований до релиза. Сама провожу интервью с пользователями, тестирую интерактивные прототипы и защищаю решения перед командой. На двух проектах была <span class="mk-hl">единственным дизайнером</span>.
-        </p>
-        <div class="reveal note note-lined self-start" style="--stagger:150ms">
-          <p class="hand text-[1.9rem] leading-[32px]">С кем работаю:</p>
-          <ul class="hand text-[1.6rem] leading-[32px]">
-            <li>— проджект-менеджер и заказчик</li>
-            <li>— тим-лид</li>
-            <li>— тестировщик</li>
-            <li>— разработчики</li>
-          </ul>
+  <main id="main" class="shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="hero-intro reveal">Привет, я Полина Артамонова</p>
+        <h1 id="hero-title" class="display hero-title" data-split><span>Дизайнер</span><em>интерфейсов</em></h1>
+        <p class="hero-lead reveal" style="--stagger: 160ms">Проектирую интерфейсы для B2E и B2C продуктов.</p>
+        <p class="hero-description reveal" style="--stagger: 230ms">Больше трёх лет в UI/UX. Участвую во всём цикле разработки, от интервью до ревью вёрстки, и защищаю решения перед командой.</p>
+        <div class="actions reveal" style="--stagger: 300ms">
+          <a class="button button-dark" href="#work">Смотреть проекты</a>
+          <a class="button button-outline" href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener">Резюме</a>
         </div>
       </div>
-
-      <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 top-1/2 overflow-hidden">
-        <div class="mp" style="--c:#0b7a3e;left:20%;top:12%;--dx:80px;--dy:30px;--dur:17s"><svg viewBox="0 0 18 18"><path d="M2 1.5 L2 15 L5.8 11.4 L8.4 16.6 L10.8 15.5 L8.3 10.4 L13.6 10.2 Z"/></svg><span>Тим-лид</span></div>
-        <div class="mp hidden sm:flex" style="--c:#c9301a;left:62%;top:58%;--dx:-70px;--dy:40px;--dur:14s;--delay:-6s"><svg viewBox="0 0 18 18"><path d="M2 1.5 L2 15 L5.8 11.4 L8.4 16.6 L10.8 15.5 L8.3 10.4 L13.6 10.2 Z"/></svg><span>Тестировщик</span></div>
-        <div class="mp hidden lg:flex" style="--c:#7b3fe4;left:84%;top:20%;--dx:-50px;--dy:60px;--dur:19s;--delay:-2s"><svg viewBox="0 0 18 18"><path d="M2 1.5 L2 15 L5.8 11.4 L8.4 16.6 L10.8 15.5 L8.3 10.4 L13.6 10.2 Z"/></svg><span>Разработчик</span></div>
-      </div>
-      <ol data-stagger class="relative mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        <li class="reveal note note-marker">
-          <a href="case-vacation.html" class="group block">
-            <span class="mono text-[12px]">01</span>
-            <h3 class="hand mt-1 text-[2rem] leading-none"><span class="link-u">Интервью с HR</span></h3><svg class="noodle" viewBox="0 0 40 36" aria-hidden="true"><path d="M3 18 C 14 4, 24 32, 34 18"/><path d="M28 13 L 35 18 L 29 24"/><circle cx="3" cy="18" r="3"/></svg>
-            <p class="mt-3 text-[15px] leading-relaxed">Перед проектированием отпусков выяснила, что данные хранятся у разных людей, и собрала их в одном разделе.</p>
-          </a>
-        </li>
-        <li class="reveal note note-red">
-          <a href="case-vacation.html" class="group block">
-            <span class="mono text-[12px]">02</span>
-            <h3 class="hand mt-1 text-[2rem] leading-none"><span class="link-u">Коридорный тест</span></h3><svg class="noodle" viewBox="0 0 40 36" aria-hidden="true"><path d="M3 18 C 14 4, 24 32, 34 18"/><path d="M28 13 L 35 18 L 29 24"/><circle cx="3" cy="18" r="3"/></svg>
-            <p class="mt-3 text-[15px] leading-relaxed">Показала сотрудникам два варианта уведомления о сборе удалёнок и оставила баннер — большинство сочло его заметнее.</p>
-          </a>
-        </li>
-        <li class="reveal note note-blue">
-          <a href="case-docs.html" class="group block">
-            <span class="mono text-[12px]">03</span>
-            <h3 class="hand mt-1 text-[2rem] leading-none"><span class="link-u">Тест с юристом</span></h3><svg class="noodle" viewBox="0 0 40 36" aria-hidden="true"><path d="M3 18 C 14 4, 24 32, 34 18"/><path d="M28 13 L 35 18 L 29 24"/><circle cx="3" cy="18" r="3"/></svg>
-            <p class="mt-3 text-[15px] leading-relaxed">Прототип конструктора шаблонов прошёл юрист, который будет в нём работать. Его комментарии вошли в финальные макеты.</p>
-          </a>
-        </li>
-        <li class="reveal note bg-white">
-          <a href="case-review.html" class="group block">
-            <span class="mono text-[12px]">04</span>
-            <h3 class="hand mt-1 text-[2rem] leading-none"><span class="link-u">Вторая итерация</span></h3>
-            <p class="mt-3 text-[15px] leading-relaxed">После первого цикла ревью 360° разделила создание сессии на три шага и добавила в отчёт диаграмму.</p>
-          </a>
-        </li>
-      </ol>
+      <figure class="hero-photo reveal" style="--stagger: 180ms">
+        <div class="hero-photo-frame">
+          <img src="assets/avatar.jpg" width="900" height="1350" alt="Полина Артамонова" fetchpriority="high" />
+        </div>
+        <figcaption>Санкт-Петербург</figcaption>
+      </figure>
     </section>
 
-    <!-- ===== Results ===== -->
-    <section id="results" class="py-20 sm:py-28">
-      <h2 class="reveal display text-[3rem] sm:text-[5.5rem]">Что изменилось</h2>
-
-      <div class="mt-14 grid gap-10 md:grid-cols-2 md:gap-12">
-        <a href="case-vacation.html" class="reveal group flex items-center gap-5 sm:gap-7">
-          <span class="grade" data-label="Метрика / Отпуска"><span data-count="30" data-prefix="до " data-suffix="%">до 30%</span></span>
-          <span class="text-[1.15rem] leading-snug sm:text-[1.35rem]"><span class="link-u">времени HR экономит сбор отпусков и удалёнок в одном месте</span></span>
+    <section id="work" class="section" aria-labelledby="work-title">
+      <div class="section-heading reveal">
+        <h2 id="work-title" class="display section-title">Проекты</h2>
+        <p class="section-note">Некоторые детали — под NDA</p>
+      </div>
+      <div class="project-grid" data-stagger>
+        <a href="case-gift.html" class="project project-featured reveal">
+          <div class="project-media" style="--cover: #0a1210">
+            <img src="assets/gift.webp" width="1800" height="1080" alt="Живой подарок — цветок с сертификатом внутри" decoding="async" />
+          </div>
+          <div class="project-copy">
+            <p class="project-meta">B2C · Web · Прототип <time>2026</time></p>
+            <h3 class="project-title">Живой подарок</h3>
+            <p class="project-description">Сертификат, который сначала становится цветком. Внутри два живых прототипа: даритель собирает подарок, получатель открывает его касанием купола.</p>
+            <span class="project-link">Смотреть кейс</span>
+          </div>
         </a>
-        <a href="case-review.html" class="reveal group flex items-center gap-5 sm:gap-7">
-          <span class="grade" data-label="Метрика / Ревью 360°"><span data-count="15" data-suffix="%">15%</span></span>
-          <span class="text-[1.15rem] leading-snug sm:text-[1.35rem]"><span class="link-u">сотрудников повысили грейд по итогам первого ревью 360°, проведённого целиком в сервисе</span></span>
+
+        <a href="case-corp.html" class="project reveal">
+          <div class="project-media" style="--cover: #eef3ff">
+            <img src="assets/corp.webp" width="2880" height="1728" alt="Главная страница корпоративного HR-сервиса" loading="lazy" decoding="async" />
+          </div>
+          <div class="project-copy">
+            <p class="project-meta">B2E · Web · 2 кейса <span>2024–2025</span></p>
+            <h3 class="project-title">Корпоративный сервис</h3>
+            <p class="project-description">Внутренний сервис для HR и сотрудников: ревью 360°, опросы, адаптация, учёт отпусков и удалёнок.</p>
+            <span class="project-link">Смотреть кейс</span>
+          </div>
+        </a>
+
+        <a href="case-support.html" class="project reveal">
+          <div class="project-media" style="--cover: #ffb800">
+            <img src="assets/support.webp" width="2000" height="1200" alt="Панель сотрудника поддержки и мобильный клиент" loading="lazy" decoding="async" />
+          </div>
+          <div class="project-copy">
+            <p class="project-meta">B2C · Web · PWA <time>2025</time></p>
+            <h3 class="project-title">Сервис технической поддержки</h3>
+            <p class="project-description">Управление клиентскими запросами: панель сотрудника поддержки с готовыми ответами и клиентская часть.</p>
+            <span class="project-link">Смотреть кейс</span>
+          </div>
+        </a>
+
+        <a href="case-docs.html" class="project reveal">
+          <div class="project-media" style="--cover: #f3efff">
+            <img src="assets/docs.webp" width="2000" height="1200" alt="Кабинет администратора сервиса для работы с документами" loading="lazy" decoding="async" />
+          </div>
+          <div class="project-copy">
+            <p class="project-meta">B2C · Web <span>2024–2025</span></p>
+            <h3 class="project-title">Сервис для работы с документами</h3>
+            <p class="project-description">Интегрированный сервис для создания типовых документов с минимумом ошибок: панель администратора и клиентская часть.</p>
+            <span class="project-link">Смотреть кейс</span>
+          </div>
+        </a>
+
+        <a href="case-biz.html" class="project reveal">
+          <div class="project-media" style="--cover: #0b3d86">
+            <img src="assets/biz.webp" width="2000" height="1200" alt="Обложка сервиса для предпринимателей" loading="lazy" decoding="async" />
+          </div>
+          <div class="project-copy">
+            <p class="project-meta">B2C · Social Media · Web · PWA <time>2025</time></p>
+            <h3 class="project-title">Сервис для предпринимателей</h3>
+            <p class="project-description">Сообщество предпринимателей для общения, обучения и поддержки. Проектировала раздел «Профиль».</p>
+            <span class="project-link">Смотреть исследование</span>
+            <p class="project-note">Макеты под NDA</p>
+          </div>
         </a>
       </div>
+    </section>
 
-      <ul data-stagger class="mt-16 max-w-3xl space-y-5 text-[1.2rem] leading-[1.5] sm:text-[1.45rem]">
-        <li class="reveal"><a href="case-corp.html" class="group">Корпоративный сервис стал основным внутренним сервисом компании</a></li>
-        <li class="reveal"><a href="case-review.html" class="group">Компания отказалась от сторонних решений для оценки персонала</a></li>
-        <li class="reveal"><a href="case-support.html" class="group">Закрытие обращения в техподдержке стало короче</a></li>
+    <section id="process" class="section" aria-labelledby="process-title">
+      <div class="section-heading reveal">
+        <h2 id="process-title" class="display section-title">Как я работаю</h2>
+      </div>
+      <div class="process-intro reveal">
+        <p>Отвечаю за весь дизайн-цикл, от первых исследований до релиза. Сама провожу интервью с пользователями, тестирую интерактивные прототипы и защищаю решения перед командой. На двух проектах была единственным дизайнером.</p>
+        <p class="process-team"><strong>С кем работаю</strong>Проджект-менеджер, заказчик, тим-лид, тестировщик и разработчики.</p>
+      </div>
+      <ul class="process-list" data-stagger>
+        <li class="reveal"><a href="case-vacation.html"><h3>Интервью с HR</h3><p>Перед проектированием отпусков выяснила, что данные хранятся у разных людей, и собрала их в одном разделе.</p></a></li>
+        <li class="reveal"><a href="case-vacation.html"><h3>Коридорный тест</h3><p>Показала сотрудникам два варианта уведомления о сборе удалёнок и оставила баннер: большинство сочло его заметнее.</p></a></li>
+        <li class="reveal"><a href="case-docs.html"><h3>Тест с юристом</h3><p>Прототип конструктора шаблонов прошёл юрист, который будет в нём работать. Его комментарии вошли в финальные макеты.</p></a></li>
+        <li class="reveal"><a href="case-review.html"><h3>Вторая итерация</h3><p>После первого цикла ревью 360° разделила создание сессии на три шага и добавила в отчёт диаграмму.</p></a></li>
       </ul>
     </section>
 
-    <!-- ===== CTA ===== -->
-    <section id="contact" class="relative py-24 sm:py-32">
-      <h2 class="reveal display max-w-4xl text-[3rem] sm:text-[6rem]">Давайте обсудим ваш продукт</h2>
-      <div class="reveal note note-red mt-8 w-56 md:absolute md:right-2 md:top-10 md:mt-0">
-        <p class="hand text-[1.6rem] leading-[1.05]">Часть проектов под NDA — покажу макеты на созвоне</p>
+    <section id="results" class="section" aria-labelledby="results-title">
+      <div class="section-heading reveal">
+        <h2 id="results-title" class="display section-title">Что изменилось</h2>
       </div>
-      <div class="reveal mt-10 flex flex-wrap items-center gap-3">
-        <a href="https://t.me/p_p_polly" target="_blank" rel="noopener" class="btn bg-blue text-white">Телеграм</a>
-        <a href="mailto:psineleva@bk.ru" class="btn bg-purple text-white">psineleva@bk.ru</a>
-        <a href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener" class="btn bg-marker">Резюме</a>
+      <div class="metrics" data-stagger>
+        <a href="case-vacation.html" class="metric reveal">
+          <strong>до 30%</strong>
+          <span>времени HR экономит сбор отпусков и удалёнок в одном месте</span>
+        </a>
+        <a href="case-review.html" class="metric reveal">
+          <strong>15%</strong>
+          <span>сотрудников повысили грейд по итогам первого ревью 360°, проведённого целиком в сервисе</span>
+        </a>
       </div>
+      <ul class="result-links reveal">
+        <li><a href="case-corp.html">Корпоративный сервис стал основным внутренним сервисом компании</a></li>
+        <li><a href="case-review.html">Компания отказалась от сторонних решений для оценки персонала</a></li>
+        <li><a href="case-support.html">Закрытие обращения в техподдержке стало короче</a></li>
+      </ul>
     </section>
 
-    <!-- ===== Footer ===== -->
-    <footer class="mono flex flex-col items-center justify-between gap-4 border-t border-black/15 py-8 text-[12px] sm:flex-row">
-      <p>© 2026 Полина Артамонова · Санкт-Петербург</p>
-      <div class="flex gap-6">
-        <a href="https://t.me/p_p_polly" target="_blank" rel="noopener" class="link-u">Телеграм</a>
-        <a href="mailto:psineleva@bk.ru" class="link-u">Почта</a>
-        <a href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener" class="link-u">Резюме</a>
+    <section id="contact" class="contact reveal" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="display section-title">Давайте обсудим <em>ваш продукт</em></h2>
+      <p>Часть проектов под NDA. Покажу макеты на созвоне.</p>
+      <div class="actions">
+        <a href="https://t.me/p_p_polly" target="_blank" rel="noopener" class="button button-dark">Телеграм</a>
+        <a href="mailto:psineleva@bk.ru" class="button button-outline">psineleva@bk.ru</a>
+        <a href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener" class="button button-outline">Резюме</a>
       </div>
-    </footer>
+    </section>
   </main>
-
-  <script src="js/doodles.js?v=20261105220703"></script>
-  <script src="js/site.js?v=20261105220703"></script>
+  <footer class="shell site-footer">
+    <p>© 2026 Полина Артамонова</p>
+    <a href="#top">Наверх</a>
+  </footer>
 </body>
 </html>
