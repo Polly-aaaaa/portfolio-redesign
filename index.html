@@ -17,16 +17,19 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/fonts.css?v=3" />
   <link rel="stylesheet" href="css/tw.css" />
-  <link rel="stylesheet" href="css/site.css" />
+  <link rel="stylesheet" href="css/site.css?v=3" />
   <script src="js/site.js" defer></script>
 </head>
-<body id="top">
+<body id="top" class="home-page">
   <a class="skip-link" href="#main">К содержанию</a>
   <header class="site-header">
     <nav id="nav" class="shell nav" aria-label="Основная навигация">
-      <a class="wordmark" href="#top">Полина Артамонова</a>
+      <a class="wordmark" href="#top">
+        <img src="assets/avatar.jpg" width="40" height="40" alt="" />
+        <span>Полина Артамонова <small>UI/UX-дизайнер</small></span>
+      </a>
       <button id="menuBtn" class="menu-toggle" type="button" aria-label="Меню" aria-controls="menu" aria-expanded="false" hidden><span></span><span></span></button>
       <ul id="menu" class="nav-links">
         <li><a href="#work">Проекты</a></li>
@@ -40,28 +43,31 @@
 
   <main id="main" class="shell">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="hero-intro reveal">Привет, я Полина Артамонова</p>
-        <h1 id="hero-title" class="display hero-title" data-split><span>Дизайнер</span><em>интерфейсов</em></h1>
-        <p class="hero-lead reveal" style="--stagger: 160ms">Проектирую интерфейсы для B2E и B2C продуктов.</p>
-        <p class="hero-description reveal" style="--stagger: 230ms">Больше трёх лет в UI/UX. Участвую во всём цикле разработки, от интервью до ревью вёрстки, и защищаю решения перед командой.</p>
-        <div class="actions reveal" style="--stagger: 300ms">
-          <a class="button button-dark" href="#work">Смотреть проекты</a>
-          <a class="button button-outline" href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener">Резюме</a>
-        </div>
+      <img class="hero-avatar" src="assets/avatar.jpg" width="96" height="96" alt="" />
+      <p class="hero-intro reveal">Привет, я Полина Артамонова</p>
+      <h1 id="hero-title" class="display hero-title" aria-label="Дизайнер интерфейсов">
+        <span class="hero-title-line"><span class="hero-initial">Д</span>изайнер</span>
+        <span class="hero-title-line">интерфейсов</span>
+      </h1>
+      <p class="hero-lead reveal" style="--stagger: 180ms">Проектирую интерфейсы для B2E и B2C продуктов.</p>
+      <p class="hero-description reveal" style="--stagger: 260ms">Больше трёх лет в UI/UX. Участвую во всём цикле разработки, от интервью до ревью вёрстки, и защищаю решения перед командой. Живу и работаю в Санкт-Петербурге.</p>
+      <div class="actions hero-actions reveal" style="--stagger: 340ms">
+        <a class="button hero-button hero-button-primary" href="#work">Смотреть проекты</a>
+        <a class="button hero-button hero-button-secondary" href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener">Резюме</a>
       </div>
-      <figure class="hero-photo reveal" style="--stagger: 180ms">
-        <div class="hero-photo-frame">
-          <img src="assets/avatar.jpg" width="900" height="1350" alt="Полина Артамонова" fetchpriority="high" />
-        </div>
-        <figcaption>Санкт-Петербург</figcaption>
-      </figure>
     </section>
 
-    <section id="work" class="section" aria-labelledby="work-title">
-      <div class="section-heading reveal">
-        <h2 id="work-title" class="display section-title">Проекты</h2>
-        <p class="section-note">Некоторые детали — под NDA</p>
+    <section id="work" class="section work-section" aria-labelledby="work-title">
+      <div class="work-index">
+        <h2 id="work-title" class="work-title reveal">Проекты</h2>
+        <ul class="work-links" data-stagger>
+          <li class="reveal"><a class="work-link" href="case-gift.html">Живой подарок</a></li>
+          <li class="reveal"><a class="work-link" href="case-corp.html">HR-сервис</a></li>
+          <li class="reveal"><a class="work-link" href="case-support.html">Техподдержка</a></li>
+          <li class="reveal"><a class="work-link" href="case-docs.html">Документы</a></li>
+          <li class="reveal"><a class="work-link" href="case-biz.html">Предприниматели</a></li>
+        </ul>
+        <p class="section-note reveal">Некоторые детали — под NDA</p>
       </div>
       <div class="project-grid" data-stagger>
         <a href="case-gift.html" class="project project-featured reveal">
