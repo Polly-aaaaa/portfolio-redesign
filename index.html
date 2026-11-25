@@ -17,62 +17,67 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="stylesheet" href="css/fonts.css?v=3" />
+  <link rel="stylesheet" href="css/fonts.css?v=4" />
   <link rel="stylesheet" href="css/tw.css" />
-  <link rel="stylesheet" href="css/site.css?v=3" />
-  <script src="js/site.js" defer></script>
+  <link rel="stylesheet" href="css/site.css?v=4" />
+  <script src="js/site.js?v=4" defer></script>
 </head>
 <body id="top" class="home-page">
   <a class="skip-link" href="#main">К содержанию</a>
   <header class="site-header">
-    <nav id="nav" class="shell nav" aria-label="Основная навигация">
-      <a class="wordmark" href="#top">
-        <img src="assets/avatar.jpg" width="40" height="40" alt="" />
-        <span>Полина Артамонова <small>UI/UX-дизайнер</small></span>
-      </a>
+    <nav id="nav" class="nav" aria-label="Основная навигация">
+      <a class="wordmark" href="#top" aria-label="Полина Артамонова — главная"><span aria-hidden="true">ПА</span></a>
       <button id="menuBtn" class="menu-toggle" type="button" aria-label="Меню" aria-controls="menu" aria-expanded="false" hidden><span></span><span></span></button>
       <ul id="menu" class="nav-links">
         <li><a href="#work">Проекты</a></li>
         <li><a href="#process">Как я работаю</a></li>
         <li><a href="#results">Результаты</a></li>
-        <li><a href="#contact">Контакты</a></li>
+        <li><a class="button button-dark nav-contact" href="#contact">Контакты</a></li>
       </ul>
-      <a class="button button-dark nav-contact" href="https://t.me/p_p_polly" target="_blank" rel="noopener">Написать</a>
     </nav>
   </header>
 
-  <main id="main" class="shell">
-    <section class="hero" aria-labelledby="hero-title">
-      <img class="hero-avatar" src="assets/avatar.jpg" width="96" height="96" alt="" />
-      <p class="hero-intro reveal">Привет, я Полина Артамонова</p>
-      <h1 id="hero-title" class="display hero-title" aria-label="Дизайнер интерфейсов">
-        <span class="hero-title-line"><span class="hero-initial">Д</span>изайнер</span>
-        <span class="hero-title-line">интерфейсов</span>
-      </h1>
-      <p class="hero-lead reveal" style="--stagger: 180ms">Проектирую интерфейсы для B2E и B2C продуктов.</p>
-      <p class="hero-description reveal" style="--stagger: 260ms">Больше трёх лет в UI/UX. Участвую во всём цикле разработки, от интервью до ревью вёрстки, и защищаю решения перед командой. Живу и работаю в Санкт-Петербурге.</p>
-      <div class="actions hero-actions reveal" style="--stagger: 340ms">
-        <a class="button hero-button hero-button-primary" href="#work">Смотреть проекты</a>
-        <a class="button hero-button hero-button-secondary" href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener">Резюме</a>
-      </div>
-    </section>
+  <main id="main">
+    <div class="panel lead-panel">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="motif" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="hero-copy">
+          <p class="hero-intro reveal">Привет, я Полина Артамонова</p>
+          <h1 id="hero-title" class="display hero-title"><span>Дизайнер</span> <span>интерфейсов</span></h1>
+          <p class="hero-lead reveal" style="--stagger: 220ms">Проектирую интерфейсы для B2E и B2C продуктов. Участвую во всём цикле разработки, от интервью до ревью вёрстки, и защищаю решения перед командой.</p>
+        </div>
+        <div class="hero-actions" data-stagger>
+          <a class="button button-line reveal" href="#work">Смотреть проекты</a>
+          <a class="button button-line reveal" href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener">Резюме</a>
+        </div>
+      </section>
 
-    <section id="work" class="section work-section" aria-labelledby="work-title">
-      <div class="work-index">
-        <h2 id="work-title" class="work-title reveal">Проекты</h2>
-        <ul class="work-links" data-stagger>
-          <li class="reveal"><a class="work-link" href="case-gift.html">Живой подарок</a></li>
-          <li class="reveal"><a class="work-link" href="case-corp.html">HR-сервис</a></li>
-          <li class="reveal"><a class="work-link" href="case-support.html">Техподдержка</a></li>
-          <li class="reveal"><a class="work-link" href="case-docs.html">Документы</a></li>
-          <li class="reveal"><a class="work-link" href="case-biz.html">Предприниматели</a></li>
-        </ul>
-        <p class="section-note reveal">Некоторые детали — под NDA</p>
+      <section id="about" class="about dark-panel" aria-labelledby="about-title" data-nav-dark>
+        <div class="shell split-section">
+          <div class="about-aside reveal">
+            <p class="section-label">Обо мне</p>
+            <img src="assets/avatar.jpg" width="900" height="1350" alt="Полина Артамонова" loading="lazy" />
+          </div>
+          <div class="about-copy">
+            <h2 id="about-title" class="display section-title reveal">Больше трёх лет в UI/UX.</h2>
+            <p class="reveal">Живу и работаю в Санкт-Петербурге.</p>
+            <nav class="about-links reveal" aria-label="Разделы портфолио">
+              <a href="#work">Смотреть проекты</a><a href="#process">Как я работаю</a><a href="#contact">Контакты</a>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section id="work" class="shell section work-section" aria-labelledby="work-title">
+      <div class="section-heading reveal">
+        <h2 id="work-title" class="display section-title">Проекты</h2>
+        <p class="section-note">Некоторые детали — под NDA</p>
       </div>
       <div class="project-grid" data-stagger>
-        <a href="case-gift.html" class="project project-featured reveal">
+        <a href="case-gift.html" class="project reveal">
           <div class="project-media" style="--cover: #0a1210">
-            <img src="assets/gift.webp" width="1800" height="1080" alt="Живой подарок — цветок с сертификатом внутри" decoding="async" />
+            <img src="assets/gift.webp" width="1800" height="1080" alt="Живой подарок — цветок с сертификатом внутри" loading="lazy" decoding="async" />
           </div>
           <div class="project-copy">
             <p class="project-meta">B2C · Web · Прототип <time>2026</time></p>
@@ -118,7 +123,7 @@
           </div>
         </a>
 
-        <a href="case-biz.html" class="project reveal">
+        <a href="case-biz.html" class="project project-featured reveal">
           <div class="project-media" style="--cover: #0b3d86">
             <img src="assets/biz.webp" width="2000" height="1200" alt="Обложка сервиса для предпринимателей" loading="lazy" decoding="async" />
           </div>
@@ -133,23 +138,24 @@
       </div>
     </section>
 
-    <section id="process" class="section" aria-labelledby="process-title">
-      <div class="section-heading reveal">
-        <h2 id="process-title" class="display section-title">Как я работаю</h2>
+    <section id="process" class="panel section process" aria-labelledby="process-title">
+      <div class="shell split-section">
+        <p class="section-label reveal">Процесс</p>
+        <div class="process-copy">
+          <h2 id="process-title" class="display section-title reveal">Как я работаю</h2>
+          <p class="process-intro reveal">Отвечаю за весь дизайн-цикл, от первых исследований до релиза. Сама провожу интервью с пользователями, тестирую интерактивные прототипы и защищаю решения перед командой. На двух проектах была единственным дизайнером.</p>
+          <ul class="process-list" data-stagger>
+            <li class="reveal"><a href="case-vacation.html"><h3>Интервью с HR</h3><p>Перед проектированием отпусков выяснила, что данные хранятся у разных людей, и собрала их в одном разделе.</p></a></li>
+            <li class="reveal"><a href="case-vacation.html"><h3>Коридорный тест</h3><p>Показала сотрудникам два варианта уведомления о сборе удалёнок и оставила баннер: большинство сочло его заметнее.</p></a></li>
+            <li class="reveal"><a href="case-docs.html"><h3>Тест с юристом</h3><p>Прототип конструктора шаблонов прошёл юрист, который будет в нём работать. Его комментарии вошли в финальные макеты.</p></a></li>
+            <li class="reveal"><a href="case-review.html"><h3>Вторая итерация</h3><p>После первого цикла ревью 360° разделила создание сессии на три шага и добавила в отчёт диаграмму.</p></a></li>
+          </ul>
+          <p class="process-team reveal"><strong>С кем работаю</strong>Проджект-менеджер, заказчик, тим-лид, тестировщик и разработчики.</p>
+        </div>
       </div>
-      <div class="process-intro reveal">
-        <p>Отвечаю за весь дизайн-цикл, от первых исследований до релиза. Сама провожу интервью с пользователями, тестирую интерактивные прототипы и защищаю решения перед командой. На двух проектах была единственным дизайнером.</p>
-        <p class="process-team"><strong>С кем работаю</strong>Проджект-менеджер, заказчик, тим-лид, тестировщик и разработчики.</p>
-      </div>
-      <ul class="process-list" data-stagger>
-        <li class="reveal"><a href="case-vacation.html"><h3>Интервью с HR</h3><p>Перед проектированием отпусков выяснила, что данные хранятся у разных людей, и собрала их в одном разделе.</p></a></li>
-        <li class="reveal"><a href="case-vacation.html"><h3>Коридорный тест</h3><p>Показала сотрудникам два варианта уведомления о сборе удалёнок и оставила баннер: большинство сочло его заметнее.</p></a></li>
-        <li class="reveal"><a href="case-docs.html"><h3>Тест с юристом</h3><p>Прототип конструктора шаблонов прошёл юрист, который будет в нём работать. Его комментарии вошли в финальные макеты.</p></a></li>
-        <li class="reveal"><a href="case-review.html"><h3>Вторая итерация</h3><p>После первого цикла ревью 360° разделила создание сессии на три шага и добавила в отчёт диаграмму.</p></a></li>
-      </ul>
     </section>
 
-    <section id="results" class="section" aria-labelledby="results-title">
+    <section id="results" class="shell section results" aria-labelledby="results-title">
       <div class="section-heading reveal">
         <h2 id="results-title" class="display section-title">Что изменилось</h2>
       </div>
@@ -170,19 +176,22 @@
       </ul>
     </section>
 
-    <section id="contact" class="contact reveal" aria-labelledby="contact-title">
-      <h2 id="contact-title" class="display section-title">Давайте обсудим <em>ваш продукт</em></h2>
-      <p>Часть проектов под NDA. Покажу макеты на созвоне.</p>
-      <div class="actions">
-        <a href="https://t.me/p_p_polly" target="_blank" rel="noopener" class="button button-dark">Телеграм</a>
-        <a href="mailto:psineleva@bk.ru" class="button button-outline">psineleva@bk.ru</a>
-        <a href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener" class="button button-outline">Резюме</a>
-      </div>
-    </section>
   </main>
-  <footer class="shell site-footer">
-    <p>© 2026 Полина Артамонова</p>
-    <a href="#top">Наверх</a>
+  <footer id="contact" class="panel contact dark-panel" aria-labelledby="contact-title" data-nav-dark>
+    <div class="motif" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="shell contact-inner">
+      <div class="reveal">
+        <h2 id="contact-title" class="display section-title">Давайте обсудим ваш продукт</h2>
+        <p>Часть проектов под NDA. Покажу макеты на созвоне.</p>
+        <a href="https://t.me/p_p_polly" target="_blank" rel="noopener" class="button button-light">Написать в Телеграм</a>
+      </div>
+      <div class="footer-links reveal">
+        <a href="mailto:psineleva@bk.ru">psineleva@bk.ru</a>
+        <a href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener">Резюме</a>
+        <a href="#top">Наверх</a>
+      </div>
+      <p class="copyright">© 2026 Полина Артамонова</p>
+    </div>
   </footer>
 </body>
 </html>

@@ -3,6 +3,7 @@ const nav = document.getElementById('nav');
 const menuButton = document.getElementById('menuBtn');
 const menu = document.getElementById('menu');
 const progress = document.querySelector('.read-progress');
+const darkPanels = [...document.querySelectorAll('[data-nav-dark]')];
 
 function setMenu(open) {
   menuButton.setAttribute('aria-expanded', String(open));
@@ -16,6 +17,9 @@ menuButton.addEventListener('click', () => {
 menu.addEventListener('click', (event) => {
   if (event.target.closest('a')) setMenu(false);
 });
+document.addEventListener('click', (event) => {
+  if (!nav.contains(event.target) && menuButton.getAttribute('aria-expanded') === 'true') setMenu(false);
+});
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
     setMenu(false);
@@ -25,6 +29,13 @@ document.addEventListener('keydown', (event) => {
 
 function updateScroll() {
   header.classList.toggle('scrolled', scrollY > 24);
+  const { top, height } = header.getBoundingClientRect();
+  const midpoint = top + Math.min(height, 54) / 2;
+  const dark = darkPanels.some((panel) => {
+    const bounds = panel.getBoundingClientRect();
+    return bounds.top <= midpoint && bounds.bottom > midpoint;
+  });
+  header.classList.toggle('is-dark', dark);
   if (progress) {
     const distance = document.documentElement.scrollHeight - innerHeight;
     progress.style.transform = 'scaleX(' + (distance > 0 ? scrollY / distance : 0) + ')';

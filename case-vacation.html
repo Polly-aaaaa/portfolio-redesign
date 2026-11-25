@@ -19,42 +19,41 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="stylesheet" href="css/fonts.css?v=3" />
+  <link rel="stylesheet" href="css/fonts.css?v=4" />
   <link rel="stylesheet" href="css/tw.css" />
-  <link rel="stylesheet" href="css/site.css?v=3" />
-  <script src="js/case.js" defer></script>
-  <script src="js/site.js" defer></script>
+  <link rel="stylesheet" href="css/site.css?v=4" />
+  <script src="js/case.js?v=4" defer></script>
+  <script src="js/site.js?v=4" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#main">К содержанию</a>
   <div class="read-progress" aria-hidden="true"></div>
   <header class="site-header">
-    <nav id="nav" class="shell nav" aria-label="Основная навигация">
-      <a class="wordmark" href="index.html">
-        <img src="assets/avatar.jpg" width="40" height="40" alt="" />
-        <span>Полина Артамонова <small>UI/UX-дизайнер</small></span>
-      </a>
+    <nav id="nav" class="nav" aria-label="Основная навигация">
+      <a class="wordmark" href="index.html" aria-label="Полина Артамонова — главная"><span aria-hidden="true">ПА</span></a>
       <button id="menuBtn" class="menu-toggle" type="button" aria-label="Меню" aria-controls="menu" aria-expanded="false" hidden><span></span><span></span></button>
       <ul id="menu" class="nav-links">
         <li><a href="index.html#work">Проекты</a></li>
         <li><a href="index.html#process">Как я работаю</a></li>
         <li><a href="index.html#results">Результаты</a></li>
-        <li><a href="#contact">Контакты</a></li>
+        <li><a class="button button-dark nav-contact" href="#contact">Контакты</a></li>
       </ul>
-      <a class="button button-dark nav-contact" href="https://t.me/p_p_polly" target="_blank" rel="noopener">Написать</a>
     </nav>
   </header>
 
-  <main id="main" class="shell">
+  <main id="main">
 
-  <section class="case-hero">
-    <a class="back-link link-u" href="case-corp.html">Корпоративный сервис</a>
-    <p class="case-kicker reveal">Кейс № 1</p>
-    <h1 data-split class="display case-title">Функционал для сбора отпусков и удалёнок</h1>
+  <section class="panel case-hero">
+    <div class="shell">
+      <a class="back-link link-u" href="case-corp.html">Корпоративный сервис</a>
+      <p class="case-kicker section-label reveal">Кейс № 1</p>
+      <h1 data-split class="display case-title">Функционал для сбора отпусков и удалёнок</h1>
 
-    <p class="case-tags reveal" style="--stagger: 230ms"><span class="pill">B2E</span><span class="pill">Web</span></p>
+      <p class="case-tags reveal" style="--stagger: 230ms"><span class="pill">B2E</span><span class="pill">Web</span></p>
+    </div>
   </section>
-  <div class="pb-12 sm:pb-20">
+  <div class="shell case-body">
+  <div class="case-visual">
     <div class="case-figure" style="background: #eef3ff"><a href="assets/vacation.webp" data-zoom aria-label="Увеличить: Функционал для сбора отпусков и удалёнок"><img src="assets/vacation.webp" width="2880" height="2304" alt="Функционал для сбора отпусков и удалёнок" fetchpriority="high" decoding="async" class="" /></a></div>
   </div>
   <section class="case-section">
@@ -134,19 +133,23 @@
       </div>
     </a>
   </section>
-    <section id="contact" class="contact reveal" aria-labelledby="contact-title">
-      <h2 id="contact-title" class="display section-title">Давайте обсудим <em>ваш продукт</em></h2>
-      <p>Часть проектов под NDA. Покажу макеты на созвоне.</p>
-      <div class="actions">
-        <a href="https://t.me/p_p_polly" target="_blank" rel="noopener" class="button button-dark">Телеграм</a>
-        <a href="mailto:psineleva@bk.ru" class="button button-outline">psineleva@bk.ru</a>
-        <a href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener" class="button button-outline">Резюме</a>
-      </div>
-    </section>
+  </div>
   </main>
-  <footer class="shell site-footer">
-    <p>© 2026 Полина Артамонова</p>
-    <a href="#top">Наверх</a>
+  <footer id="contact" class="panel contact dark-panel" aria-labelledby="contact-title" data-nav-dark>
+    <div class="motif" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="shell contact-inner">
+      <div class="reveal">
+        <h2 id="contact-title" class="display section-title">Давайте обсудим ваш продукт</h2>
+        <p>Часть проектов под NDA. Покажу макеты на созвоне.</p>
+        <a href="https://t.me/p_p_polly" target="_blank" rel="noopener" class="button button-light">Написать в Телеграм</a>
+      </div>
+      <div class="footer-links reveal">
+        <a href="mailto:psineleva@bk.ru">psineleva@bk.ru</a>
+        <a href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener">Резюме</a>
+        <a href="#top">Наверх</a>
+      </div>
+      <p class="copyright">© 2026 Полина Артамонова</p>
+    </div>
   </footer>
 
   <dialog id="lightbox" class="lightbox" aria-label="Увеличенное изображение">

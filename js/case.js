@@ -96,14 +96,17 @@ function caseHTML(id) {
   const kicker = project.kicker || project.period;
   const backHref = parent ? `case-${project.parent}.html` : 'index.html#work';
   const hero = `
-  <section class="case-hero">
-    <a class="back-link link-u" href="${backHref}">${parent ? parent.title : 'Все проекты'}</a>
-    ${kicker ? `<p class="case-kicker reveal">${kicker}</p>` : ''}
-    <h1 data-split class="display case-title">${project.title}</h1>
-    ${project.lead ? `<p class="case-lead reveal" style="--stagger: 160ms">${project.lead}</p>` : ''}
-    <p class="case-tags reveal" style="--stagger: 230ms">${project.tags.map((tag) => `<span class="pill">${tag}</span>`).join('')}</p>
+  <section class="panel case-hero">
+    <div class="shell">
+      <a class="back-link link-u" href="${backHref}">${parent ? parent.title : 'Все проекты'}</a>
+      ${kicker ? `<p class="case-kicker section-label reveal">${kicker}</p>` : ''}
+      <h1 data-split class="display case-title">${project.title}</h1>
+      ${project.lead ? `<p class="case-lead reveal" style="--stagger: 160ms">${project.lead}</p>` : ''}
+      <p class="case-tags reveal" style="--stagger: 230ms">${project.tags.map((tag) => `<span class="pill">${tag}</span>`).join('')}</p>
+    </div>
   </section>
-  <div class="pb-12 sm:pb-20">
+  <div class="shell case-body">
+  <div class="case-visual">
     ${project.phones ? phonesBlock(project.phones) : `<div class="case-figure" style="background: ${project.coverBg}">${zoomPicture(project.cover, project.title, true)}</div>`}
   </div>`;
 
@@ -152,7 +155,7 @@ function caseHTML(id) {
     </a>
   </section>`;
 
-  return hero + summary + sections + subcases + nextBlock;
+  return hero + summary + sections + subcases + nextBlock + '\n  </div>';
 }
 
 if (typeof document !== 'undefined') {
