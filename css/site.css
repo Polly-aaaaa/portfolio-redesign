@@ -1,6 +1,6 @@
 :root {
   --ink: #000000;
-  --accent: #afa5d5;
+  --accent: #c0b8df;
   --paper: #fafafa;
   --gray: #777380;
   --surface: color-mix(in srgb, var(--accent) 15%, var(--paper));
