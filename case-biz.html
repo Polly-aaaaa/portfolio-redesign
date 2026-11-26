@@ -21,13 +21,13 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=pa" sizes="180x180" />
   <link rel="stylesheet" href="css/fonts.css?v=4" />
   <link rel="stylesheet" href="css/tw.css" />
-  <link rel="stylesheet" href="css/site.css?v=4" />
-  <script src="js/case.js?v=4" defer></script>
-  <script src="js/site.js?v=4" defer></script>
+  <link rel="stylesheet" href="css/site.css?v=5" />
+  <link rel="stylesheet" href="css/case.css?v=5" />
+  <script src="js/case.js?v=5" defer></script>
+  <script src="js/site.js?v=5" defer></script>
 </head>
-<body id="top">
+<body id="top" class="case-page">
   <a class="skip-link" href="#main">К содержанию</a>
-  <div class="read-progress" aria-hidden="true"></div>
   <header class="site-header">
     <nav id="nav" class="nav" aria-label="Основная навигация">
       <a class="wordmark" href="index.html" aria-label="Полина Артамонова — главная"><span aria-hidden="true">ПА</span></a>
@@ -43,90 +43,123 @@
 
   <main id="main">
 
-  <section class="panel case-hero">
-    <div class="shell">
-      <a class="back-link link-u" href="index.html#work">Все проекты</a>
-      <p class="case-kicker section-label reveal">Май 2025 — Июнь 2025</p>
-      <h1 data-split class="display case-title">Сервис для предпринимателей</h1>
-      <p class="case-lead reveal" style="--stagger: 160ms">Платформа для предпринимателей с инструментами для коммуникации, обучения, поддержки бизнеса и доступа к IT-решениям и инвестициям.</p>
-      <p class="case-tags reveal" style="--stagger: 230ms"><span class="pill">Social Media</span><span class="pill">B2C</span><span class="pill">Web</span><span class="pill">PWA</span></p>
-    </div>
-  </section>
-  <div class="shell case-body">
-  <div class="case-visual">
-    <div class="case-figure" style="background: #0b3d86"><a href="assets/biz.webp" data-zoom aria-label="Увеличить: Сервис для предпринимателей"><img src="assets/biz.webp" width="2000" height="1200" alt="Сервис для предпринимателей" fetchpriority="high" decoding="async" class="" /></a></div>
-  </div>
-  <section class="case-section">
-    <h2 class="reveal display case-section-title">Задача и итог</h2>
-    <div class="mt-8">
-      <div class="grid gap-4 md:grid-cols-2">
-    <div class="reveal case-note">
-      <p class="case-note-title">Проблема</p>
-      <p class="prose-case mt-3 leading-relaxed">В сервисе отсутствовали публичные профили и функционал заводить дружбу. Это усложняло пользователям взаимодействие и мешало развитию активного предпринимательского комьюнити.</p>
-    </div><div class="reveal case-note">
-      <p class="case-note-title">Задача</p>
-      <p class="prose-case mt-3 leading-relaxed">Реализовать функционал, который позволит пользователям наращивать социальные связи и развивать сообщество.</p>
-    </div>
-  </div>
-      <div class="mt-8"><div class="case-rule reveal grid gap-3 border-t py-6 md:grid-cols-[11rem_1fr] md:gap-10">
-    <p class="case-marker pt-1 text-sm font-semibold">Моя роль</p>
-    <div><p class="prose-case max-w-[62ch] text-base leading-relaxed sm:text-lg">Присоединилась к команде на этапе, когда другие разделы уже были реализованы. Я проектировала раздел «Профиль», работая в тесной связке с проджект-менеджером и двумя разработчиками.</p></div>
-  </div></div>
+  <section class="panel case-hero" aria-labelledby="case-title">
+    <div class="shell case-hero-inner">
+      <nav class="case-breadcrumb" aria-label="Путь к кейсу">
+    <ol>
+      <li><a class="case-link" href="index.html#work">Проекты</a></li>
 
-    </div>
-  </section><section class="case-section">
-      <h2 class="reveal display case-section-title mb-8">Как шла работа</h2>
-      <div class="space-y-7">
-
-        <div class="reveal mx-auto max-w-2xl">
-    <p class="text-sm">Этапы</p>
-    <ol class="mt-3 flex flex-wrap gap-2"><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">1</span>Анализ пользователей</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">2</span>Поиск решений на рынке</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">3</span>Формирование информационной архитектуры</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">4</span>Разработка концептов</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">5</span>Результат</li>
+      <li><span aria-hidden="true">/</span><span aria-current="page">Сервис для предпринимателей</span></li>
     </ol>
-  </div>
-        <h3 class="case-subtitle reveal mx-auto max-w-2xl">Анализ пользователей</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Я проанализировала текущий сервис и изучила профили пользователей в других соцсетях, чтобы выявить их интересы, возраст и сформировать портрет целевой аудитории.</p>
-<figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/biz-02.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/biz-02.webp" width="1024" height="383" alt="" loading="lazy" decoding="async" class="" /></a></div>
-
-  </figure>
-<h3 class="case-subtitle reveal mx-auto max-w-2xl">Поиск решений на рынке</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Я изучила более 10 различных сервисов, чтобы выявить наиболее подходящие решения для проектирования взаимодействия пользователя с сервисом.</p>
-<figure class="reveal mx-auto max-w-xl">
-    <div class="case-figure"><a href="assets/cases/biz-03.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/biz-03.webp" width="947" height="816" alt="" loading="lazy" decoding="async" class="" /></a></div>
-
-  </figure>
-<h3 class="case-subtitle reveal mx-auto max-w-2xl">Информационная архитектура</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Собранные данные легли в основу примерной информационной архитектуры сервиса.</p>
-<figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/biz-04.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/biz-04.webp" width="1527" height="680" alt="" loading="lazy" decoding="async" class="" /></a></div>
-
-  </figure>
-<h3 class="case-subtitle reveal mx-auto max-w-2xl">Результат</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Более детально <b>рассказать про проект</b> и <b>показать макеты</b> могу при личном созвоне.</p>
-      </div>
-    </section>
-  <section class="case-section">
-    <a href="case-gift.html" class="project project-featured reveal">
-      <div class="project-media" style="--cover: #0a1210">
-        <img src="assets/gift.webp" width="1800" height="1080" alt="Живой подарок" loading="lazy" decoding="async" class="" />
-      </div>
-      <div class="project-copy">
-        <p class="project-meta">Следующий проект</p>
-        <h2 class="project-title">Живой подарок</h2>
-      </div>
-    </a>
+  </nav>
+      <h1 id="case-title" class="display case-title case-title--long-word">Сервис для предпринимателей</h1>
+      <p class="case-lead">Платформа для предпринимателей с инструментами для коммуникации, обучения, поддержки бизнеса и доступа к IT-решениям и инвестициям.</p>
+      <dl class="case-meta">
+    <div><dt>Период</dt><dd>Май 2025 — Июнь 2025</dd></div>
+<div><dt>Аудитория</dt><dd>B2C</dd></div>
+<div><dt>Формат</dt><dd>Social Media · Web · PWA</dd></div>
+  </dl>
+    </div>
   </section>
+  <figure class="panel case-cover" style="--case-cover: #0b3d86">
+    <a class="case-media-view" href="assets/biz.webp" data-zoom aria-label="Увеличить: Сервис для предпринимателей"><img src="assets/biz.webp" width="2000" height="1200" alt="Сервис для предпринимателей" fetchpriority="high" decoding="async" /></a>
+  </figure>
+
+  <section class="case-section" aria-labelledby="case-summary-title">
+    <div class="shell case-layout">
+    <h2 id="case-summary-title" class="section-label case-side-label">Задача и итог</h2>
+    <div class="case-copy"><div class="case-brief">
+    <div class="case-brief-field">
+      <h3 class="display case-section-title">Проблема</h3>
+      <p>В сервисе отсутствовали публичные профили и функционал заводить дружбу. Это усложняло пользователям взаимодействие и мешало развитию активного предпринимательского комьюнити.</p>
+
+    </div>
+    <div class="case-brief-field">
+      <h3 class="case-subtitle">Задача</h3>
+      <p>Реализовать функционал, который позволит пользователям наращивать социальные связи и развивать сообщество.</p>
+
+    </div>
+    <div class="case-brief-field">
+      <h3 class="case-subtitle">Моя роль</h3>
+      <p>Присоединилась к команде на этапе, когда другие разделы уже были реализованы. Я проектировала раздел «Профиль», работая в тесной связке с проджект-менеджером и двумя разработчиками.</p>
+
+    </div></div></div>
   </div>
+  </section>
+
+
+  <section class="case-section case-chapter" aria-labelledby="case-chapter-1">
+    <div class="shell case-layout">
+    <p class="section-label case-side-label">Этапы</p>
+    <div class="case-copy">
+    <h2 id="case-chapter-1" class="display case-section-title">Как шла работа</h2>
+    <ol class="case-stages"><li>Анализ пользователей</li><li>Поиск решений на рынке</li><li>Формирование информационной архитектуры</li><li>Разработка концептов</li><li>Результат</li></ol></div>
+  </div>
+    <div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><h3 class="case-subtitle">Анализ пользователей</h3>
+<p>Я проанализировала текущий сервис и изучила профили пользователей в других соцсетях, чтобы выявить их интересы, возраст и сформировать портрет целевой аудитории.</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot case-shot--wide">
+    <a class="case-media-view" href="assets/cases/biz-02.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/biz-02.webp" width="1024" height="383" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+<div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><h3 class="case-subtitle">Поиск решений на рынке</h3>
+<p>Я изучила более 10 различных сервисов, чтобы выявить наиболее подходящие решения для проектирования взаимодействия пользователя с сервисом.</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot case-shot--narrow">
+    <a class="case-media-view" href="assets/cases/biz-03.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/biz-03.webp" width="947" height="816" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+<div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><h3 class="case-subtitle">Информационная архитектура</h3>
+<p>Собранные данные легли в основу примерной информационной архитектуры сервиса.</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/biz-04.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/biz-04.webp" width="1527" height="680" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+<div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><h3 class="case-subtitle">Результат</h3>
+<p>Более детально <b>рассказать про проект</b> и <b>показать макеты</b> могу при личном созвоне.</p></div></div>
+  </div>
+  </section>
+
+
+
+  <section class="shell case-section case-related" aria-labelledby="case-related-title">
+    <h2 id="case-related-title" class="display case-section-title">Другие проекты</h2>
+    <div class="case-card-grid"><a href="case-gift.html" class="case-card">
+    <div class="case-card-image" style="--case-cover: #0a1210">
+      <img src="assets/gift.webp" width="1800" height="1080" alt="" loading="lazy" decoding="async" />
+      <span class="case-card-action" aria-hidden="true">Смотреть кейс</span>
+    </div>
+    <p class="project-meta">B2C · Web · Прототип</p>
+    <h3 class="project-title">Живой подарок</h3>
+  </a>
+<a href="case-corp.html" class="case-card">
+    <div class="case-card-image" style="--case-cover: #eef3ff">
+      <img src="assets/corp.webp" width="2880" height="1728" alt="" loading="lazy" decoding="async" />
+      <span class="case-card-action" aria-hidden="true">Смотреть кейс</span>
+    </div>
+    <p class="project-meta">B2E · Web · 2 кейса внутри</p>
+    <h3 class="project-title">Корпоративный сервис</h3>
+  </a></div>
+  </section>
   </main>
   <footer id="contact" class="panel contact dark-panel" aria-labelledby="contact-title" data-nav-dark>
     <div class="motif" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="shell contact-inner">
-      <div class="reveal">
+      <div>
         <h2 id="contact-title" class="display section-title">Давайте обсудим ваш продукт</h2>
         <p>Часть проектов под NDA. Покажу макеты на созвоне.</p>
         <a href="https://t.me/p_p_polly" target="_blank" rel="noopener" class="button button-light">Написать в Телеграм</a>
       </div>
-      <div class="footer-links reveal">
+      <div class="footer-links">
         <a href="mailto:psineleva@bk.ru">psineleva@bk.ru</a>
         <a href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener">Резюме</a>
         <a href="#top">Наверх</a>

@@ -21,13 +21,13 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=pa" sizes="180x180" />
   <link rel="stylesheet" href="css/fonts.css?v=4" />
   <link rel="stylesheet" href="css/tw.css" />
-  <link rel="stylesheet" href="css/site.css?v=4" />
-  <script src="js/case.js?v=4" defer></script>
-  <script src="js/site.js?v=4" defer></script>
+  <link rel="stylesheet" href="css/site.css?v=5" />
+  <link rel="stylesheet" href="css/case.css?v=5" />
+  <script src="js/case.js?v=5" defer></script>
+  <script src="js/site.js?v=5" defer></script>
 </head>
-<body id="top">
+<body id="top" class="case-page">
   <a class="skip-link" href="#main">К содержанию</a>
-  <div class="read-progress" aria-hidden="true"></div>
   <header class="site-header">
     <nav id="nav" class="nav" aria-label="Основная навигация">
       <a class="wordmark" href="index.html" aria-label="Полина Артамонова — главная"><span aria-hidden="true">ПА</span></a>
@@ -43,112 +43,143 @@
 
   <main id="main">
 
-  <section class="panel case-hero">
-    <div class="shell">
-      <a class="back-link link-u" href="case-corp.html">Корпоративный сервис</a>
-      <p class="case-kicker section-label reveal">Кейс № 2</p>
-      <h1 data-split class="display case-title">Функционал для проведения ревью 360°</h1>
-
-      <p class="case-tags reveal" style="--stagger: 230ms"><span class="pill">B2E</span><span class="pill">Web</span></p>
+  <section class="panel case-hero" aria-labelledby="case-title">
+    <div class="shell case-hero-inner">
+      <nav class="case-breadcrumb" aria-label="Путь к кейсу">
+    <ol>
+      <li><a class="case-link" href="index.html#work">Проекты</a></li>
+      <li><span aria-hidden="true">/</span><a class="case-link" href="case-corp.html">Корпоративный сервис</a></li>
+      <li><span aria-hidden="true">/</span><span aria-current="page">Функционал для проведения ревью 360°</span></li>
+    </ol>
+  </nav>
+      <h1 id="case-title" class="display case-title">Функционал для проведения ревью 360°</h1>
+      <p class="case-lead"><span class="sr-only">Проблема. </span>Компания решила внедрить ежегодную систему оценки уровня навыков сотрудников, однако привлечение сторонних специалистов и использование внешних сервисов оказалось нерепрезентативным и затратным.</p>
+      <dl class="case-meta">
+    <div><dt>Часть проекта</dt><dd>Кейс № 2</dd></div>
+<div><dt>Аудитория</dt><dd>B2E</dd></div>
+<div><dt>Формат</dt><dd>Web</dd></div>
+  </dl>
     </div>
   </section>
-  <div class="shell case-body">
-  <div class="case-visual">
-    <div class="case-figure" style="background: #eef3ff"><a href="assets/review.webp" data-zoom aria-label="Увеличить: Функционал для проведения ревью 360°"><img src="assets/review.webp" width="2880" height="2304" alt="Функционал для проведения ревью 360°" fetchpriority="high" decoding="async" class="" /></a></div>
-  </div>
-  <section class="case-section">
-    <h2 class="reveal display case-section-title">Задача и итог</h2>
-    <div class="mt-8">
-      <div class="grid gap-4 md:grid-cols-2">
-    <div class="reveal case-note">
-      <p class="case-note-title">Проблема</p>
-      <p class="prose-case mt-3 leading-relaxed">Компания решила внедрить ежегодную систему оценки уровня навыков сотрудников, однако привлечение сторонних специалистов и использование внешних сервисов оказалось нерепрезентативным и затратным.</p>
-    </div><div class="reveal case-note">
-      <p class="case-note-title">Задача</p>
-      <p class="prose-case mt-3 leading-relaxed">Создать функционал, который позволит HR проводить внутреннюю оценку персонала самостоятельно, с минимальными временными и финансовыми затратами.</p>
-    </div>
-  </div>
-
-      <div class="case-results mt-12">
-    <h3 class="reveal display case-section-title">Результаты</h3>
-    <ul class="mt-6 space-y-4"><li class="case-rule reveal border-t pt-4 text-base leading-relaxed sm:text-xl">Спроектировала <b>MVP-версию функционала</b> для проведения ревью 360°.</li><li class="case-rule reveal border-t pt-4 text-base leading-relaxed sm:text-xl">Благодаря внедрению ревью 360° компания отказалась от сторонних решений, получив <b>контроль над функциональностью и более репрезентативные данные</b>.</li><li class="case-rule reveal border-t pt-4 text-base leading-relaxed sm:text-xl">Первый цикл оценки прошёл целиком внутри сервиса: HR собрали сессию сами, без внешних подрядчиков. <b>По его итогам 15% сотрудников получили повышение грейда</b>.</li></ul>
-
-  </div>
-    </div>
-  </section><section class="case-section">
-      <h2 class="reveal display case-section-title mb-8">Как шла работа</h2>
-      <div class="space-y-7">
-
-        <div class="reveal mx-auto max-w-2xl">
-    <p class="text-sm">Этапы</p>
-    <ol class="mt-3 flex flex-wrap gap-2"><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">1</span>Анализ конкурентов</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">2</span>Создание информационной архитектуры</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">3</span>Проработка макетов</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">4</span>Сбор обратной связи от сотрудников</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">5</span>Доработка макетов</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">6</span>Финальный результат</li>
-    </ol>
-  </div>
-        <h3 class="case-subtitle reveal mx-auto max-w-2xl">Анализ конкурентов</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">При анализе конкурентов я столкнулась с тем, что большинство сервисов для проведения ревью 360° находятся в закрытом доступе. Чтобы обойти эту проблему, я изучила косвенных конкурентов с похожими решениями и выделила наиболее подходящие механики для проекта.</p>
-<h3 class="case-subtitle reveal mx-auto max-w-2xl">Информационная архитектура</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Из-за большого объёма функционала возникла необходимость спроектировать информационную архитектуру, чтобы структурировать будущие пользовательские флоу и избежать путаницы.</p>
-<figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/review-01.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/review-01.webp" width="981" height="632" alt="" loading="lazy" decoding="async" class="" /></a></div>
-
+  <figure class="panel case-cover" style="--case-cover: #eef3ff">
+    <a class="case-media-view" href="assets/review.webp" data-zoom aria-label="Увеличить: Функционал для проведения ревью 360°"><img src="assets/review.webp" width="2880" height="2304" alt="Функционал для проведения ревью 360°" fetchpriority="high" decoding="async" /></a>
   </figure>
-<h3 class="case-subtitle reveal mx-auto max-w-2xl">Проработка макетов</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">На основе конкурентного анализа и обсуждений с HR я пришла к выводу, что удобнее реализовать постепенное заполнение сессии. При таком подходе данные сохраняются в разных разделах, что позволяет повторно их использовать, а не создавать новые элементы. В результате для первой итерации было выделено <b>три основных раздела:</b></p>
-<div class="grid gap-6 sm:grid-cols-2"><figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/review-02.webp" data-zoom aria-label="Увеличить: Компетенции"><img src="assets/cases/review-02.webp" width="2880" height="1800" alt="Компетенции" loading="lazy" decoding="async" class="" /></a></div>
+
+  <section class="case-section" aria-labelledby="case-summary-title">
+    <div class="shell case-layout">
+    <h2 id="case-summary-title" class="section-label case-side-label">Задача и итог</h2>
+    <div class="case-copy"><div class="case-brief">
+    <div class="case-brief-field">
+      <h3 class="display case-section-title">Задача</h3>
+      <p>Создать функционал, который позволит HR проводить внутреннюю оценку персонала самостоятельно, с минимальными временными и финансовыми затратами.</p>
+
+    </div></div></div>
+  </div>
+  </section>
+
+
+  <section class="case-section case-chapter" aria-labelledby="case-chapter-1">
+    <div class="shell case-layout">
+    <p class="section-label case-side-label">Этапы</p>
+    <div class="case-copy">
+    <h2 id="case-chapter-1" class="display case-section-title">Как шла работа</h2>
+    <ol class="case-stages"><li>Анализ конкурентов</li><li>Создание информационной архитектуры</li><li>Проработка макетов</li><li>Сбор обратной связи от сотрудников</li><li>Доработка макетов</li><li>Финальный результат</li></ol></div>
+  </div>
+    <div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><h3 class="case-subtitle">Анализ конкурентов</h3>
+<p>При анализе конкурентов я столкнулась с тем, что большинство сервисов для проведения ревью 360° находятся в закрытом доступе. Чтобы обойти эту проблему, я изучила косвенных конкурентов с похожими решениями и выделила наиболее подходящие механики для проекта.</p>
+<h3 class="case-subtitle">Информационная архитектура</h3>
+<p>Из-за большого объёма функционала возникла необходимость спроектировать информационную архитектуру, чтобы структурировать будущие пользовательские флоу и избежать путаницы.</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/review-01.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/review-01.webp" width="981" height="632" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+<div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><h3 class="case-subtitle">Проработка макетов</h3>
+<p>На основе конкурентного анализа и обсуждений с HR я пришла к выводу, что удобнее реализовать постепенное заполнение сессии. При таком подходе данные сохраняются в разных разделах, что позволяет повторно их использовать, а не создавать новые элементы. В результате для первой итерации было выделено <b>три основных раздела:</b></p></div></div>
+  </div>
+<div class="panel case-gallery"><div class="case-media-pair"><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/review-02.webp" data-zoom aria-label="Увеличить: Компетенции"><img src="assets/cases/review-02.webp" width="2880" height="1800" alt="Компетенции" loading="lazy" decoding="async" /></a>
     <figcaption class="case-caption">Компетенции</figcaption>
-  </figure><figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/review-03.webp" data-zoom aria-label="Увеличить: Профили"><img src="assets/cases/review-03.webp" width="2880" height="1800" alt="Профили" loading="lazy" decoding="async" class="" /></a></div>
+  </figure><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/review-03.webp" data-zoom aria-label="Увеличить: Профили"><img src="assets/cases/review-03.webp" width="2880" height="1800" alt="Профили" loading="lazy" decoding="async" /></a>
     <figcaption class="case-caption">Профили</figcaption>
   </figure></div>
-<div class="grid gap-6 sm:grid-cols-2"><figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/review-04.webp" data-zoom aria-label="Увеличить: Сессии"><img src="assets/cases/review-04.webp" width="2880" height="1800" alt="Сессии" loading="lazy" decoding="async" class="" /></a></div>
+<div class="case-media-pair"><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/review-04.webp" data-zoom aria-label="Увеличить: Сессии"><img src="assets/cases/review-04.webp" width="2880" height="1800" alt="Сессии" loading="lazy" decoding="async" /></a>
     <figcaption class="case-caption">Сессии</figcaption>
-  </figure><figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/review-05.webp" data-zoom aria-label="Увеличить: Сессии"><img src="assets/cases/review-05.webp" width="2880" height="1800" alt="Сессии" loading="lazy" decoding="async" class="" /></a></div>
+  </figure><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/review-05.webp" data-zoom aria-label="Увеличить: Сессии"><img src="assets/cases/review-05.webp" width="2880" height="1800" alt="Сессии" loading="lazy" decoding="async" /></a>
     <figcaption class="case-caption">Сессии</figcaption>
-  </figure></div>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Прохождение оценочной сессии <b>сотрудником</b> было упрощено, чтобы процесс был интуитивным. Ниже показан флоу взаимодействия.</p>
-<figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/review-06.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/review-06.webp" width="8000" height="2191" alt="" loading="lazy" decoding="async" class="" /></a></div>
+  </figure></div></div>
+<div class="shell case-layout">
 
-  </figure>
-<h3 class="case-subtitle reveal mx-auto max-w-2xl">Доработка макетов</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">После первого использования функционала HR и сотрудниками были получены рекомендации и предложения по улучшению удобства работы и расширению возможностей. В результате во второй итерации был добавлен раздел <b>«Открытые вопросы»</b>.</p>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Кроме того, функционал создания сессии был переработан и разделён на три логических этапа, что упростило процесс создания сессии для HR.</p>
-<figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/review-07.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/review-07.webp" width="8000" height="2191" alt="" loading="lazy" decoding="async" class="" /></a></div>
-
-  </figure>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Также я переработала отображение отчёта по конкретному сотруднику, включив в него диаграмму.</p>
-<figure class="reveal mx-auto max-w-xl">
-    <div class="case-figure"><a href="assets/cases/review-08.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/review-08.webp" width="668" height="742" alt="" loading="lazy" decoding="async" class="" /></a></div>
-
-  </figure>
-      </div>
-    </section>
-  <section class="case-section">
-    <a href="case-support.html" class="project project-featured reveal">
-      <div class="project-media" style="--cover: #ffb800">
-        <img src="assets/support.webp" width="2000" height="1200" alt="Сервис технической поддержки" loading="lazy" decoding="async" class="" />
-      </div>
-      <div class="project-copy">
-        <p class="project-meta">Следующий проект</p>
-        <h2 class="project-title">Сервис технической поддержки</h2>
-      </div>
-    </a>
-  </section>
+    <div class="case-copy"><div class="case-prose"><p>Прохождение оценочной сессии <b>сотрудником</b> было упрощено, чтобы процесс был интуитивным. Ниже показан флоу взаимодействия.</p></div></div>
   </div>
+<div class="panel case-gallery"><figure class="case-shot case-shot--wide">
+    <a class="case-media-view" href="assets/cases/review-06.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/review-06.webp" width="8000" height="2191" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+<div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><h3 class="case-subtitle">Доработка макетов</h3>
+<p>После первого использования функционала HR и сотрудниками были получены рекомендации и предложения по улучшению удобства работы и расширению возможностей. В результате во второй итерации был добавлен раздел <b>«Открытые вопросы»</b>.</p>
+<p>Кроме того, функционал создания сессии был переработан и разделён на три логических этапа, что упростило процесс создания сессии для HR.</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot case-shot--wide">
+    <a class="case-media-view" href="assets/cases/review-07.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/review-07.webp" width="8000" height="2191" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+<div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><p>Также я переработала отображение отчёта по конкретному сотруднику, включив в него диаграмму.</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot case-shot--narrow">
+    <a class="case-media-view" href="assets/cases/review-08.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/review-08.webp" width="668" height="742" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+  </section>
+
+  <section class="case-section case-results" aria-labelledby="case-results-title">
+    <div class="shell case-layout">
+    <h2 id="case-results-title" class="section-label case-side-label">Результаты</h2>
+    <div class="case-copy"><ul class="case-results-list"><li>Спроектировала <b>MVP-версию функционала</b> для проведения ревью 360°.</li><li>Благодаря внедрению ревью 360° компания отказалась от сторонних решений, получив <b>контроль над функциональностью и более репрезентативные данные</b>.</li><li>Первый цикл оценки прошёл целиком внутри сервиса: HR собрали сессию сами, без внешних подрядчиков. <b>По его итогам 15% сотрудников получили повышение грейда</b>.</li></ul></div>
+  </div>
+  </section>
+
+
+  <section class="shell case-section case-related" aria-labelledby="case-related-title">
+    <h2 id="case-related-title" class="display case-section-title">Другие проекты</h2>
+    <div class="case-card-grid"><a href="case-vacation.html" class="case-card">
+    <div class="case-card-image" style="--case-cover: #eef3ff">
+      <img src="assets/vacation.webp" width="2880" height="2304" alt="" loading="lazy" decoding="async" />
+      <span class="case-card-action" aria-hidden="true">Смотреть кейс</span>
+    </div>
+    <p class="project-meta">Кейс № 1</p>
+    <h3 class="project-title">Функционал для сбора отпусков и удалёнок</h3>
+  </a>
+<a href="case-support.html" class="case-card">
+    <div class="case-card-image" style="--case-cover: #ffb800">
+      <img src="assets/support.webp" width="2000" height="1200" alt="" loading="lazy" decoding="async" />
+      <span class="case-card-action" aria-hidden="true">Смотреть кейс</span>
+    </div>
+    <p class="project-meta">B2C · Web · PWA</p>
+    <h3 class="project-title">Сервис технической поддержки</h3>
+  </a></div>
+  </section>
   </main>
   <footer id="contact" class="panel contact dark-panel" aria-labelledby="contact-title" data-nav-dark>
     <div class="motif" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="shell contact-inner">
-      <div class="reveal">
+      <div>
         <h2 id="contact-title" class="display section-title">Давайте обсудим ваш продукт</h2>
         <p>Часть проектов под NDA. Покажу макеты на созвоне.</p>
         <a href="https://t.me/p_p_polly" target="_blank" rel="noopener" class="button button-light">Написать в Телеграм</a>
       </div>
-      <div class="footer-links reveal">
+      <div class="footer-links">
         <a href="mailto:psineleva@bk.ru">psineleva@bk.ru</a>
         <a href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener">Резюме</a>
         <a href="#top">Наверх</a>

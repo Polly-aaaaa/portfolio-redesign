@@ -2,7 +2,6 @@ const header = document.querySelector('.site-header');
 const nav = document.getElementById('nav');
 const menuButton = document.getElementById('menuBtn');
 const menu = document.getElementById('menu');
-const progress = document.querySelector('.read-progress');
 const darkPanels = [...document.querySelectorAll('[data-nav-dark]')];
 
 function setMenu(open) {
@@ -36,18 +35,14 @@ function updateScroll() {
     return bounds.top <= midpoint && bounds.bottom > midpoint;
   });
   header.classList.toggle('is-dark', dark);
-  if (progress) {
-    const distance = document.documentElement.scrollHeight - innerHeight;
-    progress.style.transform = 'scaleX(' + (distance > 0 ? scrollY / distance : 0) + ')';
-  }
 }
 addEventListener('scroll', updateScroll, { passive: true });
 addEventListener('resize', updateScroll);
 updateScroll();
 
 const motion = matchMedia('(prefers-reduced-motion: no-preference)');
-if (motion.matches && 'IntersectionObserver' in window) {
-  const items = Array.from(document.querySelectorAll('.reveal'));
+const items = Array.from(document.querySelectorAll('.reveal'));
+if (items.length && motion.matches && 'IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries) => {
     for (const entry of entries) {
       if (!entry.isIntersecting) continue;
@@ -73,39 +68,8 @@ if (motion.matches && 'IntersectionObserver' in window) {
     });
   }
 
-  if (!location.hash || location.hash === '#top') {
-    document.querySelectorAll('[data-split]').forEach(animateHeading);
-  }
   revealAnchor();
   items.filter((item) => !item.classList.contains('in')).forEach((item) => observer.observe(item));
   document.documentElement.classList.add('motion-ready');
   addEventListener('hashchange', revealAnchor);
-}
-
-function animateHeading(heading) {
-  const nodes = [];
-  const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
-  while (walker.nextNode()) nodes.push(walker.currentNode);
-  let index = 0;
-
-  for (const node of nodes) {
-    const words = document.createDocumentFragment();
-    for (const part of node.textContent.split(/(\s+)/)) {
-      if (!part) continue;
-      if (/^\s+$/.test(part)) {
-        words.append(part);
-        continue;
-      }
-      const mask = document.createElement('span');
-      const word = document.createElement('span');
-      mask.className = 'word-mask';
-      word.textContent = part;
-      word.style.setProperty('--word-delay', (80 + index * 58) + 'ms');
-      word.addEventListener('animationend', () => mask.classList.add('entered'), { once: true });
-      mask.append(word);
-      words.append(mask);
-      index += 1;
-    }
-    node.replaceWith(words);
-  }
 }

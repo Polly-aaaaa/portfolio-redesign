@@ -21,13 +21,13 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=pa" sizes="180x180" />
   <link rel="stylesheet" href="css/fonts.css?v=4" />
   <link rel="stylesheet" href="css/tw.css" />
-  <link rel="stylesheet" href="css/site.css?v=4" />
-  <script src="js/case.js?v=4" defer></script>
-  <script src="js/site.js?v=4" defer></script>
+  <link rel="stylesheet" href="css/site.css?v=5" />
+  <link rel="stylesheet" href="css/case.css?v=5" />
+  <script src="js/case.js?v=5" defer></script>
+  <script src="js/site.js?v=5" defer></script>
 </head>
-<body id="top">
+<body id="top" class="case-page">
   <a class="skip-link" href="#main">К содержанию</a>
-  <div class="read-progress" aria-hidden="true"></div>
   <header class="site-header">
     <nav id="nav" class="nav" aria-label="Основная навигация">
       <a class="wordmark" href="index.html" aria-label="Полина Артамонова — главная"><span aria-hidden="true">ПА</span></a>
@@ -43,94 +43,121 @@
 
   <main id="main">
 
-  <section class="panel case-hero">
-    <div class="shell">
-      <a class="back-link link-u" href="index.html#work">Все проекты</a>
-      <p class="case-kicker section-label reveal">Июнь 2024 — Октябрь 2025</p>
-      <h1 data-split class="display case-title">Корпоративный сервис</h1>
-      <p class="case-lead reveal" style="--stagger: 160ms">Внутренний сервис для HR и сотрудников, обеспечивающий эффективное управление рабочими процессами. Сервис включает функции проведения ревью 360°, опросов, адаптации сотрудников, а также учёта отпусков и удалённых рабочих дней.</p>
-      <p class="case-tags reveal" style="--stagger: 230ms"><span class="pill">B2E</span><span class="pill">Web</span><span class="pill">2 кейса внутри</span></p>
+  <section class="panel case-hero" aria-labelledby="case-title">
+    <div class="shell case-hero-inner">
+      <nav class="case-breadcrumb" aria-label="Путь к кейсу">
+    <ol>
+      <li><a class="case-link" href="index.html#work">Проекты</a></li>
+
+      <li><span aria-hidden="true">/</span><span aria-current="page">Корпоративный сервис</span></li>
+    </ol>
+  </nav>
+      <h1 id="case-title" class="display case-title case-title--medium-word">Корпоративный сервис</h1>
+      <p class="case-lead">Внутренний сервис для HR и сотрудников, обеспечивающий эффективное управление рабочими процессами. Сервис включает функции проведения ревью 360°, опросов, адаптации сотрудников, а также учёта отпусков и удалённых рабочих дней.</p>
+      <dl class="case-meta">
+    <div><dt>Период</dt><dd>Июнь 2024 — Октябрь 2025</dd></div>
+<div><dt>Аудитория</dt><dd>B2E</dd></div>
+<div><dt>Формат</dt><dd>Web · 2 кейса внутри</dd></div>
+  </dl>
     </div>
   </section>
-  <div class="shell case-body">
-  <div class="case-visual">
-    <div class="case-figure" style="background: #eef3ff"><a href="assets/corp.webp" data-zoom aria-label="Увеличить: Корпоративный сервис"><img src="assets/corp.webp" width="2880" height="1728" alt="Корпоративный сервис" fetchpriority="high" decoding="async" class="" /></a></div>
+  <figure class="panel case-cover" style="--case-cover: #eef3ff">
+    <a class="case-media-view" href="assets/corp.webp" data-zoom aria-label="Увеличить: Корпоративный сервис"><img src="assets/corp.webp" width="2880" height="1728" alt="Корпоративный сервис" fetchpriority="high" decoding="async" /></a>
+  </figure>
+
+  <section class="case-section" aria-labelledby="case-summary-title">
+    <div class="shell case-layout">
+    <h2 id="case-summary-title" class="section-label case-side-label">Задача и итог</h2>
+    <div class="case-copy"><div class="case-brief">
+    <div class="case-brief-field">
+      <h3 class="display case-section-title">Проблема</h3>
+      <p>HR-функции были разбросаны по разным сервисам — отпуска в одном, адаптация в другом, опросы в третьем. Такая разрозненность создавала фрагментированный пользовательский опыт и увеличивала затраты времени как для HR, так и для сотрудников.</p>
+
+    </div>
+    <div class="case-brief-field">
+      <h3 class="case-subtitle">Задача</h3>
+      <p>Создать внутренний сервис, упрощающий работу HR и минимизирующий время, затрачиваемое сотрудниками на заполнение корпоративных данных.</p>
+
+    </div>
+    <div class="case-brief-field">
+      <h3 class="case-subtitle">Моя роль</h3>
+      <p>Была единственным дизайнером в команде. Работала в связке с проджектом, заказчиком и двумя разработчиками. Отвечала за весь дизайн-цикл — от первых исследований до ревью финальной вёрстки.</p>
+
+    </div>
+    <div class="case-brief-field">
+      <h3 class="case-subtitle">Что сделала</h3>
+      <p>Спроектировала интерфейс для HR и сотрудников компании с объёмным функционалом:</p>
+      <ul class="case-item-list"><li>Функционал для сбора отпусков и удалённых дней</li><li>Инструмент для создания, проведения и анализа внутренних опросов</li><li>Функционал для проведения адаптации среди сотрудников</li><li>Модуль проведения ревью 360° для ежегодной оценки навыков сотрудников</li><li>Главная страница, профиль и др.</li></ul>
+    </div></div></div>
   </div>
-  <section class="case-section">
-    <h2 class="reveal display case-section-title">Задача и итог</h2>
-    <div class="mt-8">
-      <div class="grid gap-4 md:grid-cols-2">
-    <div class="reveal case-note">
-      <p class="case-note-title">Проблема</p>
-      <p class="prose-case mt-3 leading-relaxed">HR-функции были разбросаны по разным сервисам — отпуска в одном, адаптация в другом, опросы в третьем. Такая разрозненность создавала фрагментированный пользовательский опыт и увеличивала затраты времени как для HR, так и для сотрудников.</p>
-    </div><div class="reveal case-note">
-      <p class="case-note-title">Задача</p>
-      <p class="prose-case mt-3 leading-relaxed">Создать внутренний сервис, упрощающий работу HR и минимизирующий время, затрачиваемое сотрудниками на заполнение корпоративных данных.</p>
-    </div>
+  </section>
+
+
+  <div class="case-section case-chapter">
+
+    <div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><p>В рамках работы я провела интервью с сотрудниками и HR, подготовила и протестировала интерактивные прототипы, что позволило выявить ключевые проблемы и определить направления для улучшений.</p>
+<p><b>Ниже представлены 2 показательных кейса:</b></p></div></div>
   </div>
-      <div class="mt-8"><div class="case-rule reveal grid gap-3 border-t py-6 md:grid-cols-[11rem_1fr] md:gap-10">
-    <p class="case-marker pt-1 text-sm font-semibold">Моя роль</p>
-    <div><p class="prose-case max-w-[62ch] text-base leading-relaxed sm:text-lg">Была единственным дизайнером в команде. Работала в связке с проджектом, заказчиком и двумя разработчиками. Отвечала за весь дизайн-цикл — от первых исследований до ревью финальной вёрстки.</p></div>
-  </div><div class="case-rule reveal grid gap-3 border-t py-6 md:grid-cols-[11rem_1fr] md:gap-10">
-    <p class="case-marker pt-1 text-sm font-semibold">Что сделала</p>
-    <div><p class="prose-case max-w-[62ch] text-base leading-relaxed sm:text-lg">Спроектировала интерфейс для HR и сотрудников компании с объёмным функционалом:</p><ul class="mt-4 flex flex-wrap gap-2"><li class="pill">Функционал для сбора отпусков и удалённых дней</li><li class="pill">Инструмент для создания, проведения и анализа внутренних опросов</li><li class="pill">Функционал для проведения адаптации среди сотрудников</li><li class="pill">Модуль проведения ревью 360° для ежегодной оценки навыков сотрудников</li><li class="pill">Главная страница, профиль и др.</li></ul></div>
-  </div></div>
-      <div class="case-results mt-12">
-    <h3 class="reveal display case-section-title">Результаты</h3>
-    <ul class="mt-6 space-y-4"><li class="case-rule reveal border-t pt-4 text-base leading-relaxed sm:text-xl">Интерфейс сервиса помог <b>сократить рабочее время HR и сотрудников</b> на заполнение внутренних данных.</li><li class="case-rule reveal border-t pt-4 text-base leading-relaxed sm:text-xl">Продукт стал использоваться как <b>основной внутренний сервис</b> в компании.</li><li class="case-rule reveal border-t pt-4 text-base leading-relaxed sm:text-xl">Благодаря внедрению ревью 360° компания отказалась от сторонних решений, получив <b>контроль над функциональностью и более репрезентативные данные</b>.</li></ul>
-
   </div>
-    </div>
-  </section><section class="case-section">
 
-      <div class="space-y-7">
+  <section class="case-section case-results" aria-labelledby="case-results-title">
+    <div class="shell case-layout">
+    <h2 id="case-results-title" class="section-label case-side-label">Результаты</h2>
+    <div class="case-copy"><ul class="case-results-list"><li>Интерфейс сервиса помог <b>сократить рабочее время HR и сотрудников</b> на заполнение внутренних данных.</li><li>Продукт стал использоваться как <b>основной внутренний сервис</b> в компании.</li><li>Благодаря внедрению ревью 360° компания отказалась от сторонних решений, получив <b>контроль над функциональностью и более репрезентативные данные</b>.</li></ul></div>
+  </div>
+  </section>
 
-
-        <p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">В рамках работы я провела интервью с сотрудниками и HR, подготовила и протестировала интерактивные прототипы, что позволило выявить ключевые проблемы и определить направления для улучшений.</p>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg"><b>Ниже представлены 2 показательных кейса:</b></p>
-      </div>
-    </section><section class="case-section">
-    <h2 class="reveal display case-section-title mb-8">Кейсы проекта</h2>
-    <div class="grid gap-8 sm:grid-cols-2" data-stagger><a href="case-vacation.html" class="project reveal">
-    <div class="project-media" style="--cover: #eef3ff">
-      <img src="assets/vacation.webp" width="2880" height="2304" alt="Функционал для сбора отпусков и удалёнок" loading="lazy" decoding="async" class="" />
+  <section class="shell case-section case-related" aria-labelledby="case-children-title">
+    <h2 id="case-children-title" class="display case-section-title">Кейсы проекта</h2>
+    <div class="case-card-grid"><a href="case-vacation.html" class="case-card">
+    <div class="case-card-image" style="--case-cover: #eef3ff">
+      <img src="assets/vacation.webp" width="2880" height="2304" alt="" loading="lazy" decoding="async" />
+      <span class="case-card-action" aria-hidden="true">Смотреть кейс</span>
     </div>
-    <div class="project-copy">
-      <p class="project-meta">Кейс № 1</p>
-      <h3 class="project-title">Функционал для сбора отпусков и удалёнок</h3>
+    <p class="project-meta">Кейс № 1</p>
+    <h3 class="project-title">Функционал для сбора отпусков и удалёнок</h3>
+  </a>
+<a href="case-review.html" class="case-card">
+    <div class="case-card-image" style="--case-cover: #eef3ff">
+      <img src="assets/review.webp" width="2880" height="2304" alt="" loading="lazy" decoding="async" />
+      <span class="case-card-action" aria-hidden="true">Смотреть кейс</span>
     </div>
-  </a><a href="case-review.html" class="project reveal">
-    <div class="project-media" style="--cover: #eef3ff">
-      <img src="assets/review.webp" width="2880" height="2304" alt="Функционал для проведения ревью 360°" loading="lazy" decoding="async" class="" />
-    </div>
-    <div class="project-copy">
-      <p class="project-meta">Кейс № 2</p>
-      <h3 class="project-title">Функционал для проведения ревью 360°</h3>
-    </div>
+    <p class="project-meta">Кейс № 2</p>
+    <h3 class="project-title">Функционал для проведения ревью 360°</h3>
   </a></div>
   </section>
-  <section class="case-section">
-    <a href="case-vacation.html" class="project project-featured reveal">
-      <div class="project-media" style="--cover: #eef3ff">
-        <img src="assets/vacation.webp" width="2880" height="2304" alt="Функционал для сбора отпусков и удалёнок" loading="lazy" decoding="async" class="" />
-      </div>
-      <div class="project-copy">
-        <p class="project-meta">Следующий кейс</p>
-        <h2 class="project-title">Функционал для сбора отпусков и удалёнок</h2>
-      </div>
-    </a>
+
+  <section class="shell case-section case-related" aria-labelledby="case-related-title">
+    <h2 id="case-related-title" class="display case-section-title">Другие проекты</h2>
+    <div class="case-card-grid"><a href="case-support.html" class="case-card">
+    <div class="case-card-image" style="--case-cover: #ffb800">
+      <img src="assets/support.webp" width="2000" height="1200" alt="" loading="lazy" decoding="async" />
+      <span class="case-card-action" aria-hidden="true">Смотреть кейс</span>
+    </div>
+    <p class="project-meta">B2C · Web · PWA</p>
+    <h3 class="project-title">Сервис технической поддержки</h3>
+  </a>
+<a href="case-docs.html" class="case-card">
+    <div class="case-card-image" style="--case-cover: #f3efff">
+      <img src="assets/docs.webp" width="2000" height="1200" alt="" loading="lazy" decoding="async" />
+      <span class="case-card-action" aria-hidden="true">Смотреть кейс</span>
+    </div>
+    <p class="project-meta">B2C · Web</p>
+    <h3 class="project-title">Интегрированный сервис для работы с документами</h3>
+  </a></div>
   </section>
-  </div>
   </main>
   <footer id="contact" class="panel contact dark-panel" aria-labelledby="contact-title" data-nav-dark>
     <div class="motif" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="shell contact-inner">
-      <div class="reveal">
+      <div>
         <h2 id="contact-title" class="display section-title">Давайте обсудим ваш продукт</h2>
         <p>Часть проектов под NDA. Покажу макеты на созвоне.</p>
         <a href="https://t.me/p_p_polly" target="_blank" rel="noopener" class="button button-light">Написать в Телеграм</a>
       </div>
-      <div class="footer-links reveal">
+      <div class="footer-links">
         <a href="mailto:psineleva@bk.ru">psineleva@bk.ru</a>
         <a href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener">Резюме</a>
         <a href="#top">Наверх</a>

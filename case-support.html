@@ -21,13 +21,13 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=pa" sizes="180x180" />
   <link rel="stylesheet" href="css/fonts.css?v=4" />
   <link rel="stylesheet" href="css/tw.css" />
-  <link rel="stylesheet" href="css/site.css?v=4" />
-  <script src="js/case.js?v=4" defer></script>
-  <script src="js/site.js?v=4" defer></script>
+  <link rel="stylesheet" href="css/site.css?v=5" />
+  <link rel="stylesheet" href="css/case.css?v=5" />
+  <script src="js/case.js?v=5" defer></script>
+  <script src="js/site.js?v=5" defer></script>
 </head>
-<body id="top">
+<body id="top" class="case-page">
   <a class="skip-link" href="#main">К содержанию</a>
-  <div class="read-progress" aria-hidden="true"></div>
   <header class="site-header">
     <nav id="nav" class="nav" aria-label="Основная навигация">
       <a class="wordmark" href="index.html" aria-label="Полина Артамонова — главная"><span aria-hidden="true">ПА</span></a>
@@ -43,128 +43,168 @@
 
   <main id="main">
 
-  <section class="panel case-hero">
-    <div class="shell">
-      <a class="back-link link-u" href="index.html#work">Все проекты</a>
-      <p class="case-kicker section-label reveal">Июль 2025 — Октябрь 2025</p>
-      <h1 data-split class="display case-title">Сервис технической поддержки</h1>
-      <p class="case-lead reveal" style="--stagger: 160ms">Сервис для управления клиентскими запросами, с административным функционалом для настройки готовых ответов и отдельной технической поддержкой для клиентов. Включает два функционала: <b>панель сотрудника поддержки</b> и <b>клиентскую часть</b>.</p>
-      <p class="case-tags reveal" style="--stagger: 230ms"><span class="pill">B2C</span><span class="pill">Web</span><span class="pill">PWA</span></p>
+  <section class="panel case-hero" aria-labelledby="case-title">
+    <div class="shell case-hero-inner">
+      <nav class="case-breadcrumb" aria-label="Путь к кейсу">
+    <ol>
+      <li><a class="case-link" href="index.html#work">Проекты</a></li>
+
+      <li><span aria-hidden="true">/</span><span aria-current="page">Сервис технической поддержки</span></li>
+    </ol>
+  </nav>
+      <h1 id="case-title" class="display case-title">Сервис технической поддержки</h1>
+      <p class="case-lead">Сервис для управления клиентскими запросами, с административным функционалом для настройки готовых ответов и отдельной технической поддержкой для клиентов. Включает два функционала: <b>панель сотрудника поддержки</b> и <b>клиентскую часть</b>.</p>
+      <dl class="case-meta">
+    <div><dt>Период</dt><dd>Июль 2025 — Октябрь 2025</dd></div>
+<div><dt>Аудитория</dt><dd>B2C</dd></div>
+<div><dt>Формат</dt><dd>Web · PWA</dd></div>
+  </dl>
     </div>
   </section>
-  <div class="shell case-body">
-  <div class="case-visual">
-    <div class="case-figure" style="background: #ffb800"><a href="assets/support.webp" data-zoom aria-label="Увеличить: Сервис технической поддержки"><img src="assets/support.webp" width="2000" height="1200" alt="Сервис технической поддержки" fetchpriority="high" decoding="async" class="" /></a></div>
-  </div>
-  <section class="case-section">
-    <h2 class="reveal display case-section-title">Задача и итог</h2>
-    <div class="mt-8">
-      <div class="grid gap-4 md:grid-cols-2">
-    <div class="reveal case-note">
-      <p class="case-note-title">Проблема</p>
-      <p class="prose-case mt-3 leading-relaxed">Дизайн сервиса технической поддержки устарел и не масштабируется под текущие задачи компании.</p>
-    </div><div class="reveal case-note">
-      <p class="case-note-title">Цель</p>
-      <p class="prose-case mt-3 leading-relaxed">Обновить интерфейс, чтобы повысить удобство использования и адаптировать продукт под рост команды и объём запросов.</p>
+  <figure class="panel case-cover" style="--case-cover: #ffb800">
+    <a class="case-media-view" href="assets/support.webp" data-zoom aria-label="Увеличить: Сервис технической поддержки"><img src="assets/support.webp" width="2000" height="1200" alt="Сервис технической поддержки" fetchpriority="high" decoding="async" /></a>
+  </figure>
+
+  <section class="case-section" aria-labelledby="case-summary-title">
+    <div class="shell case-layout">
+    <h2 id="case-summary-title" class="section-label case-side-label">Задача и итог</h2>
+    <div class="case-copy"><div class="case-brief">
+    <div class="case-brief-field">
+      <h3 class="display case-section-title">Проблема</h3>
+      <p>Дизайн сервиса технической поддержки устарел и не масштабируется под текущие задачи компании.</p>
+
     </div>
-  </div>
-      <div class="mt-8"><div class="case-rule reveal grid gap-3 border-t py-6 md:grid-cols-[11rem_1fr] md:gap-10">
-    <p class="case-marker pt-1 text-sm font-semibold">Моя роль</p>
-    <div><p class="prose-case max-w-[62ch] text-base leading-relaxed sm:text-lg">Была дизайнером на проекте совместно с тим-лидом. Работали с заказчиком, менеджером, тестировщиком и двумя разработчиками. Проводила тестирование прототипов на пользователях и презентацию для команды.</p></div>
-  </div></div>
-      <div class="case-results mt-12">
-    <h3 class="reveal display case-section-title">Результаты</h3>
-    <ul class="mt-6 space-y-4"><li class="case-rule reveal border-t pt-4 text-base leading-relaxed sm:text-xl">Благодаря использованию корпоративной дизайн-системы, дальнейшее <b>развитие панели сотрудника</b> стало <b>менее ресурсоёмким</b>.</li><li class="case-rule reveal border-t pt-4 text-base leading-relaxed sm:text-xl">Процесс закрытия сообщения в панели сотрудника стал короче: <b>количество необходимых действий сократилось</b>, благодаря чему сотрудники <b>обрабатывают обращения быстрее</b>.</li><li class="case-rule reveal border-t pt-4 text-base leading-relaxed sm:text-xl">После перехода на корпоративную дизайн-систему <b>клиентская часть</b> визуально <b>унифицировалась с другими продуктами компании</b>, что <b>повысило консистентность бренда</b>.</li></ul>
+    <div class="case-brief-field">
+      <h3 class="case-subtitle">Цель</h3>
+      <p>Обновить интерфейс, чтобы повысить удобство использования и адаптировать продукт под рост команды и объём запросов.</p>
 
-  </div>
     </div>
-  </section><section class="case-section">
-      <h2 class="reveal display case-section-title mb-8">Панель сотрудника</h2>
-      <div class="space-y-7">
+    <div class="case-brief-field">
+      <h3 class="case-subtitle">Моя роль</h3>
+      <p>Была дизайнером на проекте совместно с тим-лидом. Работали с заказчиком, менеджером, тестировщиком и двумя разработчиками. Проводила тестирование прототипов на пользователях и презентацию для команды.</p>
 
-        <div class="reveal mx-auto max-w-2xl">
-    <p class="text-sm">Этапы</p>
-    <ol class="mt-3 flex flex-wrap gap-2"><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">1</span>Анализ существующего сервиса</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">2</span>Прототипирование</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">3</span>Доработка после обратной связи</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">4</span>Результат</li>
-    </ol>
+    </div></div></div>
   </div>
-        <h3 class="case-subtitle reveal mx-auto max-w-2xl">Анализ существующего сервиса</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Перед тем, как приступить к проектированию, я провела анализ текущего сервиса, пообщалась с сотрудниками техподдержки и по итогу обнаружила такие проблемы текущего сервиса:</p>
-<figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/support-02.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/support-02.webp" width="1902" height="858" alt="" loading="lazy" decoding="async" class="" /></a></div>
+  </section>
 
-  </figure>
-<ul class="reveal prose-case mx-auto max-w-2xl list-disc space-y-2.5 pl-5 text-base leading-relaxed sm:text-lg"><li>Слева много фильтров и списков с тикетами, что визуально создаёт шум.</li><li>Кнопка «Подтвердить» сверху без контекста может быть непонятна: что именно подтверждается?</li><li>Кнопка «Изменить» внизу справа непонятно к чему привязана — к конкретному сообщению или всему тикету.</li><li>Иконки форматирования могут отвлекать без объяснения их необходимости.</li><li>Экран перегружен, сложно представить, как он будет адаптироваться под меньшие размеры экранов.</li></ul>
-<h3 class="case-subtitle reveal mx-auto max-w-2xl">Прототипирование</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">После сбора всех пожеланий от сотрудников поддержки, мы с тим-лидом приступили к проектированию основных сценариев взаимодействия с сервисом, которые затем протестировали на пользователях.</p>
-<figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/support-03.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/support-03.webp" width="1148" height="669" alt="" loading="lazy" decoding="async" class="" /></a></div>
 
-  </figure>
-<h3 class="case-subtitle reveal mx-auto max-w-2xl">Доработка после обратной связи</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Так как тестирование прототипа показало положительную обратную связь по удобству использования, мы оставили основу без изменений и внесли лишь небольшие доработки, предложенные сотрудниками техподдержки.</p>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Далее я задокументировала все макеты и передала в разработку.</p>
-<figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/support-04.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/support-04.webp" width="1014" height="447" alt="" loading="lazy" decoding="async" class="" /></a></div>
-
-  </figure>
-      </div>
-    </section><section class="case-section">
-      <h2 class="reveal display case-section-title mb-8">Клиентская часть</h2>
-      <div class="space-y-7">
-
-        <div class="reveal mx-auto max-w-2xl">
-    <p class="text-sm">Этапы</p>
-    <ol class="mt-3 flex flex-wrap gap-2"><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">1</span>Анализ существующего сервиса</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">2</span>Проектирование</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">3</span>Результат</li>
-    </ol>
+  <section class="case-section case-chapter" aria-labelledby="case-chapter-1">
+    <div class="shell case-layout">
+    <p class="section-label case-side-label">Этапы</p>
+    <div class="case-copy">
+    <h2 id="case-chapter-1" class="display case-section-title">Панель сотрудника</h2>
+    <ol class="case-stages"><li>Анализ существующего сервиса</li><li>Прототипирование</li><li>Доработка после обратной связи</li><li>Результат</li></ol></div>
   </div>
-        <h3 class="case-subtitle reveal mx-auto max-w-2xl">Анализ конкурентов</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Перед тем как приступить к проектированию сервиса поддержки клиентов, я проанализировала текущие решения на рынке и выделила наиболее подходящие, которые легли в основу нового дизайна сервиса.</p>
-<figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/support-05.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/support-05.webp" width="937" height="659" alt="" loading="lazy" decoding="async" class="" /></a></div>
+    <div class="shell case-layout">
 
-  </figure>
-<h3 class="case-subtitle reveal mx-auto max-w-2xl">Проектирование</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Поскольку основной функционал уже был реализован в панели сотрудника, это значительно упростило работу: я повторно использовала существующие компоненты и добавила новый пользовательский флоу для выбора быстрых ответов.</p>
-<div class="reveal mx-auto max-w-2xl"><span class="pill">Было</span></div>
-<div class="grid gap-6 sm:grid-cols-2"><figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/support-06.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/support-06.webp" width="1919" height="860" alt="" loading="lazy" decoding="async" class="" /></a></div>
-
-  </figure><figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/support-07.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/support-07.webp" width="1919" height="868" alt="" loading="lazy" decoding="async" class="" /></a></div>
+    <div class="case-copy"><div class="case-prose"><h3 class="case-subtitle">Анализ существующего сервиса</h3>
+<p>Перед тем, как приступить к проектированию, я провела анализ текущего сервиса, пообщалась с сотрудниками техподдержки и по итогу обнаружила такие проблемы текущего сервиса:</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/support-02.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/support-02.webp" width="1902" height="858" alt="" loading="lazy" decoding="async" /></a>
 
   </figure></div>
-<div class="reveal mx-auto max-w-2xl"><span class="pill">Стало</span></div>
-<div class="grid gap-6 sm:grid-cols-2"><figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/support-08.webp" data-zoom aria-label="Увеличить: Выбор темы"><img src="assets/cases/support-08.webp" width="2000" height="1250" alt="Выбор темы" loading="lazy" decoding="async" class="" /></a></div>
+<div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><ul class="case-text-list"><li>Слева много фильтров и списков с тикетами, что визуально создаёт шум.</li><li>Кнопка «Подтвердить» сверху без контекста может быть непонятна: что именно подтверждается?</li><li>Кнопка «Изменить» внизу справа непонятно к чему привязана — к конкретному сообщению или всему тикету.</li><li>Иконки форматирования могут отвлекать без объяснения их необходимости.</li><li>Экран перегружен, сложно представить, как он будет адаптироваться под меньшие размеры экранов.</li></ul>
+<h3 class="case-subtitle">Прототипирование</h3>
+<p>После сбора всех пожеланий от сотрудников поддержки, мы с тим-лидом приступили к проектированию основных сценариев взаимодействия с сервисом, которые затем протестировали на пользователях.</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/support-03.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/support-03.webp" width="1148" height="669" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+<div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><h3 class="case-subtitle">Доработка после обратной связи</h3>
+<p>Так как тестирование прототипа показало положительную обратную связь по удобству использования, мы оставили основу без изменений и внесли лишь небольшие доработки, предложенные сотрудниками техподдержки.</p>
+<p>Далее я задокументировала все макеты и передала в разработку.</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/support-04.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/support-04.webp" width="1014" height="447" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+  </section>
+
+  <section class="case-section case-chapter" aria-labelledby="case-chapter-2">
+    <div class="shell case-layout">
+    <p class="section-label case-side-label">Этапы</p>
+    <div class="case-copy">
+    <h2 id="case-chapter-2" class="display case-section-title">Клиентская часть</h2>
+    <ol class="case-stages"><li>Анализ существующего сервиса</li><li>Проектирование</li><li>Результат</li></ol></div>
+  </div>
+    <div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><h3 class="case-subtitle">Анализ конкурентов</h3>
+<p>Перед тем как приступить к проектированию сервиса поддержки клиентов, я проанализировала текущие решения на рынке и выделила наиболее подходящие, которые легли в основу нового дизайна сервиса.</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/support-05.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/support-05.webp" width="937" height="659" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+<div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><h3 class="case-subtitle">Проектирование</h3>
+<p>Поскольку основной функционал уже был реализован в панели сотрудника, это значительно упростило работу: я повторно использовала существующие компоненты и добавила новый пользовательский флоу для выбора быстрых ответов.</p>
+<p class="case-gallery-label">Было</p></div></div>
+  </div>
+<div class="panel case-gallery"><div class="case-media-pair"><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/support-06.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/support-06.webp" width="1919" height="860" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/support-07.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/support-07.webp" width="1919" height="868" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div></div>
+<div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><p class="case-gallery-label">Стало</p></div></div>
+  </div>
+<div class="panel case-gallery"><div class="case-media-pair"><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/support-08.webp" data-zoom aria-label="Увеличить: Выбор темы"><img src="assets/cases/support-08.webp" width="2000" height="1250" alt="Выбор темы" loading="lazy" decoding="async" /></a>
     <figcaption class="case-caption">Выбор темы</figcaption>
-  </figure><figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/support-09.webp" data-zoom aria-label="Увеличить: Диалог"><img src="assets/cases/support-09.webp" width="2000" height="1250" alt="Диалог" loading="lazy" decoding="async" class="" /></a></div>
+  </figure><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/support-09.webp" data-zoom aria-label="Увеличить: Диалог"><img src="assets/cases/support-09.webp" width="2000" height="1250" alt="Диалог" loading="lazy" decoding="async" /></a>
     <figcaption class="case-caption">Диалог</figcaption>
-  </figure></div>
-      </div>
-    </section>
-  <section class="case-section">
-    <a href="case-docs.html" class="project project-featured reveal">
-      <div class="project-media" style="--cover: #f3efff">
-        <img src="assets/docs.webp" width="2000" height="1200" alt="Интегрированный сервис для работы с документами" loading="lazy" decoding="async" class="" />
-      </div>
-      <div class="project-copy">
-        <p class="project-meta">Следующий проект</p>
-        <h2 class="project-title">Интегрированный сервис для работы с документами</h2>
-      </div>
-    </a>
+  </figure></div></div>
   </section>
+
+  <section class="case-section case-results" aria-labelledby="case-results-title">
+    <div class="shell case-layout">
+    <h2 id="case-results-title" class="section-label case-side-label">Результаты</h2>
+    <div class="case-copy"><ul class="case-results-list"><li>Благодаря использованию корпоративной дизайн-системы, дальнейшее <b>развитие панели сотрудника</b> стало <b>менее ресурсоёмким</b>.</li><li>Процесс закрытия сообщения в панели сотрудника стал короче: <b>количество необходимых действий сократилось</b>, благодаря чему сотрудники <b>обрабатывают обращения быстрее</b>.</li><li>После перехода на корпоративную дизайн-систему <b>клиентская часть</b> визуально <b>унифицировалась с другими продуктами компании</b>, что <b>повысило консистентность бренда</b>.</li></ul></div>
   </div>
+  </section>
+
+
+  <section class="shell case-section case-related" aria-labelledby="case-related-title">
+    <h2 id="case-related-title" class="display case-section-title">Другие проекты</h2>
+    <div class="case-card-grid"><a href="case-docs.html" class="case-card">
+    <div class="case-card-image" style="--case-cover: #f3efff">
+      <img src="assets/docs.webp" width="2000" height="1200" alt="" loading="lazy" decoding="async" />
+      <span class="case-card-action" aria-hidden="true">Смотреть кейс</span>
+    </div>
+    <p class="project-meta">B2C · Web</p>
+    <h3 class="project-title">Интегрированный сервис для работы с документами</h3>
+  </a>
+<a href="case-biz.html" class="case-card">
+    <div class="case-card-image" style="--case-cover: #0b3d86">
+      <img src="assets/biz.webp" width="2000" height="1200" alt="" loading="lazy" decoding="async" />
+      <span class="case-card-action" aria-hidden="true">Смотреть кейс</span>
+    </div>
+    <p class="project-meta">Social Media · B2C · Web · PWA</p>
+    <h3 class="project-title">Сервис для предпринимателей</h3>
+  </a></div>
+  </section>
   </main>
   <footer id="contact" class="panel contact dark-panel" aria-labelledby="contact-title" data-nav-dark>
     <div class="motif" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="shell contact-inner">
-      <div class="reveal">
+      <div>
         <h2 id="contact-title" class="display section-title">Давайте обсудим ваш продукт</h2>
         <p>Часть проектов под NDA. Покажу макеты на созвоне.</p>
         <a href="https://t.me/p_p_polly" target="_blank" rel="noopener" class="button button-light">Написать в Телеграм</a>
       </div>
-      <div class="footer-links reveal">
+      <div class="footer-links">
         <a href="mailto:psineleva@bk.ru">psineleva@bk.ru</a>
         <a href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener">Резюме</a>
         <a href="#top">Наверх</a>

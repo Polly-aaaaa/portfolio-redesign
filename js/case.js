@@ -1,161 +1,201 @@
 // Разметку кейсов генерирует tools/build.mjs. В браузере этот файл включает просмотр изображений.
 const attr = (value) => String(value).replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
 
-function picture(key, { alt = '', cls = '', eager = false } = {}) {
+function picture(key, { alt = '', eager = false } = {}) {
   const [width, height] = DIMS[key] || [1600, 1000];
-  return `<img src="assets/${key}.webp" width="${width}" height="${height}" alt="${attr(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" class="${cls}" />`;
+  return `<img src="assets/${key}.webp" width="${width}" height="${height}" alt="${attr(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" />`;
 }
 
 function zoomPicture(key, alt, eager = false) {
   const label = alt ? `Увеличить: ${alt}` : 'Увеличить изображение';
-  return `<a href="assets/${key}.webp" data-zoom aria-label="${attr(label)}">${picture(key, { alt, eager })}</a>`;
+  return `<a class="case-media-view" href="assets/${key}.webp" data-zoom aria-label="${attr(label)}">${picture(key, { alt, eager })}</a>`;
 }
 
-function figure(key, caption = '', { narrow = false } = {}) {
-  return `<figure class="reveal ${narrow ? 'mx-auto max-w-xl' : ''}">
-    <div class="case-figure">${zoomPicture(key, caption)}</div>
+function breadcrumbs(project) {
+  const parent = project.parent
+    ? `<li><span aria-hidden="true">/</span><a class="case-link" href="case-${project.parent}.html">${CASES[project.parent].title}</a></li>`
+    : '';
+  return `<nav class="case-breadcrumb" aria-label="Путь к кейсу">
+    <ol>
+      <li><a class="case-link" href="index.html#work">Проекты</a></li>
+      ${parent}
+      <li><span aria-hidden="true">/</span><span aria-current="page">${project.title}</span></li>
+    </ol>
+  </nav>`;
+}
+
+function caseMetadata(project) {
+  const audience = project.tags.filter((tag) => /^B2[A-Z]$/.test(tag));
+  const format = project.tags.filter((tag) => !audience.includes(tag));
+  const entries = [
+    project.period ? ['Период', project.period] : ['Часть проекта', project.kicker],
+    ['Аудитория', audience.join(' · ')],
+    ['Формат', format.join(' · ')],
+    ['В браузере', project.phones ? '<a class="case-link" href="#prototypes">Открыть прототипы</a>' : ''],
+  ];
+  return `<dl class="case-meta">
+    ${entries.filter(([, value]) => value).map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join('\n')}
+  </dl>`;
+}
+
+function caseIntro(project, context) {
+  const lead = project.lead || context?.html;
+  const leadLabel = context ? `<span class="sr-only">${context.label}. </span>` : '';
+  const longestWord = Math.max(...project.title.split(/\s+/).map((word) => word.length));
+  const titleSize = longestWord >= 15 ? ' case-title--long-word' : longestWord >= 12 ? ' case-title--medium-word' : '';
+  return `
+  <section class="panel case-hero" aria-labelledby="case-title">
+    <div class="shell case-hero-inner">
+      ${breadcrumbs(project)}
+      <h1 id="case-title" class="display case-title${titleSize}">${project.title}</h1>
+      ${lead ? `<p class="case-lead">${leadLabel}${lead}</p>` : ''}
+      ${caseMetadata(project)}
+    </div>
+  </section>
+  <figure class="panel case-cover" style="--case-cover: ${project.coverBg}">
+    ${zoomPicture(project.cover, project.title, true)}
+  </figure>`;
+}
+
+function caseLayout(content, label = '') {
+  return `<div class="shell case-layout">
+    ${label}
+    <div class="case-copy">${content}</div>
+  </div>`;
+}
+
+function summarySection(project, introContext) {
+  const fields = project.summary.filter((field) => field !== introContext);
+  if (!fields.length) return '';
+  const content = fields.map((field, index) => `
+    <div class="case-brief-field">
+      <h3 class="${index === 0 ? 'display case-section-title' : 'case-subtitle'}">${field.label}</h3>
+      <p>${field.html}</p>
+      ${field.list ? `<ul class="case-item-list">${field.list.map((item) => `<li>${item}</li>`).join('')}</ul>` : ''}
+    </div>`).join('');
+  return `
+  <section class="case-section" aria-labelledby="case-summary-title">
+    ${caseLayout(`<div class="case-brief">${content}</div>`, '<h2 id="case-summary-title" class="section-label case-side-label">Задача и итог</h2>')}
+  </section>`;
+}
+
+function figure(key, caption = '', narrow = false) {
+  const [width, height] = DIMS[key] || [1600, 1000];
+  const size = narrow ? ' case-shot--narrow' : width / height > 2.5 ? ' case-shot--wide' : '';
+  return `<figure class="case-shot${size}">
+    ${zoomPicture(key, caption)}
     ${caption ? `<figcaption class="case-caption">${caption}</figcaption>` : ''}
   </figure>`;
 }
 
 function renderBlock(block) {
-  if (block.h) return `<h3 class="case-subtitle reveal mx-auto max-w-2xl">${block.h}</h3>`;
-  if (block.p) return `<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">${block.p}</p>`;
-  if (block.label) return `<div class="reveal mx-auto max-w-2xl"><span class="pill">${block.label}</span></div>`;
-  if (block.ul) return `<ul class="reveal prose-case mx-auto max-w-2xl list-disc space-y-2.5 pl-5 text-base leading-relaxed sm:text-lg">${block.ul.map((item) => `<li>${item}</li>`).join('')}</ul>`;
-  if (block.img) return figure(block.img, block.caption, { narrow: block.narrow });
-  if (block.pair) return `<div class="grid gap-6 sm:grid-cols-2">${block.pair.map((key, index) => figure(key, block.captions?.[index] || '')).join('')}</div>`;
+  if (block.h) return `<h3 class="case-subtitle">${block.h}</h3>`;
+  if (block.p) return `<p>${block.p}</p>`;
+  if (block.label) return `<p class="case-gallery-label">${block.label}</p>`;
+  if (block.ul) return `<ul class="case-text-list">${block.ul.map((item) => `<li>${item}</li>`).join('')}</ul>`;
+  if (block.img) return figure(block.img, block.caption, block.narrow);
+  if (block.pair) return `<div class="case-media-pair">${block.pair.map((key, index) => figure(key, block.captions?.[index])).join('')}</div>`;
   return '';
 }
 
-function stagesBlock(stages) {
-  return `<div class="reveal mx-auto max-w-2xl">
-    <p class="text-sm">Этапы</p>
-    <ol class="mt-3 flex flex-wrap gap-2">${stages.map((stage, index) =>
-      `<li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">${index + 1}</span>${stage}</li>`).join('')}
-    </ol>
-  </div>`;
+function renderNarrative(blocks) {
+  const groups = [];
+  for (const block of blocks) {
+    const media = Boolean(block.img || block.pair);
+    const previous = groups.at(-1);
+    if (previous?.media === media) previous.blocks.push(block);
+    else groups.push({ media, blocks: [block] });
+  }
+  return groups.map((group) => {
+    const html = group.blocks.map(renderBlock).join('\n');
+    if (!group.media) return caseLayout(`<div class="case-prose">${html}</div>`);
+    const stacked = group.blocks.length > 1 && group.blocks.every((block) => block.img);
+    return `<div class="panel case-gallery${stacked ? ' case-gallery--stacked' : ''}">${html}</div>`;
+  }).join('\n');
 }
 
-function problemGoal(problem, goal) {
-  if (!problem || !goal) return '';
-  return `<div class="grid gap-4 md:grid-cols-2">
-    ${[problem, goal].map(({ label, html }) => `<div class="reveal case-note">
-      <p class="case-note-title">${label}</p>
-      <p class="prose-case mt-3 leading-relaxed">${html}</p>
-    </div>`).join('')}
-  </div>`;
-}
-
-function detailRow(detail) {
-  const list = detail.list
-    ? `<ul class="mt-4 flex flex-wrap gap-2">${detail.list.map((item) => `<li class="pill">${item}</li>`).join('')}</ul>`
+function chapter(section, index) {
+  const title = section.title || (section.stages ? 'Как шла работа' : '');
+  const headingId = `case-chapter-${index + 1}`;
+  const steps = section.stages
+    ? `<ol class="case-stages">${section.stages.map((stage) => `<li>${stage}</li>`).join('')}</ol>`
     : '';
-  return `<div class="case-rule reveal grid gap-3 border-t py-6 md:grid-cols-[11rem_1fr] md:gap-10">
-    <p class="case-marker pt-1 text-sm font-semibold">${detail.label}</p>
-    <div><p class="prose-case max-w-[62ch] text-base leading-relaxed sm:text-lg">${detail.html}</p>${list}</div>
-  </div>`;
+  const note = section.note ? `<p class="case-note">${section.note}</p>` : '';
+  const label = section.stages ? '<p class="section-label case-side-label">Этапы</p>' : '';
+  const header = title || note ? caseLayout(`
+    ${title ? `<h2 id="${headingId}" class="display case-section-title">${title}</h2>` : ''}
+    ${note}${steps}`, label) : '';
+  const tag = title ? 'section' : 'div';
+  return `
+  <${tag} class="case-section case-chapter"${title ? ` aria-labelledby="${headingId}"` : ''}>
+    ${header}
+    ${renderNarrative(section.blocks)}
+  </${tag}>`;
 }
 
-function resultsBlock(project) {
-  if (!project.results) return '';
-  const items = project.results.map((result) =>
-    `<li class="case-rule reveal border-t pt-4 text-base leading-relaxed sm:text-xl">${result}</li>`).join('');
-  const note = project.resultsNote ? `<p class="case-caption mt-6">* ${project.resultsNote}</p>` : '';
-  return `<div class="case-results mt-12">
-    <h3 class="reveal display case-section-title">Результаты</h3>
-    <ul class="mt-6 space-y-4">${items}</ul>
-    ${note}
-  </div>`;
+function resultsSection(project) {
+  if (!project.results?.length) return '';
+  const items = project.results.map((result) => `<li>${result}</li>`).join('');
+  const note = project.resultsNote ? `<p class="case-caption">* ${project.resultsNote}</p>` : '';
+  return `
+  <section class="case-section case-results" aria-labelledby="case-results-title">
+    ${caseLayout(`<ul class="case-results-list">${items}</ul>${note}`, '<h2 id="case-results-title" class="section-label case-side-label">Результаты</h2>')}
+  </section>`;
+}
+
+function prototypesSection(phones) {
+  return `
+  <section id="prototypes" class="case-section case-prototypes" aria-labelledby="case-prototypes-title">
+    ${caseLayout('<h2 id="case-prototypes-title" class="display case-section-title">Прототипы</h2>')}
+    <div class="panel case-media-pair">
+      ${phones.map((phone) => `<figure class="case-shot case-phone">
+        <div class="proto"><iframe src="${phone.src}" title="${attr(phone.title)}" loading="${phone.eager ? 'eager' : 'lazy'}" allow="autoplay; fullscreen"></iframe></div>
+        <figcaption class="case-caption"><a class="case-link" href="${phone.src}" target="_blank" rel="noopener">${phone.caption}</a></figcaption>
+      </figure>`).join('\n')}
+    </div>
+  </section>`;
 }
 
 function caseCard(id) {
   const project = CASES[id];
-  return `<a href="case-${id}.html" class="project reveal">
-    <div class="project-media" style="--cover: ${project.coverBg}">
-      ${picture(project.cover, { alt: project.title })}
+  return `<a href="case-${id}.html" class="case-card">
+    <div class="case-card-image" style="--case-cover: ${project.coverBg}">
+      ${picture(project.cover)}
+      <span class="case-card-action" aria-hidden="true">Смотреть кейс</span>
     </div>
-    <div class="project-copy">
-      <p class="project-meta">${project.kicker || 'Кейс'}</p>
-      <h3 class="project-title">${project.title}</h3>
-    </div>
+    <p class="project-meta">${project.kicker || project.tags.join(' · ')}</p>
+    <h3 class="project-title">${project.title}</h3>
   </a>`;
 }
 
-function phonesBlock(phones) {
-  return `<div class="grid items-start gap-x-10 gap-y-12 md:grid-cols-2">${phones.map((phone) => `
-    <figure class="proto-wrap">
-      <div class="case-cover proto"><iframe src="${phone.src}" title="${attr(phone.title)}" loading="${phone.eager ? 'eager' : 'lazy'}" allow="autoplay; fullscreen"></iframe></div>
-      <figcaption class="case-caption text-center"><a class="link-u" href="${phone.src}" target="_blank" rel="noopener">${phone.caption}</a></figcaption>
-    </figure>`).join('')}</div>`;
+function relatedCases(id, project) {
+  const mainCases = CASE_ORDER.filter((caseId) => !CASES[caseId].parent);
+  const index = mainCases.indexOf(project.parent || id);
+  const next = [1, 2].map((offset) => mainCases[(index + offset) % mainCases.length]);
+  const sibling = project.parent && CASES[project.parent].subcases.find((caseId) => caseId !== id);
+  return sibling ? [sibling, next[0]] : next;
+}
+
+function cardSection(ids, heading, headingId) {
+  return `
+  <section class="shell case-section case-related" aria-labelledby="${headingId}">
+    <h2 id="${headingId}" class="display case-section-title">${heading}</h2>
+    <div class="case-card-grid">${ids.map(caseCard).join('\n')}</div>
+  </section>`;
 }
 
 function caseHTML(id) {
   const project = CASES[id];
-  const parent = project.parent && CASES[project.parent];
-  const kicker = project.kicker || project.period;
-  const backHref = parent ? `case-${project.parent}.html` : 'index.html#work';
-  const hero = `
-  <section class="panel case-hero">
-    <div class="shell">
-      <a class="back-link link-u" href="${backHref}">${parent ? parent.title : 'Все проекты'}</a>
-      ${kicker ? `<p class="case-kicker section-label reveal">${kicker}</p>` : ''}
-      <h1 data-split class="display case-title">${project.title}</h1>
-      ${project.lead ? `<p class="case-lead reveal" style="--stagger: 160ms">${project.lead}</p>` : ''}
-      <p class="case-tags reveal" style="--stagger: 230ms">${project.tags.map((tag) => `<span class="pill">${tag}</span>`).join('')}</p>
-    </div>
-  </section>
-  <div class="shell case-body">
-  <div class="case-visual">
-    ${project.phones ? phonesBlock(project.phones) : `<div class="case-figure" style="background: ${project.coverBg}">${zoomPicture(project.cover, project.title, true)}</div>`}
-  </div>`;
-
-  const problem = project.summary.find((item) => item.label === 'Проблема');
-  const goal = project.summary.find((item) => item.label === 'Задача' || item.label === 'Цель');
-  const details = problem && goal ? project.summary.filter((item) => item !== problem && item !== goal) : project.summary;
-  const summary = `
-  <section class="case-section">
-    <h2 class="reveal display case-section-title">Задача и итог</h2>
-    <div class="mt-8">
-      ${problemGoal(problem, goal)}
-      ${details.length ? `<div class="mt-8">${details.map(detailRow).join('')}</div>` : ''}
-      ${resultsBlock(project)}
-    </div>
-  </section>`;
-
-  const sections = project.sections.map((section) => {
-    const title = section.title || (section.stages ? 'Как шла работа' : '');
-    return `<section class="case-section">
-      ${title ? `<h2 class="reveal display case-section-title mb-8">${title}</h2>` : ''}
-      <div class="space-y-7">
-        ${section.note ? `<p class="case-note reveal mx-auto max-w-2xl">${section.note}</p>` : ''}
-        ${section.stages ? stagesBlock(section.stages) : ''}
-        ${section.blocks.map(renderBlock).join('\n')}
-      </div>
-    </section>`;
-  }).join('');
-
-  const subcases = project.subcases ? `<section class="case-section">
-    <h2 class="reveal display case-section-title mb-8">Кейсы проекта</h2>
-    <div class="grid gap-8 sm:grid-cols-2" data-stagger>${project.subcases.map(caseCard).join('')}</div>
-  </section>` : '';
-
-  const next = CASE_ORDER[(CASE_ORDER.indexOf(id) + 1) % CASE_ORDER.length];
-  const nextProject = CASES[next];
-  const nextBlock = `
-  <section class="case-section">
-    <a href="case-${next}.html" class="project project-featured reveal">
-      <div class="project-media" style="--cover: ${nextProject.coverBg}">
-        ${picture(nextProject.cover, { alt: nextProject.title })}
-      </div>
-      <div class="project-copy">
-        <p class="project-meta">${nextProject.parent ? 'Следующий кейс' : 'Следующий проект'}</p>
-        <h2 class="project-title">${nextProject.title}</h2>
-      </div>
-    </a>
-  </section>`;
-
-  return hero + summary + sections + subcases + nextBlock + '\n  </div>';
+  const introContext = project.lead ? null : project.summary.find((field) => field.label === 'Проблема');
+  return [
+    caseIntro(project, introContext),
+    summarySection(project, introContext),
+    project.phones ? prototypesSection(project.phones) : '',
+    project.sections.map(chapter).join('\n'),
+    resultsSection(project),
+    project.subcases ? cardSection(project.subcases, 'Кейсы проекта', 'case-children-title') : '',
+    cardSection(relatedCases(id, project), 'Другие проекты', 'case-related-title'),
+  ].join('\n');
 }
 
 if (typeof document !== 'undefined') {

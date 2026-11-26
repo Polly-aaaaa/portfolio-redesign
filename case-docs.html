@@ -21,13 +21,13 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=pa" sizes="180x180" />
   <link rel="stylesheet" href="css/fonts.css?v=4" />
   <link rel="stylesheet" href="css/tw.css" />
-  <link rel="stylesheet" href="css/site.css?v=4" />
-  <script src="js/case.js?v=4" defer></script>
-  <script src="js/site.js?v=4" defer></script>
+  <link rel="stylesheet" href="css/site.css?v=5" />
+  <link rel="stylesheet" href="css/case.css?v=5" />
+  <script src="js/case.js?v=5" defer></script>
+  <script src="js/site.js?v=5" defer></script>
 </head>
-<body id="top">
+<body id="top" class="case-page">
   <a class="skip-link" href="#main">К содержанию</a>
-  <div class="read-progress" aria-hidden="true"></div>
   <header class="site-header">
     <nav id="nav" class="nav" aria-label="Основная навигация">
       <a class="wordmark" href="index.html" aria-label="Полина Артамонова — главная"><span aria-hidden="true">ПА</span></a>
@@ -43,128 +43,175 @@
 
   <main id="main">
 
-  <section class="panel case-hero">
-    <div class="shell">
-      <a class="back-link link-u" href="index.html#work">Все проекты</a>
-      <p class="case-kicker section-label reveal">Октябрь 2024 — Апрель 2025</p>
-      <h1 data-split class="display case-title">Интегрированный сервис для работы с документами</h1>
-      <p class="case-lead reveal" style="--stagger: 160ms">Интегрированный сервис, позволяющий создавать типовые документы с минимальным количеством ошибок. Включает <b>панель администратора</b> и <b>клиентскую часть</b>.</p>
-      <p class="case-tags reveal" style="--stagger: 230ms"><span class="pill">B2C</span><span class="pill">Web</span></p>
-    </div>
-  </section>
-  <div class="shell case-body">
-  <div class="case-visual">
-    <div class="case-figure" style="background: #f3efff"><a href="assets/docs.webp" data-zoom aria-label="Увеличить: Интегрированный сервис для работы с документами"><img src="assets/docs.webp" width="2000" height="1200" alt="Интегрированный сервис для работы с документами" fetchpriority="high" decoding="async" class="" /></a></div>
-  </div>
-  <section class="case-section">
-    <h2 class="reveal display case-section-title">Задача и итог</h2>
-    <div class="mt-8">
-      <div class="grid gap-4 md:grid-cols-2">
-    <div class="reveal case-note">
-      <p class="case-note-title">Проблема</p>
-      <p class="prose-case mt-3 leading-relaxed">Пользователи экосистемы предпринимательских сервисов сталкивались с неудобством: при необходимости заполнить и отправить документ им приходилось обращаться к сторонним решениям, что нарушало непрерывность их взаимодействия с продуктом.</p>
-    </div><div class="reveal case-note">
-      <p class="case-note-title">Задача</p>
-      <p class="prose-case mt-3 leading-relaxed">Создать отдельный модуль, который можно будет интегрировать в различные сервисы компании, чтобы пользователи могли заполнять типовые документы, не прерывая свой путь.</p>
-    </div>
-  </div>
-      <div class="mt-8"><div class="case-rule reveal grid gap-3 border-t py-6 md:grid-cols-[11rem_1fr] md:gap-10">
-    <p class="case-marker pt-1 text-sm font-semibold">Моя роль</p>
-    <div><p class="prose-case max-w-[62ch] text-base leading-relaxed sm:text-lg">Была единственным дизайнером на проекте. Работала с менеджером, тестировщиком и двумя разработчиками. Проводила тестирование прототипов.</p></div>
-  </div></div>
-      <div class="case-results mt-12">
-    <h3 class="reveal display case-section-title">Результаты</h3>
-    <ul class="mt-6 space-y-4"><li class="case-rule reveal border-t pt-4 text-base leading-relaxed sm:text-xl">Спроектировала <b>MVP-версию сервиса</b>, который позволяет администраторам создавать шаблоны документов, а пользователям их быстро заполнять.</li></ul>
-    <p class="case-caption mt-6">* Поскольку проект был приостановлен, нет возможности собрать метрики для оценки эффективности сервиса.</p>
-  </div>
-    </div>
-  </section><section class="case-section">
-      <h2 class="reveal display case-section-title mb-8">Панель администратора</h2>
-      <div class="space-y-7">
+  <section class="panel case-hero" aria-labelledby="case-title">
+    <div class="shell case-hero-inner">
+      <nav class="case-breadcrumb" aria-label="Путь к кейсу">
+    <ol>
+      <li><a class="case-link" href="index.html#work">Проекты</a></li>
 
-        <div class="reveal mx-auto max-w-2xl">
-    <p class="text-sm">Этапы</p>
-    <ol class="mt-3 flex flex-wrap gap-2"><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">1</span>Анализ конкурентов</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">2</span>Разработка концепций</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">3</span>Прототипирование</li><li class="case-rule flex items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-sm"><span class="stage-dot grid h-6 w-6 place-items-center rounded-full" aria-hidden="true">4</span>Передача в разработку</li>
+      <li><span aria-hidden="true">/</span><span aria-current="page">Интегрированный сервис для работы с документами</span></li>
     </ol>
-  </div>
-        <h3 class="case-subtitle reveal mx-auto max-w-2xl">Анализ конкурентов</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Поскольку сервис создавался с нуля, перед тем как приступить к проектированию сервиса для работы с документами, я проанализировала текущие решения на рынке и выделила наиболее подходящие, которые легли в основу нового дизайна сервиса.</p>
-<h3 class="case-subtitle reveal mx-auto max-w-2xl">Разработка концепций</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Было разработано четыре концепции главной страницы сервиса, предназначенной для ключевых пользовательских взаимодействий.</p>
-<figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/docs-02.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/docs-02.webp" width="2880" height="1836" alt="" loading="lazy" decoding="async" class="" /></a></div>
-
-  </figure>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Необходимо было сделать страницу максимально удобной для юристов, которые создают шаблоны документов. Основная цель — чтобы настройка сторон договора и его блоков была нативно понятной. Для этого рабочая область была разделена на три зоны: слева размещены ключевые действия со сторонами, справа — детальная настройка выбранной стороны.</p>
-<figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/docs-03.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/docs-03.webp" width="2880" height="1720" alt="" loading="lazy" decoding="async" class="" /></a></div>
-
-  </figure>
-<h3 class="case-subtitle reveal mx-auto max-w-2xl">Прототипирование</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Чтобы протестировать удобство и функциональность интерфейса, мы вместе с менеджером пригласили юриста, который в дальнейшем будет создавать шаблоны документов. Он оставил ряд комментариев, по которым впоследствии были внесены доработки.</p>
-<figure class="reveal mx-auto max-w-xl">
-    <div class="case-figure"><a href="assets/cases/docs-04.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/docs-04.webp" width="836" height="803" alt="" loading="lazy" decoding="async" class="" /></a></div>
-
-  </figure>
-<h3 class="case-subtitle reveal mx-auto max-w-2xl">Передача в разработку</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">После финального согласования макетов я подготовила их к передаче в разработку.</p>
-<figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/docs-05.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/docs-05.webp" width="1267" height="716" alt="" loading="lazy" decoding="async" class="" /></a></div>
-
-  </figure>
-      </div>
-    </section><section class="case-section">
-      <h2 class="reveal display case-section-title mb-8">Клиентская часть</h2>
-      <div class="space-y-7">
-
-
-        <figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/docs-06.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/docs-06.webp" width="2880" height="1728" alt="" loading="lazy" decoding="async" class="" /></a></div>
-
-  </figure>
-<h3 class="case-subtitle reveal mx-auto max-w-2xl">Первая итерация</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Для первой итерации был собран быстрый прототип, который выявил основные проблемы интерфейса на основе обратной связи:</p>
-<figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/docs-07.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/docs-07.webp" width="1209" height="679" alt="" loading="lazy" decoding="async" class="" /></a></div>
-
-  </figure>
-<ul class="reveal prose-case mx-auto max-w-2xl list-disc space-y-2.5 pl-5 text-base leading-relaxed sm:text-lg"><li>Очень много свободного пространства справа.</li><li>Не интуитивно понятно, куда кликать, когда постепенно заполняешь поля (для этого предложили использовать кнопку «Далее»).</li><li>Не очевидно, что нужно переключаться между табами, чтобы продолжить заполнять.</li></ul>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">После этого мы перешли ко второй итерации, чтобы улучшить юзабилити и логику взаимодействия.</p>
-<h3 class="case-subtitle reveal mx-auto max-w-2xl">Вторая итерация</h3>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Во второй итерации были учтены замечания первой версии. Интерфейс стал более интуитивным: я устранила лишние пустые пространства, сделала переключение между сторонами и их заполнение более понятным, а также добавила уведомление для улучшения взаимодействия пользователя с сервисом.</p>
-<figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/docs-08.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/docs-08.webp" width="2880" height="1800" alt="" loading="lazy" decoding="async" class="" /></a></div>
-
-  </figure>
-<p class="reveal prose-case mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">Также была доработана мобильная версия.</p>
-<figure class="reveal ">
-    <div class="case-figure"><a href="assets/cases/docs-09.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/docs-09.webp" width="8000" height="2425" alt="" loading="lazy" decoding="async" class="" /></a></div>
-
-  </figure>
-      </div>
-    </section>
-  <section class="case-section">
-    <a href="case-biz.html" class="project project-featured reveal">
-      <div class="project-media" style="--cover: #0b3d86">
-        <img src="assets/biz.webp" width="2000" height="1200" alt="Сервис для предпринимателей" loading="lazy" decoding="async" class="" />
-      </div>
-      <div class="project-copy">
-        <p class="project-meta">Следующий проект</p>
-        <h2 class="project-title">Сервис для предпринимателей</h2>
-      </div>
-    </a>
+  </nav>
+      <h1 id="case-title" class="display case-title case-title--long-word">Интегрированный сервис для работы с документами</h1>
+      <p class="case-lead">Интегрированный сервис, позволяющий создавать типовые документы с минимальным количеством ошибок. Включает <b>панель администратора</b> и <b>клиентскую часть</b>.</p>
+      <dl class="case-meta">
+    <div><dt>Период</dt><dd>Октябрь 2024 — Апрель 2025</dd></div>
+<div><dt>Аудитория</dt><dd>B2C</dd></div>
+<div><dt>Формат</dt><dd>Web</dd></div>
+  </dl>
+    </div>
   </section>
+  <figure class="panel case-cover" style="--case-cover: #f3efff">
+    <a class="case-media-view" href="assets/docs.webp" data-zoom aria-label="Увеличить: Интегрированный сервис для работы с документами"><img src="assets/docs.webp" width="2000" height="1200" alt="Интегрированный сервис для работы с документами" fetchpriority="high" decoding="async" /></a>
+  </figure>
+
+  <section class="case-section" aria-labelledby="case-summary-title">
+    <div class="shell case-layout">
+    <h2 id="case-summary-title" class="section-label case-side-label">Задача и итог</h2>
+    <div class="case-copy"><div class="case-brief">
+    <div class="case-brief-field">
+      <h3 class="display case-section-title">Проблема</h3>
+      <p>Пользователи экосистемы предпринимательских сервисов сталкивались с неудобством: при необходимости заполнить и отправить документ им приходилось обращаться к сторонним решениям, что нарушало непрерывность их взаимодействия с продуктом.</p>
+
+    </div>
+    <div class="case-brief-field">
+      <h3 class="case-subtitle">Задача</h3>
+      <p>Создать отдельный модуль, который можно будет интегрировать в различные сервисы компании, чтобы пользователи могли заполнять типовые документы, не прерывая свой путь.</p>
+
+    </div>
+    <div class="case-brief-field">
+      <h3 class="case-subtitle">Моя роль</h3>
+      <p>Была единственным дизайнером на проекте. Работала с менеджером, тестировщиком и двумя разработчиками. Проводила тестирование прототипов.</p>
+
+    </div></div></div>
   </div>
+  </section>
+
+
+  <section class="case-section case-chapter" aria-labelledby="case-chapter-1">
+    <div class="shell case-layout">
+    <p class="section-label case-side-label">Этапы</p>
+    <div class="case-copy">
+    <h2 id="case-chapter-1" class="display case-section-title">Панель администратора</h2>
+    <ol class="case-stages"><li>Анализ конкурентов</li><li>Разработка концепций</li><li>Прототипирование</li><li>Передача в разработку</li></ol></div>
+  </div>
+    <div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><h3 class="case-subtitle">Анализ конкурентов</h3>
+<p>Поскольку сервис создавался с нуля, перед тем как приступить к проектированию сервиса для работы с документами, я проанализировала текущие решения на рынке и выделила наиболее подходящие, которые легли в основу нового дизайна сервиса.</p>
+<h3 class="case-subtitle">Разработка концепций</h3>
+<p>Было разработано четыре концепции главной страницы сервиса, предназначенной для ключевых пользовательских взаимодействий.</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/docs-02.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/docs-02.webp" width="2880" height="1836" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+<div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><p>Необходимо было сделать страницу максимально удобной для юристов, которые создают шаблоны документов. Основная цель — чтобы настройка сторон договора и его блоков была нативно понятной. Для этого рабочая область была разделена на три зоны: слева размещены ключевые действия со сторонами, справа — детальная настройка выбранной стороны.</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/docs-03.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/docs-03.webp" width="2880" height="1720" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+<div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><h3 class="case-subtitle">Прототипирование</h3>
+<p>Чтобы протестировать удобство и функциональность интерфейса, мы вместе с менеджером пригласили юриста, который в дальнейшем будет создавать шаблоны документов. Он оставил ряд комментариев, по которым впоследствии были внесены доработки.</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot case-shot--narrow">
+    <a class="case-media-view" href="assets/cases/docs-04.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/docs-04.webp" width="836" height="803" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+<div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><h3 class="case-subtitle">Передача в разработку</h3>
+<p>После финального согласования макетов я подготовила их к передаче в разработку.</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/docs-05.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/docs-05.webp" width="1267" height="716" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+  </section>
+
+  <section class="case-section case-chapter" aria-labelledby="case-chapter-2">
+    <div class="shell case-layout">
+
+    <div class="case-copy">
+    <h2 id="case-chapter-2" class="display case-section-title">Клиентская часть</h2>
+    </div>
+  </div>
+    <div class="panel case-gallery"><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/docs-06.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/docs-06.webp" width="2880" height="1728" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+<div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><h3 class="case-subtitle">Первая итерация</h3>
+<p>Для первой итерации был собран быстрый прототип, который выявил основные проблемы интерфейса на основе обратной связи:</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/docs-07.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/docs-07.webp" width="1209" height="679" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+<div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><ul class="case-text-list"><li>Очень много свободного пространства справа.</li><li>Не интуитивно понятно, куда кликать, когда постепенно заполняешь поля (для этого предложили использовать кнопку «Далее»).</li><li>Не очевидно, что нужно переключаться между табами, чтобы продолжить заполнять.</li></ul>
+<p>После этого мы перешли ко второй итерации, чтобы улучшить юзабилити и логику взаимодействия.</p>
+<h3 class="case-subtitle">Вторая итерация</h3>
+<p>Во второй итерации были учтены замечания первой версии. Интерфейс стал более интуитивным: я устранила лишние пустые пространства, сделала переключение между сторонами и их заполнение более понятным, а также добавила уведомление для улучшения взаимодействия пользователя с сервисом.</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot">
+    <a class="case-media-view" href="assets/cases/docs-08.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/docs-08.webp" width="2880" height="1800" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+<div class="shell case-layout">
+
+    <div class="case-copy"><div class="case-prose"><p>Также была доработана мобильная версия.</p></div></div>
+  </div>
+<div class="panel case-gallery"><figure class="case-shot case-shot--wide">
+    <a class="case-media-view" href="assets/cases/docs-09.webp" data-zoom aria-label="Увеличить изображение"><img src="assets/cases/docs-09.webp" width="8000" height="2425" alt="" loading="lazy" decoding="async" /></a>
+
+  </figure></div>
+  </section>
+
+  <section class="case-section case-results" aria-labelledby="case-results-title">
+    <div class="shell case-layout">
+    <h2 id="case-results-title" class="section-label case-side-label">Результаты</h2>
+    <div class="case-copy"><ul class="case-results-list"><li>Спроектировала <b>MVP-версию сервиса</b>, который позволяет администраторам создавать шаблоны документов, а пользователям их быстро заполнять.</li></ul><p class="case-caption">* Поскольку проект был приостановлен, нет возможности собрать метрики для оценки эффективности сервиса.</p></div>
+  </div>
+  </section>
+
+
+  <section class="shell case-section case-related" aria-labelledby="case-related-title">
+    <h2 id="case-related-title" class="display case-section-title">Другие проекты</h2>
+    <div class="case-card-grid"><a href="case-biz.html" class="case-card">
+    <div class="case-card-image" style="--case-cover: #0b3d86">
+      <img src="assets/biz.webp" width="2000" height="1200" alt="" loading="lazy" decoding="async" />
+      <span class="case-card-action" aria-hidden="true">Смотреть кейс</span>
+    </div>
+    <p class="project-meta">Social Media · B2C · Web · PWA</p>
+    <h3 class="project-title">Сервис для предпринимателей</h3>
+  </a>
+<a href="case-gift.html" class="case-card">
+    <div class="case-card-image" style="--case-cover: #0a1210">
+      <img src="assets/gift.webp" width="1800" height="1080" alt="" loading="lazy" decoding="async" />
+      <span class="case-card-action" aria-hidden="true">Смотреть кейс</span>
+    </div>
+    <p class="project-meta">B2C · Web · Прототип</p>
+    <h3 class="project-title">Живой подарок</h3>
+  </a></div>
+  </section>
   </main>
   <footer id="contact" class="panel contact dark-panel" aria-labelledby="contact-title" data-nav-dark>
     <div class="motif" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="shell contact-inner">
-      <div class="reveal">
+      <div>
         <h2 id="contact-title" class="display section-title">Давайте обсудим ваш продукт</h2>
         <p>Часть проектов под NDA. Покажу макеты на созвоне.</p>
         <a href="https://t.me/p_p_polly" target="_blank" rel="noopener" class="button button-light">Написать в Телеграм</a>
       </div>
-      <div class="footer-links reveal">
+      <div class="footer-links">
         <a href="mailto:psineleva@bk.ru">psineleva@bk.ru</a>
         <a href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener">Резюме</a>
         <a href="#top">Наверх</a>
