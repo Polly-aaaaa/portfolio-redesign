@@ -52,7 +52,7 @@ function caseIntro(project, context) {
       ${caseMetadata(project)}
     </div>
   </section>
-  <figure class="panel case-cover" style="--case-cover: ${project.coverBg}">
+  <figure class="panel case-cover">
     ${zoomPicture(project.cover, project.title, true)}
   </figure>`;
 }
@@ -159,7 +159,7 @@ function prototypesSection(phones) {
 function caseCard(id) {
   const project = CASES[id];
   return `<a href="case-${id}.html" class="case-card">
-    <div class="case-card-image" style="--case-cover: ${project.coverBg}">
+    <div class="case-card-image">
       ${picture(project.cover)}
       <span class="case-card-action" aria-hidden="true">Смотреть кейс</span>
     </div>
