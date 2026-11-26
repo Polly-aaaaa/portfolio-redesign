@@ -44,17 +44,14 @@ function caseIntro(project, context) {
   const longestWord = Math.max(...project.title.split(/\s+/).map((word) => word.length));
   const titleSize = longestWord >= 15 ? ' case-title--long-word' : longestWord >= 12 ? ' case-title--medium-word' : '';
   return `
-  <section class="panel case-hero" aria-labelledby="case-title">
-    <div class="shell case-hero-inner">
-      ${breadcrumbs(project)}
-      <h1 id="case-title" class="display case-title${titleSize}">${project.title}</h1>
+  <section class="shell case-hero" aria-labelledby="case-title">
+    ${breadcrumbs(project)}
+    <h1 id="case-title" class="display case-title${titleSize}">${project.title}</h1>
+    <div class="case-hero-details">
       ${lead ? `<p class="case-lead">${leadLabel}${lead}</p>` : ''}
       ${caseMetadata(project)}
     </div>
-  </section>
-  <figure class="panel case-cover">
-    ${zoomPicture(project.cover, project.title, true)}
-  </figure>`;
+  </section>`;
 }
 
 function caseLayout(content, label = '') {
@@ -64,18 +61,38 @@ function caseLayout(content, label = '') {
   </div>`;
 }
 
-function summarySection(project, introContext) {
-  const fields = project.summary.filter((field) => field !== introContext);
-  if (!fields.length) return '';
-  const content = fields.map((field, index) => `
-    <div class="case-brief-field">
-      <h3 class="${index === 0 ? 'display case-section-title' : 'case-subtitle'}">${field.label}</h3>
+function projectField(field) {
+  return `
+    <div class="case-field">
+      <h3 class="case-field-title">${field.label}</h3>
       <p>${field.html}</p>
       ${field.list ? `<ul class="case-item-list">${field.list.map((item) => `<li>${item}</li>`).join('')}</ul>` : ''}
-    </div>`).join('');
+    </div>`;
+}
+
+function briefSection(fields, project) {
+  const outcomes = project.results?.length ? `
+    <div class="case-brief-results">
+      <h3 id="case-results-title" class="case-field-title">Результаты</h3>
+      ${project.resultsNote ? `<p class="case-results-note">${project.resultsNote}</p>` : ''}
+      <ul class="case-results-list">${project.results.map((result) => `<li>${result}</li>`).join('')}</ul>
+    </div>` : '';
+  if (!fields.length && !outcomes) return '';
   return `
-  <section class="case-section" aria-labelledby="case-summary-title">
-    ${caseLayout(`<div class="case-brief">${content}</div>`, '<h2 id="case-summary-title" class="section-label case-side-label">Задача и итог</h2>')}
+  <section class="shell case-brief" aria-labelledby="case-summary-title">
+    <h2 id="case-summary-title" class="display case-section-title">Коротко о проекте</h2>
+    <div class="case-brief-grid">
+      ${fields.length ? `<div class="case-brief-fields">${fields.map(projectField).join('')}</div>` : ''}
+      ${outcomes}
+    </div>
+  </section>`;
+}
+
+function contextSection(fields) {
+  if (!fields.length) return '';
+  return `
+  <section class="case-section case-context" aria-labelledby="case-context-title">
+    ${caseLayout(`<div class="case-context-fields">${fields.map(projectField).join('')}</div>`, '<h2 id="case-context-title" class="section-label case-side-label">Контекст проекта</h2>')}
   </section>`;
 }
 
@@ -133,16 +150,6 @@ function chapter(section, index) {
   </${tag}>`;
 }
 
-function resultsSection(project) {
-  if (!project.results?.length) return '';
-  const items = project.results.map((result) => `<li>${result}</li>`).join('');
-  const note = project.resultsNote ? `<p class="case-caption">* ${project.resultsNote}</p>` : '';
-  return `
-  <section class="case-section case-results" aria-labelledby="case-results-title">
-    ${caseLayout(`<ul class="case-results-list">${items}</ul>${note}`, '<h2 id="case-results-title" class="section-label case-side-label">Результаты</h2>')}
-  </section>`;
-}
-
 function prototypesSection(phones) {
   return `
   <section id="prototypes" class="case-section case-prototypes" aria-labelledby="case-prototypes-title">
@@ -187,12 +194,15 @@ function cardSection(ids, heading, headingId) {
 function caseHTML(id) {
   const project = CASES[id];
   const introContext = project.lead ? null : project.summary.find((field) => field.label === 'Проблема');
+  const briefFields = project.summary.filter((field) => field.icon === 'target' || field.icon === 'person');
+  const contextFields = project.summary.filter((field) => field !== introContext && !briefFields.includes(field));
   return [
     caseIntro(project, introContext),
-    summarySection(project, introContext),
+    briefSection(briefFields, project),
+    `<figure class="shell case-cover">${zoomPicture(project.cover, project.title, true)}</figure>`,
+    contextSection(contextFields),
     project.phones ? prototypesSection(project.phones) : '',
     project.sections.map(chapter).join('\n'),
-    resultsSection(project),
     project.subcases ? cardSection(project.subcases, 'Кейсы проекта', 'case-children-title') : '',
     cardSection(relatedCases(id, project), 'Другие проекты', 'case-related-title'),
   ].join('\n');

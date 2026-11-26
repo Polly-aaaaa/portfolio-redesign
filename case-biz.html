@@ -22,10 +22,10 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=pa-soft-lavender" sizes="180x180" />
   <link rel="stylesheet" href="css/fonts.css?v=4" />
   <link rel="stylesheet" href="css/tw.css" />
-  <link rel="stylesheet" href="css/site.css?v=7" />
-  <link rel="stylesheet" href="css/case.css?v=6" />
-  <script src="js/case.js?v=5" defer></script>
-  <script src="js/site.js?v=5" defer></script>
+  <link rel="stylesheet" href="css/site.css?v=8" />
+  <link rel="stylesheet" href="css/case.css?v=8" />
+  <script src="js/case.js?v=8" defer></script>
+  <script src="js/site.js?v=8" defer></script>
 </head>
 <body id="top" class="case-page">
   <a class="skip-link" href="#main">К содержанию</a>
@@ -44,16 +44,16 @@
 
   <main id="main">
 
-  <section class="panel case-hero" aria-labelledby="case-title">
-    <div class="shell case-hero-inner">
-      <nav class="case-breadcrumb" aria-label="Путь к кейсу">
+  <section class="shell case-hero" aria-labelledby="case-title">
+    <nav class="case-breadcrumb" aria-label="Путь к кейсу">
     <ol>
       <li><a class="case-link" href="index.html#work">Проекты</a></li>
 
       <li><span aria-hidden="true">/</span><span aria-current="page">Сервис для предпринимателей</span></li>
     </ol>
   </nav>
-      <h1 id="case-title" class="display case-title case-title--long-word">Сервис для предпринимателей</h1>
+    <h1 id="case-title" class="display case-title case-title--long-word">Сервис для предпринимателей</h1>
+    <div class="case-hero-details">
       <p class="case-lead">Платформа для предпринимателей с инструментами для коммуникации, обучения, поддержки бизнеса и доступа к IT-решениям и инвестициям.</p>
       <dl class="case-meta">
     <div><dt>Период</dt><dd>Май 2025 — Июнь 2025</dd></div>
@@ -62,27 +62,33 @@
   </dl>
     </div>
   </section>
-  <figure class="panel case-cover">
-    <a class="case-media-view" href="assets/biz.webp" data-zoom aria-label="Увеличить: Сервис для предпринимателей"><img src="assets/biz.webp" width="2000" height="1200" alt="Сервис для предпринимателей" fetchpriority="high" decoding="async" /></a>
-  </figure>
 
-  <section class="case-section" aria-labelledby="case-summary-title">
-    <div class="shell case-layout">
-    <h2 id="case-summary-title" class="section-label case-side-label">Задача и итог</h2>
-    <div class="case-copy"><div class="case-brief">
-    <div class="case-brief-field">
-      <h3 class="display case-section-title">Проблема</h3>
-      <p>В сервисе отсутствовали публичные профили и функционал заводить дружбу. Это усложняло пользователям взаимодействие и мешало развитию активного предпринимательского комьюнити.</p>
-
-    </div>
-    <div class="case-brief-field">
-      <h3 class="case-subtitle">Задача</h3>
+  <section class="shell case-brief" aria-labelledby="case-summary-title">
+    <h2 id="case-summary-title" class="display case-section-title">Коротко о проекте</h2>
+    <div class="case-brief-grid">
+      <div class="case-brief-fields">
+    <div class="case-field">
+      <h3 class="case-field-title">Задача</h3>
       <p>Реализовать функционал, который позволит пользователям наращивать социальные связи и развивать сообщество.</p>
 
     </div>
-    <div class="case-brief-field">
-      <h3 class="case-subtitle">Моя роль</h3>
+    <div class="case-field">
+      <h3 class="case-field-title">Моя роль</h3>
       <p>Присоединилась к команде на этапе, когда другие разделы уже были реализованы. Я проектировала раздел «Профиль», работая в тесной связке с проджект-менеджером и двумя разработчиками.</p>
+
+    </div></div>
+
+    </div>
+  </section>
+<figure class="shell case-cover"><a class="case-media-view" href="assets/biz.webp" data-zoom aria-label="Увеличить: Сервис для предпринимателей"><img src="assets/biz.webp" width="2000" height="1200" alt="Сервис для предпринимателей" fetchpriority="high" decoding="async" /></a></figure>
+
+  <section class="case-section case-context" aria-labelledby="case-context-title">
+    <div class="shell case-layout">
+    <h2 id="case-context-title" class="section-label case-side-label">Контекст проекта</h2>
+    <div class="case-copy"><div class="case-context-fields">
+    <div class="case-field">
+      <h3 class="case-field-title">Проблема</h3>
+      <p>В сервисе отсутствовали публичные профили и функционал заводить дружбу. Это усложняло пользователям взаимодействие и мешало развитию активного предпринимательского комьюнити.</p>
 
     </div></div></div>
   </div>
@@ -131,7 +137,6 @@
   </section>
 
 
-
   <section class="shell case-section case-related" aria-labelledby="case-related-title">
     <h2 id="case-related-title" class="display case-section-title">Другие проекты</h2>
     <div class="case-card-grid"><a href="case-gift.html" class="case-card">
@@ -152,19 +157,18 @@
   </a></div>
   </section>
   </main>
-  <footer id="contact" class="panel contact dark-panel" aria-labelledby="contact-title" data-nav-dark>
-    <div class="motif" aria-hidden="true"><i></i><i></i><i></i></div>
+  <footer id="contact" class="contact dark-panel" aria-labelledby="contact-title">
     <div class="shell contact-inner">
       <div>
         <h2 id="contact-title" class="display section-title">Давайте обсудим ваш продукт</h2>
         <p>Часть проектов под NDA. Покажу макеты на созвоне.</p>
         <a href="https://t.me/p_p_polly" target="_blank" rel="noopener" class="button button-light">Написать в Телеграм</a>
       </div>
-      <div class="footer-links">
+      <nav class="footer-links" aria-label="Контакты и резюме">
         <a href="mailto:psineleva@bk.ru">psineleva@bk.ru</a>
         <a href="https://drive.google.com/file/d/1vTA9CH9CJkSyZ6TN2uQzDy6aibkoubeJ/view" target="_blank" rel="noopener">Резюме</a>
         <a href="#top">Наверх</a>
-      </div>
+      </nav>
       <p class="copyright">© 2026 Полина Артамонова</p>
     </div>
   </footer>

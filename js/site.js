@@ -1,8 +1,6 @@
-const header = document.querySelector('.site-header');
 const nav = document.getElementById('nav');
 const menuButton = document.getElementById('menuBtn');
 const menu = document.getElementById('menu');
-const darkPanels = [...document.querySelectorAll('[data-nav-dark]')];
 
 function setMenu(open) {
   menuButton.setAttribute('aria-expanded', String(open));
@@ -25,20 +23,6 @@ document.addEventListener('keydown', (event) => {
     menuButton.focus();
   }
 });
-
-function updateScroll() {
-  header.classList.toggle('scrolled', scrollY > 24);
-  const { top, height } = header.getBoundingClientRect();
-  const midpoint = top + Math.min(height, 54) / 2;
-  const dark = darkPanels.some((panel) => {
-    const bounds = panel.getBoundingClientRect();
-    return bounds.top <= midpoint && bounds.bottom > midpoint;
-  });
-  header.classList.toggle('is-dark', dark);
-}
-addEventListener('scroll', updateScroll, { passive: true });
-addEventListener('resize', updateScroll);
-updateScroll();
 
 const motion = matchMedia('(prefers-reduced-motion: no-preference)');
 const items = Array.from(document.querySelectorAll('.reveal'));
