@@ -169,8 +169,6 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
   .project-grid > .project:nth-child(4) { grid-column: span 5; }
   .project-grid > .project:nth-child(1) img, .project-grid > .project:nth-child(4) img { aspect-ratio: 4 / 5; }
   .project-grid > .project:nth-child(2) img, .project-grid > .project:nth-child(3) img { aspect-ratio: 4 / 3; }
-  .project-grid > .project-featured { grid-column: 1 / -1; }
-  .project-featured { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); align-items: center; gap: clamp(24px, 4vw, 56px); }
 }
 
 @media (min-width: 820px) {
