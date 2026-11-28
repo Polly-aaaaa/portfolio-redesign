@@ -74,7 +74,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .hero-copy { width: min(100%, 1100px); margin-inline: auto; }
 .hero-portrait { display: block; width: clamp(76px, 8vw, 116px); height: auto; aspect-ratio: 1; object-fit: cover; object-position: center 32%; border-radius: 50%; margin-bottom: clamp(12px, 1.5vw, 20px); }
 .hero-intro { display: inline-block; padding: 5px 12px; margin-bottom: 14px; border: 1px solid var(--ink); border-radius: 999px; font-size: .875rem; line-height: 1.4; }
-.hero-wave { display: inline-block; width: 1.07em; height: 1.07em; margin-inline: .25em .1em; vertical-align: -.18em; }
+.hero-wave { display: inline-block; width: 1.07em; height: 1.07em; margin-inline: .25em .1em; vertical-align: -.18em; transform-origin: 55% 80%; }
 .hero-title { font-size: clamp(1.9rem, 9.8vw, 5.3rem); font-weight: 800; letter-spacing: -.055em; line-height: .99; }
 .hero-title > span { display: block; }
 .hero-actions { position: absolute; z-index: 1; inset: auto 17px 22px; display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
@@ -85,6 +85,14 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .motion-ready .hero-title > span { animation: hero-in .9s var(--ease) both; }
 .motion-ready .hero-title > span + span { animation-delay: .085s; }
 .motion-ready .hero .motif { animation: motif-in 1.35s var(--ease) both; }
+@media (prefers-reduced-motion: no-preference) {
+  .motion-ready .hero-intro.in .hero-wave { animation: greeting-wave .85s ease-in-out .32s; }
+}
+@keyframes greeting-wave {
+  0%, 100% { transform: rotate(0deg); }
+  20%, 54% { transform: rotate(17deg); }
+  37%, 71% { transform: rotate(-12deg); }
+}
 @keyframes hero-in { from { opacity: 0; transform: translateY(.27em); } to { opacity: 1; transform: none; } }
 @keyframes motif-in { from { opacity: .25; transform: translateY(6%); } to { opacity: 1; transform: none; } }
 
