@@ -86,10 +86,10 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .motion-ready .hero-title > span + span { animation-delay: .085s; }
 .motion-ready .hero .motif { animation: motif-in 1.35s var(--ease) both; }
 @media (prefers-reduced-motion: no-preference) {
-  .motion-ready .hero-intro.in .hero-wave { animation: greeting-wave .85s ease-in-out .32s; }
+  .motion-ready .hero-intro.in .hero-wave { animation: greeting-wave .85s ease-in-out .32s forwards; }
 }
 @keyframes greeting-wave {
-  0%, 100% { transform: rotate(0deg); }
+  0%, 100% { transform: none; }
   20%, 54% { transform: rotate(17deg); }
   37%, 71% { transform: rotate(-12deg); }
 }

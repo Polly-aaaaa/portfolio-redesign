@@ -41,6 +41,20 @@ addEventListener('resize', updateScroll);
 updateScroll();
 
 const motion = matchMedia('(prefers-reduced-motion: no-preference)');
+const greeting = document.querySelector('.hero-intro');
+const greetingIcon = greeting?.querySelector('.hero-wave');
+
+if (greetingIcon?.getAnimations) {
+  greeting.addEventListener('pointerenter', (event) => {
+    if (event.pointerType === 'touch' || !motion.matches) return;
+    const wave = greetingIcon.getAnimations().find((animation) => animation.animationName === 'greeting-wave');
+    if (!wave) return;
+
+    wave.currentTime = wave.effect.getTiming().delay;
+    wave.play();
+  });
+}
+
 const items = Array.from(document.querySelectorAll('.reveal'));
 if (items.length && motion.matches && 'IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries) => {
